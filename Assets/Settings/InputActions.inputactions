@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Pan",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "82ef2ab9-da9d-4db2-b20c-2d978890a7f8",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Zoom",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "25cb7563-eec1-48ff-8c79-5648f8514ed7",
                     "expectedControlType": "Axis",
                     "processors": "",
@@ -137,83 +137,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Triggers",
-                    "id": "0ee95670-f451-4639-b94c-1eea77ea956a",
-                    "path": "1DAxis(minValue=0.1,maxValue=1.9)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Zoom",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "13540e38-5911-4d9f-acd6-ba6e11b821d2",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "083d8c11-5339-4fd4-ae78-42621ff0e9f9",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "aecb7957-68b6-4e3d-8656-d79b52d9d5c8",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "Normalize(min=0.1,max=1.9,zero=1)",
-                    "groups": "Keyboard",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Arrow Keys",
-                    "id": "3debeae8-8500-4291-82d8-1b7fca9a70f8",
-                    "path": "1DAxis(minValue=0.1,maxValue=1.9)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Zoom",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "dc54d525-c9a0-420c-bea2-d16c4895f207",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "948ad2c1-7271-4ccf-bf44-647580be0031",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "ead7af2e-e257-47e6-bc82-78045b7247eb",
                     "path": "<Gamepad>/buttonSouth",
@@ -311,6 +234,83 @@
                     "action": "QuitGame",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70f2072d-c0e0-43fa-b616-4da0e4ea4894",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Triggers",
+                    "id": "0ee95670-f451-4639-b94c-1eea77ea956a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Arrow Keys",
+                    "id": "3debeae8-8500-4291-82d8-1b7fca9a70f8",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "dc54d525-c9a0-420c-bea2-d16c4895f207",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "948ad2c1-7271-4ccf-bf44-647580be0031",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "13540e38-5911-4d9f-acd6-ba6e11b821d2",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "083d8c11-5339-4fd4-ae78-42621ff0e9f9",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -546,6 +546,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>/{Back}",
                     "isOptional": false,
                     "isOR": false
                 }

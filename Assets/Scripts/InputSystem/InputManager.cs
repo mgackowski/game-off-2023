@@ -28,8 +28,9 @@ public class InputManager : MonoBehaviour {
         }
 
         input = GetComponent<PlayerInput>();
-        Gameplay = new GameplayActionMap(input.actions.FindActionMap("Player"));
+        Gameplay = new GameplayActionMap(input.actions.FindActionMap("Gameplay"));
         Menu = new MenuActionMap(input.actions.FindActionMap("Menu"));
+        Dialogue = new DialogueActionMap(input.actions.FindActionMap("Dialogue"));
         Gameplay.SendInitialStatusEvent();
         Menu.SendInitialStatusEvent();
     }
