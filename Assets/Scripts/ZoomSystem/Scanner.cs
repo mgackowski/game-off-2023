@@ -26,6 +26,17 @@ public class Scanner : MonoBehaviour
     {
         cam = GetComponentInChildren<CinemachineVirtualCamera>();
     }
+
+    private void OnEnable() {
+        InputManager.Instance.Gameplay.Pan.performed += Pan;
+        InputManager.Instance.Gameplay.Zoom.performed += Zoom;
+    }
+
+    private void OnDisable() {
+        InputManager.Instance.Gameplay.Pan.performed -= Pan;
+        InputManager.Instance.Gameplay.Zoom.performed -= Zoom;
+    }
+
     void LateUpdate()
     {
         ApplyMovement();
@@ -39,6 +50,7 @@ public class Scanner : MonoBehaviour
     public void Zoom(InputAction.CallbackContext ctx)
     {
         zoomSpeed = ctx.ReadValue<float>();
+        Debug.Log($"{zoomSpeed}");
         //Debug.Log("Captured zoom event");   // Not getting scrollwheel input!
     }
 
@@ -53,7 +65,7 @@ public class Scanner : MonoBehaviour
 
         if (zoomSpeed != 0f)
         {
-            float zoomDelta = ((zoomSpeed - 1f) * zoomSpeedModifier * Time.deltaTime) + 1f;
+            float zoomDelta = (zoomSpeed * zoomSpeedModifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
         }
 
