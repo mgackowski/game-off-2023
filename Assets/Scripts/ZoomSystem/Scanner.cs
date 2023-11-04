@@ -1,11 +1,15 @@
+using System;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /** Controls panning, zooming, scanning and enhancing.
  */
 public class Scanner : MonoBehaviour
 {
+    public event Action<float> ZoomLevelChanged;
+
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
 
@@ -67,6 +71,7 @@ public class Scanner : MonoBehaviour
         {
             float zoomDelta = (zoomSpeed * zoomSpeedModifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
+            ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
         }
 
         SnapToBounds();
