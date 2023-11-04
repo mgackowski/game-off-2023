@@ -4,9 +4,8 @@ using UnityEngine;
  * Controls the visibility of a texture depending on a Scanner's
  * zoom level.
  * TODO: Has a dependency on Scanner type
- * TODO: Requires MeshRenderer (so no Sprites) in current form
  */
-[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(Renderer))]
 public class DetailTextureImage : MonoBehaviour
 {
     [SerializeField] Scanner scannedBy;
@@ -18,7 +17,7 @@ public class DetailTextureImage : MonoBehaviour
 
     void OnZoomChanged(float zoomLevel)
     {
-        Material mat = GetComponent<MeshRenderer>().material;
+        Material mat = GetComponent<Renderer>().material;
         Color matColor = mat.color;
         matColor.a = minOpacity +
             (Mathf.Sqrt(Mathf.Clamp(
