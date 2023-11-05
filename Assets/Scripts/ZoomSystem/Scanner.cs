@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,10 @@ using UnityEngine.InputSystem;
  */
 public class Scanner : MonoBehaviour
 {
+    // Events
+    public event Action<float> ZoomLevelChanged;
+    public event Action<Rect> ScanPerformed; // Rect = XY (world space) of area scanned
+
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
 
@@ -21,20 +26,24 @@ public class Scanner : MonoBehaviour
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
     float zoomSpeed = 0f;
+    Rect areaInView;
 
     void Start()
     {
         cam = GetComponentInChildren<CinemachineVirtualCamera>();
+        areaInView = Rect.zero;
     }
 
     private void OnEnable() {
         InputManager.Instance.Gameplay.Pan.performed += Pan;
         InputManager.Instance.Gameplay.Zoom.performed += Zoom;
+        InputManager.Instance.Gameplay.Scan.performed += Scan;
     }
 
     private void OnDisable() {
         InputManager.Instance.Gameplay.Pan.performed -= Pan;
         InputManager.Instance.Gameplay.Zoom.performed -= Zoom;
+        InputManager.Instance.Gameplay.Scan.performed -= Scan;
     }
 
     void LateUpdate()
@@ -50,8 +59,25 @@ public class Scanner : MonoBehaviour
     public void Zoom(InputAction.CallbackContext ctx)
     {
         zoomSpeed = ctx.ReadValue<float>();
-        Debug.Log($"{zoomSpeed}");
-        //Debug.Log("Captured zoom event");   // Not getting scrollwheel input!
+        //Debug.Log($"{zoomSpeed}");
+    }
+
+    public void Scan(InputAction.CallbackContext ctx)
+    {
+        //Debug.Log("Scan attempted.");
+
+        LensSettings lens = cam.m_Lens;
+        float viewHeight = 2f * lens.OrthographicSize;
+        float viewWidth = viewHeight * lens.Aspect;
+        areaInView.Set(
+            cam.transform.position.x - (viewWidth / 2),
+            cam.transform.position.y - (viewHeight / 2),
+            viewWidth, viewHeight);
+
+        //Debug.Log($"Area in view determined: {areaInView}");
+
+        ScanPerformed?.Invoke(areaInView);
+
     }
 
     /** Calculate and apply the next frame's zoom and position **/
@@ -67,6 +93,7 @@ public class Scanner : MonoBehaviour
         {
             float zoomDelta = (zoomSpeed * zoomSpeedModifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
+            ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
         }
 
         SnapToBounds();
