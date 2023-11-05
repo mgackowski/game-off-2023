@@ -57,7 +57,7 @@ public class Hotspot : MonoBehaviour
         return Mathf.Min(bInA, aInB);
     }
 
-    void Awake()
+    void OnEnable()
     {
         if (scannableBy != null)
         {
@@ -83,7 +83,7 @@ public class Hotspot : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         if (scannableBy != null)
         {

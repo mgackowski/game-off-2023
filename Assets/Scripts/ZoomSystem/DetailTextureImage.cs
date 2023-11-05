@@ -26,7 +26,7 @@ public class DetailTextureImage : MonoBehaviour
         mat.color = matColor;
     }
 
-    void Awake()
+    void OnEnable()
     {
         if (scannedBy != null)
         {
@@ -34,7 +34,7 @@ public class DetailTextureImage : MonoBehaviour
         }  
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         if (scannedBy != null)
         {
