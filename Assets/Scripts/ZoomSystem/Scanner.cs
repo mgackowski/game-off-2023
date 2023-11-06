@@ -14,6 +14,7 @@ public class Scanner : MonoBehaviour
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
 
+    [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
     [SerializeField] float zoomSpeedModifier = 1f;
     [SerializeField] float minZoomLevel = 1f;
@@ -100,7 +101,9 @@ public class Scanner : MonoBehaviour
 
     }
 
-    /** Don't let the camera exceed its pan and zoom limits **/
+    /** Don't let the camera exceed its pan and zoom limits
+     * TODO: Rewrite to use imageInFocus.Bounds instead
+     * **/
     void SnapToBounds()
     {
         Vector3 cameraPosition = cam.transform.position;

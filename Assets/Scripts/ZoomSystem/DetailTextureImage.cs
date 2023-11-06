@@ -6,8 +6,9 @@ using UnityEngine;
  * TODO: Has a dependency on Scanner type
  */
 [RequireComponent(typeof(Renderer))]
-public class DetailTextureImage : MonoBehaviour
+public class DetailTextureImage : EvidenceImage
 {
+    [Header("Detail texture-specific fields")]
     [SerializeField] Scanner scannedBy;
     [SerializeField] float minOpacity = 0f;
     [SerializeField] float maxOpacity = 0.75f;

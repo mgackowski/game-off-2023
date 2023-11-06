@@ -1,22 +1,27 @@
 using UnityEngine;
 
+/**
+ * A 2D area placed on an image which can be scanned by a Scanner.
+ * If the scan area and the hotspot's bounds match, the scan is successful
+ */
 public class Hotspot : MonoBehaviour
 {
     public Scanner scannableBy;
 
+    [SerializeField] EvidenceImage parentImage;
     [SerializeField] public bool scannedOnce = false;
-    [SerializeField] bool locked = false;
+    [SerializeField] protected bool locked = true;
+    [SerializeField] protected float requiredOverlapRatio;
 
     //TODO: Once dialogue system is hooked up
     //[SerializeField] string dialogueNode;
 
     [Header("Leave empty to calculate from renderer")]
-    [SerializeField] Rect hotspotArea;
-    [SerializeField] float requiredOverlapRatio;
+    [SerializeField] protected Rect hotspotArea;
 
 
     /* Run when a scan is successful */
-    public void Scan()
+    public virtual void Scan()
     {
         if (locked)
         {
@@ -30,7 +35,7 @@ public class Hotspot : MonoBehaviour
      * 1. The center of the hotspot is within the area scanned
      * 2. A minimum ratio of the hotspot and scan areas' overlap
      */
-    void OnScanPerformed(Rect areaScanned)
+    protected virtual void OnScanPerformed(Rect areaScanned)
     {
         if (!areaScanned.Contains(hotspotArea.center))
         {
@@ -43,9 +48,17 @@ public class Hotspot : MonoBehaviour
 
     }
 
+    /**
+     * Disable hotspot interactivity if its parent image isn't unlocked yet
+     */
+    protected virtual void OnImageLockStateChanged(bool newLocked)
+    {
+        locked = newLocked;
+    }
+
     /** Returns the ratio two rectangles overlap by, from 0f to 1f
      */
-    float CalculateOverlap(Rect a, Rect b)
+    protected float CalculateOverlap(Rect a, Rect b)
     {
         float bInA = (a.width - Mathf.Abs(a.min.x - b.min.x))
             * (a.height - Mathf.Abs(a.min.y - b.min.y))
@@ -62,6 +75,10 @@ public class Hotspot : MonoBehaviour
         if (scannableBy != null)
         {
             scannableBy.ScanPerformed += OnScanPerformed;
+        }
+        if (parentImage != null)
+        {
+            parentImage.ImageLockStateChanged += OnImageLockStateChanged;
         }
     }
 
@@ -88,6 +105,10 @@ public class Hotspot : MonoBehaviour
         if (scannableBy != null)
         {
             scannableBy.ScanPerformed -= OnScanPerformed;
+        }
+        if (parentImage != null)
+        {
+            parentImage.ImageLockStateChanged += OnImageLockStateChanged;
         }
     }
 
