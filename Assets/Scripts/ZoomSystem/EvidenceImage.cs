@@ -3,8 +3,9 @@ using UnityEngine;
 
 /** An image containing Hostpots. Interactions can be prevented if the
  * image hasn't been scanned first, see: <see cref="EnhanceHotspot"/>
+ * A PolygonCollider2D defines the image's bounding box to constrain the camera.
  */
-[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Renderer), typeof(PolygonCollider2D))]
 public class EvidenceImage : MonoBehaviour
 {
     public event Action<bool> ImageLockStateChanged;
