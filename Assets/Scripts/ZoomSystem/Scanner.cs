@@ -18,7 +18,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float panSpeedModifier = 1f;
     [SerializeField] float zoomSpeedKeysModifier = 1f;
     [SerializeField] float zoomSpeedScrollModifier = 1f;
-    [SerializeField] float zoomSpeedScrollDampening = .2f;
+    [SerializeField] float zoomSpeedScrollDampOver = .2f;
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
@@ -32,6 +32,7 @@ public class Scanner : MonoBehaviour
     Vector2 panningSpeed = Vector2.zero;
     float zoomSpeed = 0f;
     bool lastZoomByScroll;
+    float currentZoomSpeedDamp = 1;
     Rect areaInView;
     Collider2D viewBoundingShape;
 
@@ -74,6 +75,7 @@ public class Scanner : MonoBehaviour
             if (newSpeed != 0) {
                 zoomSpeed = newSpeed;
                 lastZoomByScroll = true;
+                currentZoomSpeedDamp = 0;
             }
         } else {
             lastZoomByScroll = false;
@@ -132,7 +134,11 @@ public class Scanner : MonoBehaviour
             ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
 
             if (lastZoomByScroll) {
-                zoomSpeed = Mathf.Lerp(zoomSpeed, 0, zoomSpeedScrollDampening);
+                currentZoomSpeedDamp += Time.deltaTime;
+                if (currentZoomSpeedDamp > zoomSpeedScrollDampOver) {
+                    currentZoomSpeedDamp = zoomSpeedScrollDampOver;
+                }
+                zoomSpeed = Mathf.Lerp(zoomSpeed, 0, currentZoomSpeedDamp / zoomSpeedScrollDampOver);
             }
         }
 
