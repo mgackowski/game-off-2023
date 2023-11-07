@@ -14,23 +14,28 @@ public class Scanner : MonoBehaviour
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
 
+    [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
     [SerializeField] float zoomSpeedModifier = 1f;
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
-    [SerializeField] float maxPanDistanceX = 0.5f;
-    [SerializeField] float maxPanDistanceY = 0.5f;
+    [SerializeField] float maxPanDistanceFromEdge = 0f;
     // Camera's ortho size property that maps to a 1x zoom level */
     [SerializeField] float baseOrthoSize = 0.5f;
+    [SerializeField] FileSwitcher fileSwitcher;
+    [SerializeField] Transform followTarget;
+    
 
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
     float zoomSpeed = 0f;
     Rect areaInView;
+    Collider2D viewBoundingShape;
 
     void Start()
     {
         cam = GetComponentInChildren<CinemachineVirtualCamera>();
+        viewBoundingShape = imageInFocus.GetComponent<Collider2D>();
         areaInView = Rect.zero;
     }
 
@@ -38,12 +43,14 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Pan.performed += Pan;
         InputManager.Instance.Gameplay.Zoom.performed += Zoom;
         InputManager.Instance.Gameplay.Scan.performed += Scan;
+        fileSwitcher.FileSwitched += SwitchFile;
     }
 
     private void OnDisable() {
         InputManager.Instance.Gameplay.Pan.performed -= Pan;
         InputManager.Instance.Gameplay.Zoom.performed -= Zoom;
         InputManager.Instance.Gameplay.Scan.performed -= Scan;
+        fileSwitcher.FileSwitched -= SwitchFile;
     }
 
     void LateUpdate()
@@ -80,14 +87,30 @@ public class Scanner : MonoBehaviour
 
     }
 
+    public void SwitchFile(EvidenceFile newFile)
+    {
+        imageInFocus = newFile.defaultImage;
+        followTarget.position = imageInFocus.Bounds.center;
+
+        Collider2D imageCollider = imageInFocus.GetComponent<Collider2D>();
+        if (imageCollider != null)
+        {
+            viewBoundingShape = imageCollider;
+        }
+        else
+        {
+            viewBoundingShape = null;
+        }
+    }
+
     /** Calculate and apply the next frame's zoom and position **/
     void ApplyMovement()
     {
         Vector3 panDelta = panningSpeed * Time.deltaTime * panSpeedModifier / zoomLevel;
         
-        Vector3 currentPosition = cam.transform.localPosition; 
+        Vector3 currentPosition = followTarget.localPosition; 
         currentPosition += panDelta;
-        cam.transform.localPosition = currentPosition;
+        followTarget.localPosition = currentPosition;
 
         if (zoomSpeed != 0f)
         {
@@ -100,20 +123,31 @@ public class Scanner : MonoBehaviour
 
     }
 
-    /** Don't let the camera exceed its pan and zoom limits **/
+    /** Don't let the camera exceed its pan and zoom limits
+     * **/
     void SnapToBounds()
     {
-        Vector3 cameraPosition = cam.transform.position;
-        if (Mathf.Abs(cameraPosition.x - transform.position.x) > maxPanDistanceX)
+        // Use of CinemachineConfiner provides nice damping effect but
+        // creates inconsistens panning behaviour for user at edges
+        //CinemachineConfiner confiner = cam.GetComponent<CinemachineConfiner>();
+        //if (confiner != null) {
+        //    confiner.m_BoundingShape2D = viewBoundingShape;
+        //}
+
+        if (viewBoundingShape != null)
         {
-            cameraPosition.x = maxPanDistanceX * Mathf.Sign(cameraPosition.x - transform.position.x);
-            cam.transform.position = cameraPosition;
+            Vector3 followTargetPos = followTarget.position;
+            Bounds imageBounds = viewBoundingShape.bounds;
+            imageBounds.Expand(maxPanDistanceFromEdge); //TODO: Adjust based on zoom
+
+            if (!imageBounds.Contains(followTargetPos))
+            {
+                followTargetPos = imageBounds.ClosestPoint(followTargetPos);
+                followTarget.position = followTargetPos;
+            }
         }
-        if (Mathf.Abs(cameraPosition.y - transform.position.y) > maxPanDistanceY)
-        {
-            cameraPosition.y = maxPanDistanceY * Mathf.Sign(cameraPosition.y - transform.position.y);
-            cam.transform.position = cameraPosition;
-        }
+        
+        // Zoom level locked by story progression
         if (zoomLevel > maxZoomLevel)
         {
             cam.m_Lens.OrthographicSize = baseOrthoSize / maxZoomLevel;
