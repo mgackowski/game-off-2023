@@ -19,6 +19,9 @@ public class Hotspot : MonoBehaviour
     [Header("Leave empty to calculate from renderer")]
     [SerializeField] protected Rect hotspotArea;
 
+    [Header("Debug")]
+    [SerializeField] protected bool showInPlayMode = true;
+
 
     /* Run when a scan is successful */
     public virtual void Scan()
@@ -95,8 +98,7 @@ public class Hotspot : MonoBehaviour
                 bounds.center.y - bounds.extents.y,
                 bounds.size.x, bounds.size.y);
 
-            //Disabled while testing
-            //renderer.forceRenderingOff = true;
+            renderer.forceRenderingOff = !showInPlayMode;
         }
     }
 

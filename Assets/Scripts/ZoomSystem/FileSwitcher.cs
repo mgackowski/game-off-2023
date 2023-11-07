@@ -28,9 +28,15 @@ public class FileSwitcher : MonoBehaviour
 
     int SelectFile(int offset)
     {
-        //TODO: Ignore hidden files
-        selectedIndex = Modulo(selectedIndex + offset, files.Count);
-        FileSwitched?.Invoke(files[selectedIndex]);
+        for (int i = 0; i < files.Count; i++)
+        {
+            selectedIndex = Modulo(selectedIndex + offset, files.Count);
+            if (!files[selectedIndex].Hidden)
+            {
+                FileSwitched?.Invoke(files[selectedIndex]);
+                break;
+            }
+        }   
         return selectedIndex;
     }
 

@@ -342,7 +342,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -453,6 +453,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &85437674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -536,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 263922694}
+  imageGroup: {fileID: 1253547037}
   hidden: 0
 --- !u!4 &98767663
 Transform:
@@ -610,6 +612,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &121841434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -859,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f2ef26a46c0214cba433a5f133beb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
+  locked: 0
   scannedBy: {fileID: 706682440}
   minOpacity: 0
   maxOpacity: 0.75
@@ -1144,6 +1147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 1675438715}
+  imageGroup: {fileID: 1607719671}
   hidden: 0
 --- !u!4 &265505420
 Transform:
@@ -1271,6 +1275,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!1 &338077287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1332,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &338077290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1459,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f2ef26a46c0214cba433a5f133beb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
+  locked: 0
   scannedBy: {fileID: 706682440}
   minOpacity: 0
   maxOpacity: 0.75
@@ -1621,6 +1627,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
   unlocksImage: {fileID: 748275838}
   startDialogueOnSuccess: 0
 --- !u!212 &407393947
@@ -1732,6 +1739,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &463360341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1841,6 +1849,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &529436462
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1941,7 +1950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f2ef26a46c0214cba433a5f133beb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
+  locked: 0
   scannedBy: {fileID: 706682440}
   minOpacity: 0
   maxOpacity: 0.75
@@ -2103,6 +2112,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
   unlocksImage: {fileID: 1403725453}
   startDialogueOnSuccess: 0
 --- !u!212 &586864295
@@ -2255,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f2ef26a46c0214cba433a5f133beb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
+  locked: 0
   scannedBy: {fileID: 706682440}
   minOpacity: 0
   maxOpacity: 0.75
@@ -2322,12 +2332,12 @@ GameObject:
   - component: {fileID: 679777298}
   - component: {fileID: 679777299}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: HelperIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &679777298
 Transform:
   m_ObjectHideFlags: 0
@@ -2383,7 +2393,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 300
   m_Sprite: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
@@ -2442,13 +2452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e568568e8462948a95e8ce1d75bc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageInFocus: {fileID: 0}
+  imageInFocus: {fileID: 1442815725}
   panSpeedModifier: 1
   zoomSpeedModifier: 1
   minZoomLevel: 1
   maxZoomLevel: 15
-  maxPanDistanceX: 0.5
-  maxPanDistanceY: 0.5
+  maxPanDistanceFromEdge: 0
   baseOrthoSize: 0.5
   fileSwitcher: {fileID: 1920954681}
   followTarget: {fileID: 369078615}
@@ -2612,6 +2621,7 @@ GameObject:
   - component: {fileID: 969949989}
   - component: {fileID: 969949990}
   - component: {fileID: 969949991}
+  - component: {fileID: 969949992}
   m_Layer: 0
   m_Name: ScannerCam
   m_TagString: Untagged
@@ -2681,7 +2691,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969949988}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
@@ -2691,6 +2701,23 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0.5
+--- !u!114 &969949992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969949988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449ef5ebbe24720439ec31d15f7b6f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusTracking: 0
+  m_FocusTarget: {fileID: 0}
+  m_FocusOffset: 0
+  m_Profile: {fileID: 11400000, guid: 14b96d3b53a8fd64b964988d7092e37b, type: 2}
 --- !u!1 &1007286103
 GameObject:
   m_ObjectHideFlags: 3
@@ -2814,6 +2841,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &1141160380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2923,6 +2951,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &1237516573
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3066,6 +3095,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &1317066172
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3315,6 +3345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 1442815725}
+  imageGroup: {fileID: 2096722393}
   hidden: 0
 --- !u!1 &1442815722
 GameObject:
@@ -3704,6 +3735,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &1609173042
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3813,6 +3845,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
   unlocksImage: {fileID: 135248784}
   startDialogueOnSuccess: 0
 --- !u!212 &1612665761
@@ -3924,6 +3957,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &1641896637
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4370,6 +4404,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
 --- !u!212 &1870747404
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4537,7 +4572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 2120702709}
-  hidden: 0
+  imageGroup: {fileID: 70825650}
+  hidden: 1
 --- !u!4 &1933717038
 Transform:
   m_ObjectHideFlags: 0
@@ -4646,6 +4682,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  showInPlayMode: 1
   unlocksImage: {fileID: 1515928717}
   startDialogueOnSuccess: 0
 --- !u!212 &2055770171

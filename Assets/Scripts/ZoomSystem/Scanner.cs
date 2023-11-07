@@ -19,8 +19,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float zoomSpeedModifier = 1f;
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
-    [SerializeField] float maxPanDistanceX = 0.5f;  // Fallback if EvidenceImage lacks collider
-    [SerializeField] float maxPanDistanceY = 0.5f;
+    [SerializeField] float maxPanDistanceFromEdge = 0f;
     // Camera's ortho size property that maps to a 1x zoom level */
     [SerializeField] float baseOrthoSize = 0.5f;
     [SerializeField] FileSwitcher fileSwitcher;
@@ -36,6 +35,7 @@ public class Scanner : MonoBehaviour
     void Start()
     {
         cam = GetComponentInChildren<CinemachineVirtualCamera>();
+        viewBoundingShape = imageInFocus.GetComponent<Collider2D>();
         areaInView = Rect.zero;
     }
 
@@ -124,28 +124,26 @@ public class Scanner : MonoBehaviour
     }
 
     /** Don't let the camera exceed its pan and zoom limits
-     * TODO: There's a bug - this doesn't constrain the FollowTarget
      * **/
     void SnapToBounds()
     {
-        // Use CinemachineConfiner if possible
-        CinemachineConfiner confiner = cam.GetComponent<CinemachineConfiner>();
-        if (confiner != null) {
-            confiner.m_BoundingShape2D = viewBoundingShape;
-        }
-        else
+        // Use of CinemachineConfiner provides nice damping effect but
+        // creates inconsistens panning behaviour for user at edges
+        //CinemachineConfiner confiner = cam.GetComponent<CinemachineConfiner>();
+        //if (confiner != null) {
+        //    confiner.m_BoundingShape2D = viewBoundingShape;
+        //}
+
+        if (viewBoundingShape != null)
         {
-            // Fallback to Inspector-defined values if not
-            Vector3 cameraPosition = followTarget.position;
-            if (Mathf.Abs(cameraPosition.x - transform.position.x) > maxPanDistanceX)
+            Vector3 followTargetPos = followTarget.position;
+            Bounds imageBounds = viewBoundingShape.bounds;
+            imageBounds.Expand(maxPanDistanceFromEdge); //TODO: Adjust based on zoom
+
+            if (!imageBounds.Contains(followTargetPos))
             {
-                cameraPosition.x = maxPanDistanceX * Mathf.Sign(cameraPosition.x - transform.position.x);
-                followTarget.position = cameraPosition;
-            }
-            if (Mathf.Abs(cameraPosition.y - transform.position.y) > maxPanDistanceY)
-            {
-                cameraPosition.y = maxPanDistanceY * Mathf.Sign(cameraPosition.y - transform.position.y);
-                followTarget.position = cameraPosition;
+                followTargetPos = imageBounds.ClosestPoint(followTargetPos);
+                followTarget.position = followTargetPos;
             }
         }
         
