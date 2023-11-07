@@ -17,6 +17,8 @@ public class Scanner : MonoBehaviour
     [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
     [SerializeField] float zoomSpeedModifier = 1f;
+    [SerializeField] float zoomStepKeys = .5f;
+    [SerializeField] float zoomStepMouse = 1f;
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
@@ -28,7 +30,8 @@ public class Scanner : MonoBehaviour
 
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
-    float zoomSpeed = 0f;
+    float targetZoomLevel = 1;
+    float zoomByKeys;
     Rect areaInView;
     Collider2D viewBoundingShape;
 
@@ -65,8 +68,16 @@ public class Scanner : MonoBehaviour
 
     public void Zoom(InputAction.CallbackContext ctx)
     {
-        zoomSpeed = ctx.ReadValue<float>();
-        //Debug.Log($"{zoomSpeed}");
+        zoomByKeys = 0;
+        var zoomSpeed = ctx.ReadValue<float>();
+        if (ctx.control.path.Contains("scroll")) {
+            zoomSpeed *= zoomStepMouse;
+            targetZoomLevel = Mathf.Clamp(targetZoomLevel + zoomSpeed, minZoomLevel, maxZoomLevel);
+        } else {
+            if (zoomSpeed != 0) {
+                zoomByKeys = zoomSpeed;
+            }
+        }
     }
 
     public void Scan(InputAction.CallbackContext ctx)
@@ -84,7 +95,6 @@ public class Scanner : MonoBehaviour
         //Debug.Log($"Area in view determined: {areaInView}");
 
         ScanPerformed?.Invoke(areaInView);
-
     }
 
     public void SwitchFile(EvidenceFile newFile)
@@ -112,15 +122,19 @@ public class Scanner : MonoBehaviour
         currentPosition += panDelta;
         followTarget.localPosition = currentPosition;
 
-        if (zoomSpeed != 0f)
+        if (zoomByKeys != 0) {
+            targetZoomLevel = Mathf.Clamp(zoomByKeys * zoomStepKeys * Time.deltaTime + targetZoomLevel, minZoomLevel, maxZoomLevel);
+        }
+
+        if (Mathf.Abs(zoomLevel - targetZoomLevel) > .1f)
         {
-            float zoomDelta = (zoomSpeed * zoomSpeedModifier * Time.deltaTime) + 1f;
+            float dir = (zoomLevel > targetZoomLevel) ? -1 : 1;
+            float zoomDelta = (dir * zoomSpeedModifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
             ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
         }
 
         SnapToBounds();
-
     }
 
     /** Don't let the camera exceed its pan and zoom limits
