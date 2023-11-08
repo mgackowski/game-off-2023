@@ -16,7 +16,9 @@ public class Scanner : MonoBehaviour
 
     [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
-    [SerializeField] float zoomSpeedModifier = 1f;
+    [SerializeField] float zoomSpeedKeysModifier = 1f;
+    [SerializeField] float zoomSpeedScrollModifier = 1f;
+    [SerializeField] float zoomSpeedScrollDampOver = .2f;
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
@@ -29,6 +31,8 @@ public class Scanner : MonoBehaviour
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
     float zoomSpeed = 0f;
+    bool lastZoomByScroll;
+    float currentZoomSpeedDamp = 1;
     Rect areaInView;
     Collider2D viewBoundingShape;
 
@@ -65,8 +69,18 @@ public class Scanner : MonoBehaviour
 
     public void Zoom(InputAction.CallbackContext ctx)
     {
-        zoomSpeed = ctx.ReadValue<float>();
-        //Debug.Log($"{zoomSpeed}");
+        var newSpeed = ctx.ReadValue<float>();
+        if (ctx.control.path.Contains("scroll")) {
+            // The scroll speed resets automatically
+            if (newSpeed != 0) {
+                zoomSpeed = newSpeed;
+                lastZoomByScroll = true;
+                currentZoomSpeedDamp = 0;
+            }
+        } else {
+            lastZoomByScroll = false;
+            zoomSpeed = newSpeed;
+        }
     }
 
     public void Scan(InputAction.CallbackContext ctx)
@@ -114,13 +128,21 @@ public class Scanner : MonoBehaviour
 
         if (zoomSpeed != 0f)
         {
-            float zoomDelta = (zoomSpeed * zoomSpeedModifier * Time.deltaTime) + 1f;
+            float modifier = lastZoomByScroll ? zoomSpeedScrollModifier : zoomSpeedKeysModifier;
+            float zoomDelta = (zoomSpeed * modifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
             ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
+
+            if (lastZoomByScroll) {
+                currentZoomSpeedDamp += Time.deltaTime;
+                if (currentZoomSpeedDamp > zoomSpeedScrollDampOver) {
+                    currentZoomSpeedDamp = zoomSpeedScrollDampOver;
+                }
+                zoomSpeed = Mathf.Lerp(zoomSpeed, 0, currentZoomSpeedDamp / zoomSpeedScrollDampOver);
+            }
         }
 
         SnapToBounds();
-
     }
 
     /** Don't let the camera exceed its pan and zoom limits
