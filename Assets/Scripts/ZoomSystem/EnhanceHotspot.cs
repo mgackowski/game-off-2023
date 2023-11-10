@@ -8,20 +8,29 @@ public class EnhanceHotspot : Hotspot
     [Header("Enhance-specific fields")]
     [SerializeField] EvidenceImage unlocksImage;
     [SerializeField] bool startDialogueOnSuccess;
-    //[SerializeField] string dialogueNode;
 
     /* Run when a scan is successful */
     public override void Scan()
     {
-        if (locked || scannedOnce)
+        if (locked)
         {
             return;
         }
-        unlocksImage.SetLockedState(false);
-        scannedOnce = true;
-        if (startDialogueOnSuccess)
+
+        Debug.Log(gameObject.name + " scanned.");
+
+        if (scannedOnce)
         {
-            // TODO: start dialogue
+            return;
+        }
+
+        scannedOnce = true;
+        unlocksImage.SetLockedState(false);
+
+        if (startDialogueOnSuccess && !string.IsNullOrEmpty(dialogueNode))
+        {
+            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
+            dialogueSystem?.StartDialogue(dialogueNode);
         }
 
     }
