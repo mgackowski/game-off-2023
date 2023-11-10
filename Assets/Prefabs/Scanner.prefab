@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 8081773840015099769}
   m_Layer: 6
   m_Name: Scanner
-  m_TagString: Untagged
+  m_TagString: Scanner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   panSpeedModifier: 1
   zoomSpeedKeysModifier: 2
   zoomSpeedScrollModifier: 15
-  zoomSpeedScrollDampening: 0.2
+  zoomSpeedScrollDampOver: 0.2
   minZoomLevel: 1
   maxZoomLevel: 15
   maxPanDistanceFromEdge: 0

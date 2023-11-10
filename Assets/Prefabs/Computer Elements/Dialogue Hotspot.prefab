@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scannableBy: {fileID: 0}
+  dialogueSystem: {fileID: 0}
   parentImage: {fileID: 0}
-  scannedOnce: 0
   locked: 0
   requiredOverlapRatio: 0.7
+  dialogueNode: Start
+  onlyRunDialogueOnce: 0
   hotspotArea:
     serializedVersion: 2
     x: 0
