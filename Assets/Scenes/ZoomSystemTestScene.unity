@@ -3128,6 +3128,11 @@ PrefabInstance:
       propertyPath: startDialogueOnSuccess
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5872497053467691439, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: dialogueNodeAfterEnhance
+      value: Enhancing2
+      objectReference: {fileID: 0}
     - target: {fileID: 7140741118023630852, guid: aaab53ddbb965a54db58b12054bef485,
         type: 3}
       propertyPath: m_Name

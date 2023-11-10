@@ -47,6 +47,12 @@ Player: I should be able to switch files now.
 
 title: Enhancing1
 ---
-Assistant: Enhance successful.
-Player: Wow, just like on CSI!
+Assistant: This looks like it could be enhanced.
+Player: OK, I'll try the enhance button.
+===
+
+title: Enhancing2
+---
+Assistant: Enhance completed.
+Player: Wow, this is just like CSI!
 ===
