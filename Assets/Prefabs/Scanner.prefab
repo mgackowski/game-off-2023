@@ -549,7 +549,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageInFocus: {fileID: 0}
   panSpeedModifier: 1
-  zoomSpeedModifier: 1
+  zoomSpeedKeysModifier: 2
+  zoomSpeedScrollModifier: 15
+  zoomSpeedScrollDampening: 0.2
   minZoomLevel: 1
   maxZoomLevel: 15
   maxPanDistanceFromEdge: 0
