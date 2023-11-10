@@ -1,0 +1,19 @@
+﻿title: Start
+tags:
+---
+Player: This is a line spoken by the player.
+Assistant: This is a line spoken by the assistant.
+Player: And this is how choices look like.
+    -> This is just a single choice!
+        Assistant: OK, you can have two.
+            -> Thanks.
+                <<jump Choice>>
+            -> Neat.
+                <<jump Choice>>
+===
+
+title: Choice
+---
+Player: Does it matter what I choose?
+Assistant: No.
+===
