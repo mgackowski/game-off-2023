@@ -28,6 +28,14 @@ public class Hotspot : MonoBehaviour
     protected bool scannedOnce = false;
 
 
+    /* Individually lock the hotspot, preventing it from being interacted with.
+     */
+    [YarnCommand("lockHotspot")]
+    public void SetLocked(bool newLocked)
+    {
+        locked = newLocked;
+    }
+
     /* Run when a scan is successful */
     public virtual void Scan()
     {
@@ -77,7 +85,7 @@ public class Hotspot : MonoBehaviour
      */
     protected virtual void OnImageLockStateChanged(bool newLocked)
     {
-        locked = newLocked;
+        SetLocked(newLocked);
     }
 
     /** Returns the ratio two rectangles overlap by, from 0f to 1f

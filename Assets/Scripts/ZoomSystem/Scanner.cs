@@ -2,6 +2,7 @@ using System;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Yarn.Unity;
 
 /** Controls panning, zooming, scanning and enhancing.
  */
@@ -9,6 +10,7 @@ public class Scanner : MonoBehaviour
 {
     // Events
     public event Action<float> ZoomLevelChanged;
+    public event Action<float> MaxZoomLevelChanged;
     public event Action<Rect> ScanPerformed; // Rect = XY (world space) of area scanned
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
@@ -22,8 +24,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
-    // Camera's ortho size property that maps to a 1x zoom level */
-    [SerializeField] float baseOrthoSize = 0.5f;
+    [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
     
@@ -85,8 +86,6 @@ public class Scanner : MonoBehaviour
 
     public void Scan(InputAction.CallbackContext ctx)
     {
-        //Debug.Log("Scan attempted.");
-
         LensSettings lens = cam.m_Lens;
         float viewHeight = 2f * lens.OrthographicSize;
         float viewWidth = viewHeight * lens.Aspect;
@@ -94,8 +93,6 @@ public class Scanner : MonoBehaviour
             cam.transform.position.x - (viewWidth / 2),
             cam.transform.position.y - (viewHeight / 2),
             viewWidth, viewHeight);
-
-        //Debug.Log($"Area in view determined: {areaInView}");
 
         ScanPerformed?.Invoke(areaInView);
 
@@ -115,6 +112,13 @@ public class Scanner : MonoBehaviour
         {
             viewBoundingShape = null;
         }
+    }
+
+    [YarnCommand("maxZoom")]
+    public void SetMaxZoomLevel(float newMax)
+    {
+        maxZoomLevel = newMax;
+        MaxZoomLevelChanged?.Invoke(newMax);
     }
 
     /** Calculate and apply the next frame's zoom and position **/

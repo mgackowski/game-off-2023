@@ -20,7 +20,33 @@ Assistant: No.
 
 title: Hotspot1
 ---
-Player: Looks like I just scanner something interesting.
-Assistant: Looks like you did.
-Player: Back to the game!
+Player: Looks like I just scanned something interesting.
+Assistant: Looks like you did. I'm increasing your max zoom to x15!
+<<maxZoom Scanner 15>>
+Player: OK. Back to the game!
+===
+
+title: Hotspot2
+---
+Player: Wow, that give me an idea. Let's check the lower right corner.
+<<lockHotspot DialogueHotspot3 false>>
+===
+
+title: Hotspot3
+---
+Player: I didn't realise the significance of this corner before.
+===
+
+title: Hotspot4
+---
+Player: Hey, this gives me an idea. Can you pull up that other file?
+Assistant: Sure.
+<<lockFile File2 false>>
+Player: I should be able to switch files now.
+===
+
+title: Enhancing1
+---
+Assistant: Enhance successful.
+Player: Wow, just like on CSI!
 ===

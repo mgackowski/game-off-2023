@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yarn.Unity;
 
 public class EvidenceFile : MonoBehaviour
 {
@@ -13,14 +14,17 @@ public class EvidenceFile : MonoBehaviour
 
     public bool Hidden { get { return hidden; } set { SetHidden(value); } }
 
+    [YarnCommand("lockFile")]
+    public void SetHidden(bool newHidden)
+    {
+        hidden = newHidden;
+        imageGroup.SetActive(!hidden);
+    }
+
     private void Start()
     {
         Hidden = hidden;
     }
 
-    void SetHidden(bool newHidden)
-    {
-        hidden = newHidden;
-        imageGroup.SetActive(!hidden);
-    }
+    
 }
