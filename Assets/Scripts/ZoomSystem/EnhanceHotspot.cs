@@ -98,7 +98,7 @@ public class EnhanceHotspot : Hotspot
 
     protected override void OnDisable()
     {
-        base.OnEnable();
+        base.OnDisable();
         if (scannableBy != null)
         {
             scannableBy.EnhancePerformed -= OnEnhancePerformed;

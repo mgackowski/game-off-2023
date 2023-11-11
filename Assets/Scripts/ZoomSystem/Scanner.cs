@@ -19,6 +19,7 @@ public class Scanner : MonoBehaviour
     public event Action<float> MaxZoomLevelChanged;
     public event Action<Rect> ScanPerformed; // Rect = XY (world space) of area scanned
     public event Action<EnhanceEventArgs> EnhancePerformed;
+    public event Action EnhanceAttemptedAtLowZoom;
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
@@ -105,6 +106,7 @@ public class Scanner : MonoBehaviour
         /*if (zoomLevel < maxZoomLevel)
         {
             Debug.Log("An enhance can only be performed at max zoom level.");
+            EnhanceAttemptedAtLowZoom?.Invoke();       
             return;
         }*/
 
