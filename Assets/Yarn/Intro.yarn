@@ -1,0 +1,53 @@
+title: Intro
+---
+
+01.12.1991
+User Logging on.
+
+???: Morning. How are you, are you okay? 
+    -> No!
+        ???: Have you logged in?
+            -> You can see I've logged in, surely
+                ???: I care about you. 
+    -> No and it's your fault
+        ???: I'm trying my best here.
+    -> Sure, I'm okay.
+        ???: It's good to stay positive, if you can.
+        ???: We're all doing our best.
+
+
+// I will iterate on the writing, it will get better althought it probably won't get good.
+
+===
+title: Choice
+
+---
+
+This morning there have been 12 deaths, 6 badly injured and 8 minor injuries.
+If you, and the others had found the suspects in time.
+You would have saved them.
+But you didn't.  
+
+???: 
+
+Look at the picture in front of you.
+
+title: Window
+
+???: You should take a break.
+???: Look outside the window.
+???: Stand up. Stretch a bit.
+    -> No, I need to focus
+    -> You get up.
+Player: 
+
+
+
+<<jump OtherNode>>
+===
+title: OtherNode
+---
+Here we are in a different node! Nodes let you divide up your content into different blocks, which makes it easier to manage.
+
+We're all done! Try changing the text in the editor to the left, and clicking Test again!
+===
