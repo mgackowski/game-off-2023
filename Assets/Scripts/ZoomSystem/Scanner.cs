@@ -2,14 +2,24 @@ using System;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Yarn.Unity;
 
 /** Controls panning, zooming, scanning and enhancing.
  */
 public class Scanner : MonoBehaviour
 {
+    public struct EnhanceEventArgs
+    {
+        public Rect areaInView;
+        public bool successful;
+    }
+
     // Events
     public event Action<float> ZoomLevelChanged;
+    public event Action<float> MaxZoomLevelChanged;
     public event Action<Rect> ScanPerformed; // Rect = XY (world space) of area scanned
+    public event Action<EnhanceEventArgs> EnhancePerformed;
+    public event Action EnhanceAttemptedAtLowZoom;
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
@@ -22,8 +32,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float minZoomLevel = 1f;
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
-    // Camera's ortho size property that maps to a 1x zoom level */
-    [SerializeField] float baseOrthoSize = 0.5f;
+    [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
     
@@ -47,6 +56,7 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Pan.performed += Pan;
         InputManager.Instance.Gameplay.Zoom.performed += Zoom;
         InputManager.Instance.Gameplay.Scan.performed += Scan;
+        InputManager.Instance.Gameplay.Enhance.performed += Enhance;
         fileSwitcher.FileSwitched += SwitchFile;
     }
 
@@ -54,6 +64,7 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Pan.performed -= Pan;
         InputManager.Instance.Gameplay.Zoom.performed -= Zoom;
         InputManager.Instance.Gameplay.Scan.performed -= Scan;
+        InputManager.Instance.Gameplay.Enhance.performed -= Enhance;
         fileSwitcher.FileSwitched -= SwitchFile;
     }
 
@@ -85,19 +96,33 @@ public class Scanner : MonoBehaviour
 
     public void Scan(InputAction.CallbackContext ctx)
     {
-        //Debug.Log("Scan attempted.");
-
-        LensSettings lens = cam.m_Lens;
-        float viewHeight = 2f * lens.OrthographicSize;
-        float viewWidth = viewHeight * lens.Aspect;
-        areaInView.Set(
-            cam.transform.position.x - (viewWidth / 2),
-            cam.transform.position.y - (viewHeight / 2),
-            viewWidth, viewHeight);
-
-        //Debug.Log($"Area in view determined: {areaInView}");
-
+        UpdateAreaInView();
         ScanPerformed?.Invoke(areaInView);
+
+    }
+
+    public void Enhance(InputAction.CallbackContext ctx)
+    {
+        /*if (zoomLevel < maxZoomLevel)
+        {
+            Debug.Log("An enhance can only be performed at max zoom level.");
+            EnhanceAttemptedAtLowZoom?.Invoke();       
+            return;
+        }*/
+
+        UpdateAreaInView();
+        EnhanceEventArgs eventArgs = new EnhanceEventArgs()
+        {
+            successful = false,
+            areaInView = areaInView,
+
+        };
+        EnhancePerformed?.Invoke(eventArgs);
+        if(!eventArgs.successful) // no enhance hotspots reported success
+        {
+            Debug.Log("Nothing to enhance here.");
+            //TODO: Produce an effect or run dialogue.
+        }
 
     }
 
@@ -115,6 +140,25 @@ public class Scanner : MonoBehaviour
         {
             viewBoundingShape = null;
         }
+    }
+
+    [YarnCommand("maxZoom")]
+    public void SetMaxZoomLevel(float newMax)
+    {
+        maxZoomLevel = newMax;
+        MaxZoomLevelChanged?.Invoke(newMax);
+    }
+
+    /** Use the camera's settings to update the areaInView field **/
+    void UpdateAreaInView()
+    {
+        LensSettings lens = cam.m_Lens;
+        float viewHeight = 2f * lens.OrthographicSize;
+        float viewWidth = viewHeight * lens.Aspect;
+        areaInView.Set(
+            cam.transform.position.x - (viewWidth / 2),
+            cam.transform.position.y - (viewHeight / 2),
+            viewWidth, viewHeight);
     }
 
     /** Calculate and apply the next frame's zoom and position **/

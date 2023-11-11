@@ -42,6 +42,10 @@ public class InputManager : MonoBehaviour {
         if (Menu.enabled && map != Menu) {
             Menu.Disable();
         }
+        if (Dialogue.enabled && map != Dialogue)
+        {
+            Dialogue.Disable();
+        }
 
         map.Enable();
     }

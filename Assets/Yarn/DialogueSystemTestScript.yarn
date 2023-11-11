@@ -1,0 +1,58 @@
+﻿title: Start
+tags:
+---
+Player: This is a line spoken by the player.
+Assistant: This is a line spoken by the assistant.
+Player: And this is how choices look like.
+    -> This is just a single choice!
+        Assistant: OK, you can have two.
+            -> Thanks.
+                <<jump Choice>>
+            -> Neat.
+                <<jump Choice>>
+===
+
+title: Choice
+---
+Player: Does it matter what I choose?
+Assistant: No.
+===
+
+title: Hotspot1
+---
+Player: Looks like I just scanned something interesting.
+Assistant: Looks like you did. I'm increasing your max zoom to x15!
+<<maxZoom Scanner 15>>
+Player: OK. Back to the game!
+===
+
+title: Hotspot2
+---
+Player: Wow, that give me an idea. Let's check the lower right corner.
+<<lockHotspot DialogueHotspot3 false>>
+===
+
+title: Hotspot3
+---
+Player: I didn't realise the significance of this corner before.
+===
+
+title: Hotspot4
+---
+Player: Hey, this gives me an idea. Can you pull up that other file?
+Assistant: Sure.
+<<lockFile File2 false>>
+Player: I should be able to switch files now.
+===
+
+title: Enhancing1
+---
+Assistant: This looks like it could be enhanced.
+Player: OK, I'll try the enhance button.
+===
+
+title: Enhancing2
+---
+Assistant: Enhance completed.
+Player: Wow, this is just like CSI!
+===
