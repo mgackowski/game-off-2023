@@ -58,8 +58,11 @@ public class Hotspot : MonoBehaviour
             return;
         }
 
-        InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
         dialogueSystem?.StartDialogue(dialogueNode);
+        if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
+        {
+            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
+        }
 
     }
 

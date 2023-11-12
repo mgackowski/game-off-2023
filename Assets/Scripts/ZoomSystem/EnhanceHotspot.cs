@@ -31,8 +31,11 @@ public class EnhanceHotspot : Hotspot
 
         if (!string.IsNullOrEmpty(dialogueNode))
         {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
             dialogueSystem?.StartDialogue(dialogueNode);
+            if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
+            {
+                InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
+            }
         }
 
     }
@@ -50,8 +53,11 @@ public class EnhanceHotspot : Hotspot
 
         if (startDialogueOnSuccess && !string.IsNullOrEmpty(dialogueNodeAfterEnhance))
         {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
             dialogueSystem?.StartDialogue(dialogueNodeAfterEnhance);
+            if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
+            {
+                InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
+            }
         }
     }
 
