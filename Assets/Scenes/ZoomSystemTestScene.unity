@@ -1716,6 +1716,7 @@ GameObject:
   - component: {fileID: 1004008946}
   - component: {fileID: 1004008948}
   - component: {fileID: 1004008947}
+  - component: {fileID: 1004008949}
   m_Layer: 6
   m_Name: ETA
   m_TagString: Untagged
@@ -1762,7 +1763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ETA: 24 days'
+  m_text: (ETA indicator)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 375db0ac48bd81943a493c5e21c98381, type: 2}
   m_sharedMaterial: {fileID: -415050882201896764, guid: 375db0ac48bd81943a493c5e21c98381,
@@ -1840,6 +1841,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004008945}
   m_CullTransparentMesh: 1
+--- !u!114 &1004008949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004008945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1edb6b0186e99439d9ba3a1a76e16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: 'ETA: '
+  value: 25
+  units: days
+  fluctuationAmount: 5
+  display: 1
+  repeatRate: 2
 --- !u!1 &1056405661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,7 +2508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1x / 5x
+  m_text: (Zoom)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 375db0ac48bd81943a493c5e21c98381, type: 2}
   m_sharedMaterial: {fileID: -415050882201896764, guid: 375db0ac48bd81943a493c5e21c98381,
