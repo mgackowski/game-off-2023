@@ -59,24 +59,26 @@ public class EnhanceHotspot : Hotspot
                 InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
             }
         }
+
+        locked = true;
     }
 
     /* A hotspot is successfully caught in a scan if:
     * 1. The center of the hotspot is within the area scanned
     * 2. A minimum ratio of the hotspot and scan areas' overlap
     */
-    protected override void OnScanPerformed(Rect areaScanned)
+/*    protected override void OnScanPerformed(Scanner.ScanEventArgs eventArgs)
     {
-        if (!areaScanned.Contains(hotspotArea.center))
+        if (!eventArgs.areaInView.Contains(hotspotArea.center))
         {
             return;
         }
-        if (CalculateOverlap(areaScanned, hotspotArea) >= requiredOverlapRatio)
+        if (CalculateOverlap(eventArgs.areaInView, hotspotArea) >= requiredOverlapRatio)
         {
             Scan();
         }
 
-    }
+    }*/
 
     /* Same criteria as OnScanPerformed.
      */

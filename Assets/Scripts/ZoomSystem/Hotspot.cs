@@ -14,7 +14,8 @@ public class Hotspot : MonoBehaviour
     [SerializeField] EvidenceImage parentImage;
     
     [SerializeField] protected bool locked = true;
-    [SerializeField] protected float requiredOverlapRatio;
+    [SerializeField][Range(0, 1)] protected float requiredOverlapRatio = 0.7f;
+    [SerializeField][Range(0, 1)] protected float toleranceForHint = 0.9f; // how close to the overlap ratio to get a hint?
 
     [SerializeField] protected string dialogueNode;
     [SerializeField] protected bool onlyRunDialogueOnce = false;
@@ -70,14 +71,20 @@ public class Hotspot : MonoBehaviour
      * 1. The center of the hotspot is within the area scanned
      * 2. A minimum ratio of the hotspot and scan areas' overlap
      */
-    protected virtual void OnScanPerformed(Rect areaScanned)
+    protected virtual void OnScanPerformed(Scanner.ScanEventArgs eventArgs)
     {
-        if (!areaScanned.Contains(hotspotArea.center))
+        if (locked || !eventArgs.areaInView.Contains(hotspotArea.center))
         {
             return;
         }
-        //Debug.Log($"Center of {gameObject.name} in view: {hotspotArea}, center {hotspotArea.center}");
-        if (CalculateOverlap(areaScanned, hotspotArea) >= requiredOverlapRatio) {
+        float overlap = CalculateOverlap(eventArgs.areaInView, hotspotArea);
+        if (!eventArgs.userPerformedScan && overlap >= requiredOverlapRatio * toleranceForHint)
+        {
+            //Debug.Log($"{this.name} is triggering the hint.");
+            eventArgs.successful = true; // the Scanner will know something's close
+        }
+        else if (eventArgs.userPerformedScan && overlap >= requiredOverlapRatio) {
+            eventArgs.successful = true;
             Scan();
         }
 

@@ -18,13 +18,13 @@ public class ZoomIndicator : MonoBehaviour
     void Start()
     {
         tmp = GetComponent<TextMeshProUGUI>();
-        //TODO: Initial values might depend on execution order, currently best to
+        //TODO: Initial values depend on execution order, currently best to
         //have ZoomLevelChanged and MaxZoomLevelChanged fired at least once
-        if (whichScanner != null)
-        {
-            zoomLevel = whichScanner.zoomLevel;
-            maxZoomLevel = whichScanner.maximumZoomLevel;
-        }
+        //if (whichScanner != null)
+        //{
+            //zoomLevel = whichScanner.zoomLevel;
+            //maxZoomLevel = whichScanner.maximumZoomLevel;
+        //}
     }
 
     void OnZoomLevelChanged(float level)
@@ -45,7 +45,7 @@ public class ZoomIndicator : MonoBehaviour
             string.Format("{0:0.#}", maxZoomLevel) + postfix;
     }
 
-    protected virtual void OnEnable()
+    void OnEnable()
     {
         if (whichScanner != null)
         {
@@ -54,7 +54,7 @@ public class ZoomIndicator : MonoBehaviour
         }
     }
 
-    protected virtual void OnDisable()
+    void OnDisable()
     {
         if (whichScanner != null)
         {
