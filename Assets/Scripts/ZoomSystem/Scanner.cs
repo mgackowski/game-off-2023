@@ -23,6 +23,7 @@ public class Scanner : MonoBehaviour
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
+    public float maximumZoomLevel { get { return maxZoomLevel; } set { SetMaxZoomLevel(value); } }
 
     [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
@@ -170,13 +171,14 @@ public class Scanner : MonoBehaviour
         currentPosition += panDelta;
         followTarget.localPosition = currentPosition;
 
+        bool ZoomChanged = false;
+
         if (zoomSpeed != 0f)
         {
+            ZoomChanged = true;
             float modifier = lastZoomByScroll ? zoomSpeedScrollModifier : zoomSpeedKeysModifier;
             float zoomDelta = (zoomSpeed * modifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
-            ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
-
             if (lastZoomByScroll) {
                 currentZoomSpeedDamp += Time.deltaTime;
                 if (currentZoomSpeedDamp > zoomSpeedScrollDampOver) {
@@ -187,6 +189,11 @@ public class Scanner : MonoBehaviour
         }
 
         SnapToBounds();
+
+        if (ZoomChanged) //Fire event with correct zoom level after it's snapped
+        {
+            ZoomLevelChanged?.Invoke(zoomLevel);
+        }
     }
 
     /** Don't let the camera exceed its pan and zoom limits
