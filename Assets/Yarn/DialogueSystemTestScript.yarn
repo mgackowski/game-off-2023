@@ -1,21 +1,56 @@
 ﻿title: Start
 tags:
 ---
-Player: This is a line spoken by the player.
-Assistant: This is a line spoken by the assistant.
-Player: And this is how choices look like.
-    -> This is just a single choice!
-        Assistant: OK, you can have two.
-            -> Thanks.
-                <<jump Choice>>
-            -> Neat.
-                <<jump Choice>>
+01.12.1991
+User Logging on.
+
+Economic recessions have led to low morale, corruption and dissension.
+Crime is rising.
+The world sees politiical divide, riots and extremism.
+
+As sinister plot lurks, a group are planning to attack a hospital.
+You don't know how.
+But you are armed with super-enhancing technology
+amateur hacking skills
+and a cool assitant. 
+
+Assistant: We need to start tracking down this group of dangerous squirrels
+ -> I'm ready
+ -> Let's go!
+    Assistant: Yes!
+ -> Who cares
+    Assistant: That's the spirt!
+
+Assistant: Explore the image and look for clues
+
+???: Whenever you're ready.
+
+Look at the picture in front of you.
+Try and work out if you see anything suspicious.
+
+Player: What would count as suspicious?
+???: Someone holding a weapon might be a start!
+???: A disguise.
+???: They might just be upset.
+
+Player: Okay, okay. Let's start.
+
 ===
 
 title: Choice
 ---
 Player: Does it matter what I choose?
 Assistant: No.
+
+===
+
+title: StreetviewScan
+---
+
+Assistant: The scene shows a street view from a cctv camera.
+Assistant: We have recieved an anonymous tip.
+Assistant: We are looking for at least two squirrels, 
+
 ===
 
 title: Hotspot1
@@ -24,6 +59,7 @@ Player: Looks like I just scanned something interesting.
 Assistant: Looks like you did. I'm increasing your max zoom to x15!
 <<maxZoom Scanner 15>>
 Player: OK. Back to the game!
+
 ===
 
 title: Hotspot2
