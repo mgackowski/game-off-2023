@@ -12,12 +12,12 @@ public class FloatInPlace : MonoBehaviour
 
     private void Start()
     {
-        originalPosition = transform.position;
+        originalPosition = transform.localPosition;
     }
     void Update()
     {
         Vector3 newPosition = originalPosition;
         newPosition.y += Mathf.Sin(Time.time * frequency) * amplitude;
-        transform.position = newPosition;
+        transform.localPosition = newPosition;
     }
 }
