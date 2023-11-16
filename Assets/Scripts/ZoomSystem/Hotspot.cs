@@ -78,7 +78,7 @@ public class Hotspot : MonoBehaviour
             return;
         }
         float overlap = CalculateOverlap(eventArgs.areaInView, hotspotArea);
-        if (!eventArgs.userPerformedScan && overlap >= requiredOverlapRatio * toleranceForHint)
+        if (!eventArgs.userPerformedScan && !scannedOnce && overlap >= requiredOverlapRatio * toleranceForHint)
         {
             //Debug.Log($"{this.name} is triggering the hint.");
             eventArgs.successful = true; // the Scanner will know something's close

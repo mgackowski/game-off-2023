@@ -390,7 +390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151a1994acb7a014080c6657047e8134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  files: []
+  files:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8369574632008697723
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +555,7 @@ MonoBehaviour:
   zoomSpeedScrollModifier: 15
   zoomSpeedScrollDampOver: 0.2
   minZoomLevel: 1
-  maxZoomLevel: 15
+  maxZoomLevel: 5
   maxPanDistanceFromEdge: 0
   baseOrthoSize: 0.5
   fileSwitcher: {fileID: 7738850654796276095}
