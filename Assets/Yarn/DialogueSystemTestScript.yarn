@@ -35,7 +35,7 @@ You could analyse the faces of the crowd. Inspect facial expressions closely. Lo
 Assistant: Keep an eye out for unusual objects. Hidden signs or symbols. They could be discreet markings associated with criminal groups. If you find anything that stands out, you’ll need to scan the image to see if you can enhance it!
 Scan the image for anything out of place—backpacks, banners, or suspicious items that could lead to finding the people responsible for an attack!
 
-Assistant: We are tracking the movements of specific individuals. Use the timeline feature to identify those who appear to be moving in a coordinated manner. We're looking for patterns that might suggest organisation or planning. Note any suspicious movements you observe.
+Assistant: We are tracking the movements of specific individuals. 
 
 Assistant: Look for clothing or accessories associated with activist groups. Additionally, pay attention to any symbols or markings that may indicate affiliation with a particular cause or movement. 
 
@@ -45,7 +45,7 @@ Assistant: For now, review the background details. Check for graffiti, posters, 
 
 
 Player: Okay, okay. Let's start.
-Player: What is your name?
+Player: What is your name by the way?
 Assistant: Dr A Corn
 
 Player: Really?
