@@ -3344,11 +3344,26 @@ PrefabInstance:
       propertyPath: scannedBy
       value: 
       objectReference: {fileID: 706682440}
+    - target: {fileID: 4684614242158686586, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: maxOpacity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684614242158686586, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: zoomLevelForMaxOpacity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5412437722132546141, guid: aaab53ddbb965a54db58b12054bef485,
         type: 3}
       propertyPath: scannableBy
       value: 
       objectReference: {fileID: 706682440}
+    - target: {fileID: 5849983070507216611, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b08318e1e71f42d4aa8c4ef6e71020de, type: 2}
     - target: {fileID: 5872497053467691439, guid: aaab53ddbb965a54db58b12054bef485,
         type: 3}
       propertyPath: scannableBy
@@ -3427,12 +3442,12 @@ PrefabInstance:
     - target: {fileID: 431762060010469013, guid: abd0ed145a1b8d44d8a165072beefe98,
         type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 0.2994872
+      value: 0.3681364
       objectReference: {fileID: 0}
     - target: {fileID: 7632037560439492704, guid: abd0ed145a1b8d44d8a165072beefe98,
         type: 3}
       propertyPath: orthographic size
-      value: 0.2994872
+      value: 0.3681364
       objectReference: {fileID: 0}
     - target: {fileID: 7738850654796276095, guid: abd0ed145a1b8d44d8a165072beefe98,
         type: 3}
