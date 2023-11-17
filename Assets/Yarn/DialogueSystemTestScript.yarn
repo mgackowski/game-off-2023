@@ -65,12 +65,23 @@ Assistant: We are looking for at least two squirrels,
 
 ===
 
-title: Hotspot1
+title: Hotspot1CoupleBench5x
 ---
-Player: Looks like I just scanned something interesting.
-Assistant: Looks like you did. I'm increasing your max zoom to x15!
+
+You zoom in on a peculiar scene: a couple sits on a bench, but they appear to be angry - could their argument have something to do with the case?
+The couple exude some mystery, in their hand is a strange object.
+
+Assistant: We can increase the zoom
+   -> Lets go!
+
 <<maxZoom Scanner 15>>
+
 Player: OK. Back to the game!
+
+===
+title: HotspotCoupleBench15x
+---
+On a closer inspection, you see flowers on the floor, a game in their hand and the likely potential that a couple have had an arguement.
 
 ===
 
@@ -103,4 +114,16 @@ title: Enhancing2
 ---
 Assistant: Enhance completed.
 Player: Wow, this is just like CSI!
+===
+
+title: Nightclub
+---
+
+===
+
+title: HotspotHoloMasks
+---
+The squirrel's faces seem to be obscured by pastel hues of holographic masks and fragmented, shifting, chaotic expressions, creating an uncanny vibe. The face creates ominous hypnotic shadows, warping the vision of the camera trying to capture our suspects. 
+
+
 ===
