@@ -85,6 +85,31 @@ On a closer inspection, you see flowers on the floor, a game in their hand and t
 
 ===
 
+title: Figure
+—-
+Assistant: Upon closer inspection, you see an enigmatic figure lurking in the shadows, this suspicious person appears to be elusive and eerires, they are darting around and stand in contrast to the rest of their surroundings
+Assistant: We can zoom in here but there is nothing significant to add.
+===
+title: Graffiti
+—
+You see some graffiti on the walls
+===
+title: GraffitiE5x
+—-
+<<maxZoom Scanner 5>>
+Assistant: The wall is adorned with surreal fluorescent moths, not the usual signature or simple picture that we might expect to see. The moths could be a code, and a clue. 
+	-> Enhance
+===
+title: GraffitiE15x
+<<maxZoom Scanner 15>>
+Assistant: The moths are a insignia of a nightclub and mysterious music scene, vaporwave, while it may be little to go on many of the cities troublesome squirrels lurk in this scene. Nearby to the graffiti you spot a flyer to the nightclub. Lets hope this leads to something.
+===
+title: CCTV
+—
+You spot lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape, their unwavering eyes gazing creepily at us all. You think of all the times you’ve walked past that cafe, sat and saw your friends but the cameras make us safer. Their watchful eye is comforting, some like you is behind them holding everyone safe. 
+===
+
+
 title: Hotspot2
 ---
 Player: Wow, that give me an idea. Let's check the lower right corner.
