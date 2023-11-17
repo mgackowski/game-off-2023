@@ -1222,6 +1222,31 @@ PrefabInstance:
       propertyPath: scannedBy
       value: 
       objectReference: {fileID: 706682440}
+    - target: {fileID: 4684614242158686586, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: maxOpacity
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684614242158686586, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: zoomLevelForMaxOpacity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785547827408635719, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.71564615
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785547827408635719, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.80763
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785547827408635719, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8113208
+      objectReference: {fileID: 0}
     - target: {fileID: 5043948438280491002, guid: aaab53ddbb965a54db58b12054bef485,
         type: 3}
       propertyPath: hidden
@@ -1232,6 +1257,11 @@ PrefabInstance:
       propertyPath: scannableBy
       value: 
       objectReference: {fileID: 706682440}
+    - target: {fileID: 5849983070507216611, guid: aaab53ddbb965a54db58b12054bef485,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47190c8d946eea54890782d3e81277cb, type: 2}
     - target: {fileID: 5872497053467691439, guid: aaab53ddbb965a54db58b12054bef485,
         type: 3}
       propertyPath: scannableBy
@@ -3442,12 +3472,12 @@ PrefabInstance:
     - target: {fileID: 431762060010469013, guid: abd0ed145a1b8d44d8a165072beefe98,
         type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 0.3681364
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7632037560439492704, guid: abd0ed145a1b8d44d8a165072beefe98,
         type: 3}
       propertyPath: orthographic size
-      value: 0.3681364
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7738850654796276095, guid: abd0ed145a1b8d44d8a165072beefe98,
         type: 3}

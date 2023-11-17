@@ -1,0 +1,137 @@
+﻿title: Start
+---
+01.12.1992
+User Logging on.
+
+Economic recessions have led to low morale, corruption and dissension.
+Crime is rising.
+The world sees politiical divide, riots and extremism.
+
+As sinister plot lurks, a group are planning to attack!
+You don't know how.
+But you are armed with super-enhancing technology
+amateur hacking skills
+and a cool assistant. 
+
+Assistant: We need to start tracking down this group of dangerous squirrels
+ -> I'm ready
+ -> Let's go!
+    Assistant: Yes!
+ -> Who cares
+    Assistant: That's the spirt!
+
+Assistant: Explore the image and look for clues
+
+Assistant: Whenever you're ready.
+
+Look at the picture in front of you.
+Try and work out if you see anything suspicious.
+
+Player: What would count as suspicious?
+
+Assistant: Let's start by exploring the image. You are looking for anything suspicious.
+You could analyse the faces of the crowd. Inspect facial expressions closely. Look for any signs of aggression or peculiar expressions that might hint at their involvement in the riot. 
+
+Assistant: Keep an eye out for unusual objects. Hidden signs or symbols. They could be discreet markings associated with criminal groups. If you find anything that stands out, you’ll need to scan the image to see if you can enhance it!
+Scan the image for anything out of place—backpacks, banners, or suspicious items that could lead to finding the people responsible for an attack!
+
+Assistant: We are tracking the movements of specific individuals. 
+
+Assistant: Look for clothing or accessories associated with activist groups. Additionally, pay attention to any symbols or markings that may indicate affiliation with a particular cause or movement. 
+
+Assistant: Examine the group dynamics within the image. Identify clusters of individuals working together or communicating non-verbally. This could provide insights into coordinated efforts during the protest. 
+
+Assistant: For now, review the background details. Check for graffiti, posters, or other elements that might link the suspects to a specific protest or event. These details can help establish a timeline of activities. Report back with your findings.
+
+
+Player: Okay, okay. Let's start.
+Player: What is your name by the way?
+Assistant: Dr A Corn
+
+Player: Really?
+
+Dr A Corn: Yes, why?
+    -> No reason
+    -> Nut-thing
+    -> Another terrible pun
+
+Dr A Corn: I'm not sure why I need human assistance, but are you ready?
+    ->Yes
+    ->I want to speak to your boss!
+
+===
+
+title: StreetviewScan
+---
+
+Assistant: The scene shows a street view from a cctv camera.
+Assistant: We have recieved an anonymous tip.
+Assistant: We are looking for at least two squirrels, 
+
+===
+
+title: Bench1
+---
+
+You zoom in on a peculiar scene: a couple sits on a bench, but they appear to be angry - could their argument have something to do with the case?
+The couple exude some mystery, in their hand is a strange object.
+
+Assistant: We can increase the zoom
+   -> Lets go!
+
+<<maxZoom Scanner 15>>
+
+Player: OK. Back to the game!
+
+===
+title: Bench2
+---
+On a closer inspection, you see flowers on the floor, a game in their hand and the likely potential that a couple have had an arguement.
+
+===
+
+title: Figure
+---
+Assistant: Upon closer inspection, you see an enigmatic figure lurking in the shadows, this suspicious person appears to be elusive and eerires, they are darting around and stand in contrast to the rest of their surroundings
+Assistant: We can zoom in here but there is nothing significant to add.
+
+===
+
+title: Graffiti
+---
+You see some graffiti on the walls.
+
+===
+
+title: Graffiti2
+---
+
+Assistant: The wall is adorned with surreal fluorescent moths, not the usual signature or simple picture that we might expect to see. The moths could be a code, and a clue. 
+	-> Enhance
+<<maxZoom Scanner 15>>
+
+===
+
+title: Flyer
+---
+Assistant: The moths are a insignia of a nightclub and mysterious music scene, vaporwave, while it may be little to go on many of the cities troublesome squirrels lurk in this scene. Nearby to the graffiti you spot a flyer to the nightclub. Lets hope this leads to something.
+
+===
+
+title: CCTV
+---
+You spot lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape, their unwavering eyes gazing creepily at us all. You think of all the times you’ve walked past that cafe, sat and saw your friends but the cameras make us safer. Their watchful eye is comforting, some like you is behind them holding everyone safe. 
+
+===
+
+title: Nightclub
+---
+
+===
+
+title: Holomasks
+---
+The squirrel's faces seem to be obscured by pastel hues of holographic masks and fragmented, shifting, chaotic expressions, creating an uncanny vibe. The face creates ominous hypnotic shadows, warping the vision of the camera trying to capture our suspects. 
+
+
+===
