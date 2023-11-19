@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CinemachineBlenderSettings
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: Virtual Camera
+  - m_From: Real World Camera CM
     m_To: 3DScene Camera
     m_Blend:
       m_Style: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: 3DScene Camera
-    m_To: Virtual Camera
+    m_To: Real World Camera CM
     m_Blend:
       m_Style: 2
       m_Time: 0.5
