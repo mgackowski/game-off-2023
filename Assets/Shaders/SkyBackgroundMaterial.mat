@@ -55,10 +55,10 @@ Material:
     - _BottomSpread: -4.8
     - _Origin: -0.4
     - _Spread: 0.4
-    - _TopOrigin: -0.02
+    - _TopOrigin: 0.35
     - _TopSpread: -2.04
     m_Colors:
-    - _BottomColor: {r: 0.5698839, g: 0.042586334, b: 0.8207547, a: 0}
-    - _MiddleColor: {r: 0.028880388, g: 0.06986859, b: 0.5566038, a: 0}
-    - _TopColor: {r: 0.990566, g: 0.08877712, b: 0.7564791, a: 0}
+    - _BottomColor: {r: 0.81960785, g: 0.043137237, b: 0.4886169, a: 0}
+    - _MiddleColor: {r: 0.5568628, g: 0.027450986, b: 0.433569, a: 0}
+    - _TopColor: {r: 1, g: 0.714307, b: 0.105882354, a: 0}
   m_BuildTextureStacks: []
