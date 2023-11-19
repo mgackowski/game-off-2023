@@ -13,7 +13,7 @@ public class EnhanceHotspot : Hotspot
     bool enhancedOnce = false;
 
     /* Run when a scan is successful */
-    public override void Scan()
+/*    public override void Scan()
     {
         if (locked)
         {
@@ -22,7 +22,7 @@ public class EnhanceHotspot : Hotspot
 
         Debug.Log(gameObject.name + " scanned.");
 
-        if (scannedOnce)
+        if (onlyRunDialogueOnce && scannedOnce)
         {
             return;
         }
@@ -38,7 +38,7 @@ public class EnhanceHotspot : Hotspot
             }
         }
 
-    }
+    }*/
 
     /* Run when an Enhance is successful */
     public void Enhance()

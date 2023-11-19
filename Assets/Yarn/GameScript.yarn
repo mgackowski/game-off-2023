@@ -1,130 +1,216 @@
-﻿title: Start
+﻿title: InitialiseVariables
 ---
-01.12.1992
-User Logging on.
+/// When starting a new game, start at this node to ensure the game state is reset.
+<<maxZoom Scanner 1>>
+<<displayTime ETA false>>
 
-Economic recessions have led to low morale, corruption and dissension.
-Crime is rising.
-The world sees politiical divide, riots and extremism.
+///It would be nice to disable enhancing here until the Dr explains it
 
-As sinister plot lurks, a group are planning to attack!
-You don't know how.
-But you are armed with super-enhancing technology
-amateur hacking skills
-and a cool assistant. 
+/// Files:
+<<lockFile MissionBriefFile false>>
+<<lockFile StreetViewFile true>>
+<<lockFile NightclubFile true>>
 
-Assistant: We need to start tracking down this group of dangerous squirrels
- -> I'm ready
+/// Hide any 3d elements and leave just the computer
+
+<<jump Intro>>
+===
+
+title: Intro
+---
+///Start music
+///Switch camera to intro
+
+<<wait  1>>
+Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
+Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
+Narrator: As sinister plot lurks, a group are planning to attack! You don't know how. But you are armed with super-enhancing technology amateur hacking skills and a cool assistant.
+
+///Run computer bootup sequence
+<<wait 1>>
+
+Assistant: Login confirmed. Let us not waste any time. Shall we?
+    -> Shall we what?
+    -> What's going on?
+    -> But I'm just a squirrel!
+Assistant: Not to worry. First, I recommend you get familiar with the mission brief.
+Assistant: Look, that's it here - right in front of you.
+Assistant: When you've had a proper look, let me know by giving it a <b>scan</b>.
+    -> A scan?
+        Assistant: Scanning is how you examine things in this world. Go ahead, have a read and then hit the scan button to let me know.
+    -> I can handle this.
+        Assistant: I'll be right around the corner.
+===
+
+title: MissionBrief
+---
+Assistant: There you go. That was a scan. You'll be doing a lot of that.
+Player: It says here you've got more details for me.
+Assistant: Ah, yes. Your task is to track down a group of particularily dangerous squirrels. Rioters. Terrorists. Real ruffians.
+ -> I'm ready.
  -> Let's go!
-    Assistant: Yes!
- -> Who cares
-    Assistant: That's the spirt!
+        Assistant: Indeed!
+ -> Who cares.
+        Assistant: That's the spirit!
+Assistant: We've got CCTV footage of possible suspects.
 
-Assistant: Explore the image and look for clues
+<<lockFile StreetViewFile false>>
 
-Assistant: Whenever you're ready.
+Assistant: You should now be able to switch to that file. Give it a go!
+/// It would be nice if we could wait for the player here to switch, and then continue the rest of the dialogue.
 
-Look at the picture in front of you.
-Try and work out if you see anything suspicious.
 
+Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
 
-Assistant: Let's start by exploring the image. You are looking for anything suspicious.
-You could analyse the faces of the crowd. Inspect facial expressions closely. Look for any signs of aggression or peculiar expressions that might hint at their involvement in the riot. 
+Assistant: You could analyse the faces of the crowd. Inspect facial expressions closely. Look for any signs of aggression or peculiar expressions that might hint at their involvement in the riot. 
 
-Assistant: Keep an eye out for unusual objects. Hidden signs or symbols. They could be discreet markings associated with criminal groups. If you find anything that stands out, you’ll need to scan the image to see if you can enhance it!
-Scan the image for anything out of place—backpacks, banners, or suspicious items that could lead to finding the people responsible for an attack!
+Assistant: Keep an eye out for unusual objects. Hidden signs or symbols. They could be discreet markings associated with criminal groups. If you find anything that stands out, scan it!
 
-Assistant: We are tracking the movements of specific individuals. 
-
-Assistant: Look for clothing or accessories associated with activist groups. Additionally, pay attention to any symbols or markings that may indicate affiliation with a particular cause or movement. 
-
-Assistant: Examine the group dynamics within the image. Identify clusters of individuals working together or communicating non-verbally. This could provide insights into coordinated efforts during the protest. 
-
-Assistant: For now, review the background details. Check for graffiti, posters, or other elements that might link the suspects to a specific protest or event. These details can help establish a timeline of activities. Report back with your findings.
-
+/// Trimming the dialogue down a bit to get players scanning faster
+///Assistant: Look for backpacks, banners, or suspicious items that could lead to finding the people responsible for an attack!
 
 Player: Okay, okay. Let's start.
 Player: What is your name by the way?
-Assistant: Dr A Corn
-
+Assistant: Why, I am Dr A. Corn!
 Player: Really?
 
-Dr A Corn: Yes, why?
-    -> No reason
-    -> Nut-thing
-    -> Another terrible pun
+Dr A. Corn: Yes, why?
+    -> No reason.
+    -> Nut-thing.
+    -> (Another terrible pun)
 
-Dr A Corn: I'm not sure why I need human assistance, but are you ready?
-    ->Yes
+Dr A. Corn: ... I'm not sure why I need human assistance, but are you ready?
+    ->Yes!
+        Dr A. Corn: Splendid.
     ->I want to speak to your boss!
+        Dr A. Corn: Good luck with that!
 
+<<maxZoom Scanner 5>>
+<<displayTime ETA true>> // displays ETA in the corner
+<<setTime ETA 3 weeks 1>> // value: 3, unit: weeks, this will fluctuate by 1 in either direction
 ===
 
-title: StreetviewScan
+title: StreetView
 ---
+Dr A. Corn: The scene shows a street view from a cctv camera.
+Player: Any thoughts?
+Dr A. Corn: We are tracking the movements of specific individuals. At least two squirrels.
+Dr A. Corn: Examine the group dynamics within the image. Identify clusters of people working together or communicating non-verbally. This could provide insights into coordinated efforts during the protest.
+Dr A. Corn: You won't be able to see much from here - you should zoom in!
 
-Assistant: The scene shows a street view from a cctv camera.
-Assistant: We have recieved an anonymous tip.
-Assistant: We are looking for at least two squirrels, 
+///Dr A. Corn: Look for clothing or accessories associated with activist groups. Additionally, pay attention to any symbols or markings that may indicate affiliation with a particular cause or movement. 
 
+///Dr A. Corn: For now, review the background details. Check for graffiti, posters, or other elements that might link the suspects to a specific protest or event. These details can help establish a timeline of activities. Report back with your findings.
 ===
 
-title: Bench1
+title: Bench
 ---
-
-You zoom in on a peculiar scene: a couple sits on a bench, but they appear to be angry - could their argument have something to do with the case?
-The couple exude some mystery, in their hand is a strange object.
-
-Assistant: We can increase the zoom
-   -> Lets go!
-
-<<maxZoom Scanner 15>>
-
-Player: OK. Back to the game!
-
-===
-title: Bench2
----
-On a closer inspection, you see flowers on the floor, a game in their hand and the likely potential that a couple have had an arguement.
-
+Player: A couple sits on a bench, but they appear to be angry - could their argument have something to do with the case?
+Player: They exude mystery. I think they're holding something.
+Dr A. Corn: Ah, perfect timing.
+Dr A. Corn: I've been running an analytical subroutine using a sophisticated neural network to reconstruct images.
+Dr A. Corn: See that ETA counter in the corner? Once I'm done, this case is as good as closed.
+Player: What counter? The one that says 2... no, 3 weeks?
+Dr A. Corn: Why do you think you're here, sport? The more input we feed into the algorithm, the better it will get.
+Dr A. Corn: In fact, I've already done enough work to recostruct the details of this scene!
+Dr A. Corn: Go on, press the <b>enhance</b> button.
 ===
 
-title: Figure
+title: BenchE5x
 ---
-Assistant: Upon closer inspection, you see an enigmatic figure lurking in the shadows, this suspicious person appears to be elusive and eerires, they are darting around and stand in contrast to the rest of their surroundings
-Assistant: We can zoom in here but there is nothing significant to add.
+Player: Whoa.
+Dr A. Corn: Hm... we have flowers on the floor, a game in their hand and the likely potential that a couple have had an argument.
+Player: Probably unimportant. Although it's a shame we caught them at a private moment.
+Dr A. Corn: We now have the power to increase your zoom to <b>20x</b>. Use it wisely!
+<<maxZoom Scanner 20>>
+<<setTime ETA 25 days 3>> // value: 25, unit: days, this will fluctuate by 3 in either direction
+===
 
+title: SuspiciousPerson
+---
+Dr A. Corn: Upon closer inspection, you see an enigmatic figure lurking in the shadows. This suspicious person appears to be elusive and eerie; they are darting around and stand in contrast to the rest of their surroundings.
+Dr A. Corn: However, they do not appear related to our case.
+===
+
+title: FigureInWindow
+---
+Player: Why does no-one shut their curtains these days?
+===
+
+title: TireTracks
+---
+Player: Driving in a pedestrian zone? Not cool.
+===
+
+title: PhoneBox
+---
+Player: I still have my Blue Box somewhere.
+Dr A. Corn: Heavens, I dearly hope you're not one of those hoodlums who hack into phone boxes?
+Player: What? No, I have a model police box. You know, the one that's bigger on the inside?
+Dr A. Corn: "... Ex-PLAIN!
+Player: "Maybe some other time.
+===
+
+title: Tamagotchi
+---
+Player: Hey, these things are all the rage right now.
+===
+
+title: Cafe
+---
+Player: I used to eat there. But they're cashew only.
 ===
 
 title: Graffiti
 ---
-You see some graffiti on the walls.
-
+Dr A. Corn: Some graffiti on the walls.
 ===
 
-title: Graffiti2
+title: GraffitiE15
 ---
-
-Assistant: The wall is adorned with surreal fluorescent moths, not the usual signature or simple picture that we might expect to see. The moths could be a code, and a clue. 
-	-> Enhance
-<<maxZoom Scanner 15>>
-
+Dr A. Corn: The wall is adorned with surreal fluorescent moths, not the usual signature or simple picture that we might expect to see. The moths could be a code, and a clue. 
+<<if visited("FlyerE15x")>>
+    Player: The flyer! They're the same moths.
+    Dr A. Corn: A keen observation.
+    <<jump StreetSceneSolved>>
+<<endif>>
 ===
 
 title: Flyer
 ---
-Assistant: The moths are a insignia of a nightclub and mysterious music scene, vaporwave, while it may be little to go on many of the cities troublesome squirrels lurk in this scene. Nearby to the graffiti you spot a flyer to the nightclub. Lets hope this leads to something.
+Player: I can't make this out.
+===
 
+title: FlyerE15x
+---
+Player: Moths?
+Dr A. Corn: The moths are insignia of a nightclub and local music scene. Many of the cities troublesome squirrels lurk in it.
+<<if not visited("GraffitiE15")>>
+    Player: Hey, haven't we seen something like this just a second ago?
+<<else>>
+    Player: It's just like the graffiti on the wall here.
+    <<jump StreetSceneSolved>>
+<<endif>>
 ===
 
 title: CCTV
 ---
-You spot lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape, their unwavering eyes gazing creepily at us all. You think of all the times you’ve walked past that cafe, sat and saw your friends but the cameras make us safer. Their watchful eye is comforting, some like you is behind them holding everyone safe. 
-
+Player: Lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape, their unwavering eyes gazing creepily at us all.
+Player: All the times I've walked past that cafe, sat and saw my friends...
+Player: But the cameras make us safer. Their watchful eye is comforting.
+Dr A. Corn: It's thanks to those cameras we can keep people safe, together. 
 ===
 
-title: Nightclub
+title : StreetSceneSolved
+---
+Player: This may be a long shot, but...
+Player: Dr Corn, can you interface with the surveillance network and pull an image from the nightclub?
+Dr A. Corn: Done.
+<<lockFile NightclubFile false>>
+===
+
+title: NightclubView
 ---
 
 ===
@@ -134,4 +220,24 @@ title: Holomasks
 The squirrel's faces seem to be obscured by pastel hues of holographic masks and fragmented, shifting, chaotic expressions, creating an uncanny vibe. The face creates ominous hypnotic shadows, warping the vision of the camera trying to capture our suspects. 
 
 
+===
+
+title: Placeholder
+---
+Player: We still need to write dialogue for this one.
+===
+
+title: EnhanceFailed
+---
+///Display one of a few messages randomly. However, this node is not called by anything in code yet.
+<<declare $enhanceFailedMessage = 0 as number>>
+<<set $enhanceFailedMessage = dice(3)>>
+
+<<if $enhanceFailedMessage == 1>>
+    Dr A. Corn: There's nothing to really enhance here, I'm afraid.
+<<elseif $enhanceFailedMessage == 2>>
+    Dr A. Corn: Nothing here.
+<<else>>
+    Dr A. Corn: I am not detecting anything worth enhancing here.
+<<endif>>
 ===

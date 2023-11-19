@@ -255,7 +255,7 @@ public class Scanner : MonoBehaviour
      */
     void EvaluateForHotspots()
     {
-        Debug.Log("Evaluating for hotspots...");
+        //Debug.Log("Evaluating for hotspots...");
 
         UpdateAreaInView();
         ScanEventArgs eventArgs = new ScanEventArgs()
