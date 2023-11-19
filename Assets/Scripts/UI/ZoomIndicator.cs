@@ -15,7 +15,7 @@ public class ZoomIndicator : MonoBehaviour
     float zoomLevel = 1f;
     float maxZoomLevel = 1f;
 
-    void Start()
+    void Awake()
     {
         tmp = GetComponent<TextMeshProUGUI>();
         //TODO: Initial values depend on execution order, currently best to
