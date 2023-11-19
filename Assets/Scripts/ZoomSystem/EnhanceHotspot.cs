@@ -13,7 +13,7 @@ public class EnhanceHotspot : Hotspot
     bool enhancedOnce = false;
 
     /* Run when a scan is successful */
-    public override void Scan()
+/*    public override void Scan()
     {
         if (locked)
         {
@@ -22,7 +22,7 @@ public class EnhanceHotspot : Hotspot
 
         Debug.Log(gameObject.name + " scanned.");
 
-        if (scannedOnce)
+        if (onlyRunDialogueOnce && scannedOnce)
         {
             return;
         }
@@ -31,11 +31,14 @@ public class EnhanceHotspot : Hotspot
 
         if (!string.IsNullOrEmpty(dialogueNode))
         {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
             dialogueSystem?.StartDialogue(dialogueNode);
+            if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
+            {
+                InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
+            }
         }
 
-    }
+    }*/
 
     /* Run when an Enhance is successful */
     public void Enhance()
@@ -50,27 +53,32 @@ public class EnhanceHotspot : Hotspot
 
         if (startDialogueOnSuccess && !string.IsNullOrEmpty(dialogueNodeAfterEnhance))
         {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
             dialogueSystem?.StartDialogue(dialogueNodeAfterEnhance);
+            if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
+            {
+                InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
+            }
         }
+
+        locked = true;
     }
 
     /* A hotspot is successfully caught in a scan if:
     * 1. The center of the hotspot is within the area scanned
     * 2. A minimum ratio of the hotspot and scan areas' overlap
     */
-    protected override void OnScanPerformed(Rect areaScanned)
+/*    protected override void OnScanPerformed(Scanner.ScanEventArgs eventArgs)
     {
-        if (!areaScanned.Contains(hotspotArea.center))
+        if (!eventArgs.areaInView.Contains(hotspotArea.center))
         {
             return;
         }
-        if (CalculateOverlap(areaScanned, hotspotArea) >= requiredOverlapRatio)
+        if (CalculateOverlap(eventArgs.areaInView, hotspotArea) >= requiredOverlapRatio)
         {
             Scan();
         }
 
-    }
+    }*/
 
     /* Same criteria as OnScanPerformed.
      */

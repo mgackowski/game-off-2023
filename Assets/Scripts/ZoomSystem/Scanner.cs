@@ -8,21 +8,31 @@ using Yarn.Unity;
  */
 public class Scanner : MonoBehaviour
 {
-    public struct EnhanceEventArgs
+    public class EnhanceEventArgs
     {
-        public Rect areaInView;
+        public Rect areaInView; // XY (world space) of area scanned
+        public bool successful;
+    }
+
+    public class ScanEventArgs
+    {
+        public bool userPerformedScan; // false if scanning continuously to update UI
+        public Rect areaInView; // XY (world space) of area scanned
         public bool successful;
     }
 
     // Events
     public event Action<float> ZoomLevelChanged;
     public event Action<float> MaxZoomLevelChanged;
-    public event Action<Rect> ScanPerformed; // Rect = XY (world space) of area scanned
+    public event Action<ScanEventArgs> ScanPerformed;
     public event Action<EnhanceEventArgs> EnhancePerformed;
     public event Action EnhanceAttemptedAtLowZoom;
+    public event Action EnteredNearHotspot;
+    public event Action LeftNearHotspot;
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
+    public float maximumZoomLevel { get { return maxZoomLevel; } set { SetMaxZoomLevel(value); } }
 
     [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
@@ -44,6 +54,7 @@ public class Scanner : MonoBehaviour
     float currentZoomSpeedDamp = 1;
     Rect areaInView;
     Collider2D viewBoundingShape;
+    bool closeToHotspot = false;
 
     void Start()
     {
@@ -97,7 +108,13 @@ public class Scanner : MonoBehaviour
     public void Scan(InputAction.CallbackContext ctx)
     {
         UpdateAreaInView();
-        ScanPerformed?.Invoke(areaInView);
+        ScanEventArgs eventArgs = new ScanEventArgs()
+        {
+            userPerformedScan = true,
+            successful = false,
+            areaInView = areaInView
+        };
+        ScanPerformed?.Invoke(eventArgs);
 
     }
 
@@ -170,13 +187,14 @@ public class Scanner : MonoBehaviour
         currentPosition += panDelta;
         followTarget.localPosition = currentPosition;
 
+        bool ZoomChanged = false;
+
         if (zoomSpeed != 0f)
         {
+            ZoomChanged = true;
             float modifier = lastZoomByScroll ? zoomSpeedScrollModifier : zoomSpeedKeysModifier;
             float zoomDelta = (zoomSpeed * modifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
-            ZoomLevelChanged?.Invoke(zoomLevel); // ignores snap correction but should be OK
-
             if (lastZoomByScroll) {
                 currentZoomSpeedDamp += Time.deltaTime;
                 if (currentZoomSpeedDamp > zoomSpeedScrollDampOver) {
@@ -187,6 +205,15 @@ public class Scanner : MonoBehaviour
         }
 
         SnapToBounds();
+
+        if (ZoomChanged) //Fire event with correct zoom level after it's snapped
+        {
+            ZoomLevelChanged?.Invoke(zoomLevel);
+        }
+        if (ZoomChanged || panDelta.magnitude > 0f)
+        {
+            EvaluateForHotspots(); // Player moved, see if we can show them a hint they're close
+        }
     }
 
     /** Don't let the camera exceed its pan and zoom limits
@@ -221,6 +248,32 @@ public class Scanner : MonoBehaviour
         else if (zoomLevel < minZoomLevel)
         {
             cam.m_Lens.OrthographicSize = baseOrthoSize / minZoomLevel;
+        }
+    }
+
+    /* Perform an "invisible" scan so that the user can get a hint if there's a hotspot nearby.
+     */
+    void EvaluateForHotspots()
+    {
+        //Debug.Log("Evaluating for hotspots...");
+
+        UpdateAreaInView();
+        ScanEventArgs eventArgs = new ScanEventArgs()
+        {
+            userPerformedScan = false,
+            successful = false,
+            areaInView = areaInView
+        };
+        ScanPerformed?.Invoke(eventArgs);
+        if (eventArgs.successful && !closeToHotspot)
+        {
+            closeToHotspot = true;
+            EnteredNearHotspot?.Invoke();
+        }
+        else if(!eventArgs.successful && closeToHotspot)
+        {
+            closeToHotspot = false;
+            LeftNearHotspot?.Invoke();
         }
     }
 
