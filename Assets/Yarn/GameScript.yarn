@@ -68,9 +68,11 @@ Assistant: We've got CCTV footage of possible suspects.
 <<lockFile StreetViewFile false>>
 
 Assistant: You should now be able to switch to that file. Give it a go!
-/// It would be nice if we could wait for the player here to switch, and then continue the rest of the dialogue.
+===
 
-
+title: StreetViewFile
+---
+/// This node plays when the file is first viewed
 Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
 

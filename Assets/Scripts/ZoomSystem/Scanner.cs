@@ -45,7 +45,11 @@ public class Scanner : MonoBehaviour
     [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
-    
+
+    [Header("Dialogue")]
+    [SerializeField] DialogueRunner dialogueSystem;
+    [SerializeField] string onEnhanceFailedNodeName;
+
 
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
@@ -82,6 +86,14 @@ public class Scanner : MonoBehaviour
     void LateUpdate()
     {
         ApplyMovement();
+    }
+
+    void Reset()
+    {
+        if (dialogueSystem == null)
+        {
+            dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem").GetComponent<DialogueRunner>();
+        }
     }
 
     public void Pan(InputAction.CallbackContext ctx)
@@ -137,8 +149,7 @@ public class Scanner : MonoBehaviour
         EnhancePerformed?.Invoke(eventArgs);
         if(!eventArgs.successful) // no enhance hotspots reported success
         {
-            Debug.Log("Nothing to enhance here.");
-            //TODO: Produce an effect or run dialogue.
+            RunDialogue(onEnhanceFailedNodeName);
         }
 
     }
@@ -157,6 +168,13 @@ public class Scanner : MonoBehaviour
         {
             viewBoundingShape = null;
         }
+
+        if (newFile.playDialogueOnFirstFocus && !newFile.viewedBefore)
+        {
+            RunDialogue(newFile.dialogueNode);
+        }
+
+        newFile.viewedBefore = true;
     }
 
     [YarnCommand("maxZoom")]
@@ -274,6 +292,18 @@ public class Scanner : MonoBehaviour
         {
             closeToHotspot = false;
             LeftNearHotspot?.Invoke();
+        }
+    }
+
+    /* Run dialogue from a given node using Yarn Spinner.
+     * TODO: This should be extracted into its own class, to be called by Scanner and Hotspot
+     */
+    void RunDialogue(string nodeName)
+    {
+        dialogueSystem?.StartDialogue(nodeName);
+        if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
+        {
+            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
         }
     }
 
