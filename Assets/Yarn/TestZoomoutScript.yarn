@@ -1,0 +1,5 @@
+﻿title: TestZoomoutScript
+---
+Narrator: Testing the zoomout. Try zooming out.
+<<specialZoomout Scanner true>>
+===

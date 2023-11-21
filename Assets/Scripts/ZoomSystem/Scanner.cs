@@ -50,6 +50,10 @@ public class Scanner : MonoBehaviour
     [SerializeField] DialogueRunner dialogueSystem;
     [SerializeField] string onEnhanceFailedNodeName;
 
+    [Header("Ending")]
+    [SerializeField] D3SceneManager d3SceneManager;
+    //[SerializeField] bool specialZoomoutMode = false;
+    [SerializeField] float specialZoomSpeedModifier = 0.5f;
 
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
@@ -59,6 +63,7 @@ public class Scanner : MonoBehaviour
     Rect areaInView;
     Collider2D viewBoundingShape;
     bool closeToHotspot = false;
+    bool specialZoomoutMode = false;
 
     void Start()
     {
@@ -184,6 +189,12 @@ public class Scanner : MonoBehaviour
         MaxZoomLevelChanged?.Invoke(newMax);
     }
 
+    [YarnCommand("specialZoomout")]
+    public void SetSpecialZoomoutMode(bool enabled)
+    {
+        specialZoomoutMode = enabled;
+    }
+
     /** Use the camera's settings to update the areaInView field **/
     void UpdateAreaInView()
     {
@@ -211,6 +222,10 @@ public class Scanner : MonoBehaviour
         {
             ZoomChanged = true;
             float modifier = lastZoomByScroll ? zoomSpeedScrollModifier : zoomSpeedKeysModifier;
+            if (specialZoomoutMode)
+            {
+                modifier *= specialZoomSpeedModifier;
+            }
             float zoomDelta = (zoomSpeed * modifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
             if (lastZoomByScroll) {
@@ -266,6 +281,12 @@ public class Scanner : MonoBehaviour
         else if (zoomLevel < minZoomLevel)
         {
             cam.m_Lens.OrthographicSize = baseOrthoSize / minZoomLevel;
+            if (specialZoomoutMode)
+            {
+                zoomSpeed = 0f;
+                d3SceneManager.SwitchTo3D();
+            }
+
         }
     }
 

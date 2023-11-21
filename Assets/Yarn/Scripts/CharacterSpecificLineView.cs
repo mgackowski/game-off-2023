@@ -16,7 +16,7 @@ public class CharacterSpecificLineView : LineView
     CanvasGroup childObjects;
     string speakingCharacter;
 
-    private void Start()
+    private void Awake()
     {
         childObjects = GetComponent<CanvasGroup>();
     }
