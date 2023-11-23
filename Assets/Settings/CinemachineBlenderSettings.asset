@@ -13,10 +13,21 @@ MonoBehaviour:
   m_Name: CinemachineBlenderSettings
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: Real World Camera CM
-    m_To: 3DScene Camera
+  - m_From: Intro CM
+    m_To: Real World Camera CM
     m_Blend:
       m_Style: 1
+      m_Time: 0.5
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: '**ANY CAMERA**'
+    m_To: Intro CM
+    m_Blend:
+      m_Style: 0
       m_Time: 2
       m_CustomCurve:
         serializedVersion: 2
@@ -24,11 +35,11 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: 3DScene Camera
-    m_To: Real World Camera CM
+  - m_From: Real World Camera CM
+    m_To: Zoomout Twist Camera CM
     m_Blend:
-      m_Style: 2
-      m_Time: 0.5
+      m_Style: 1
+      m_Time: 2
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

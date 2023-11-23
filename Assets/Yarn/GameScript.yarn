@@ -11,7 +11,11 @@
 <<lockFile StreetViewFile true>>
 <<lockFile NightclubFile true>>
 
+// Animation and animation states
+<<playAnimation ComputerUI Off>>
+
 /// Hide any 3d elements and leave just the computer
+<<setActive SceneComposer "3D Scene" false>>
 
 <<jump Intro>>
 ===
@@ -19,14 +23,21 @@
 title: Intro
 ---
 ///Start music
-///Switch camera to intro
+
+<<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
 
 <<wait  1>>
 Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
 Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
-Narrator: As sinister plot lurks, a group are planning to attack! You don't know how. But you are armed with super-enhancing technology amateur hacking skills and a cool assistant.
+Narrator: As a sinister plot lurks, a group are planning to attack! You don't know how.
 
-///Run computer bootup sequence
+<<playAnimation ComputerUI BootupStart>>
+
+Narrator: But you are armed with super-enhancing technology amateur hacking skills and a cool assistant.
+
+<<playAnimation ComputerUI BootupFinish>>
+<<wait 1>>
+<<setActive SceneComposer "Intro CM" false>>  /// The view returns to the highest priority camera
 <<wait 1>>
 
 Assistant: Login confirmed. Let us not waste any time. Shall we?
@@ -57,9 +68,11 @@ Assistant: We've got CCTV footage of possible suspects.
 <<lockFile StreetViewFile false>>
 
 Assistant: You should now be able to switch to that file. Give it a go!
-/// It would be nice if we could wait for the player here to switch, and then continue the rest of the dialogue.
+===
 
-
+title: StreetViewFile
+---
+/// This node plays when the file is first viewed
 Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
 

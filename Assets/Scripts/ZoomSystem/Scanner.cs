@@ -45,7 +45,15 @@ public class Scanner : MonoBehaviour
     [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
-    
+
+    [Header("Dialogue")]
+    [SerializeField] DialogueSystem dialogueSystem;
+    [SerializeField] string onEnhanceFailedNodeName;
+
+    [Header("Ending")]
+    [SerializeField] D3SceneManager d3SceneManager;
+    //[SerializeField] bool specialZoomoutMode = false;
+    [SerializeField] float specialZoomSpeedModifier = 0.5f;
 
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
@@ -55,6 +63,7 @@ public class Scanner : MonoBehaviour
     Rect areaInView;
     Collider2D viewBoundingShape;
     bool closeToHotspot = false;
+    bool specialZoomoutMode = false;
 
     void Start()
     {
@@ -82,6 +91,14 @@ public class Scanner : MonoBehaviour
     void LateUpdate()
     {
         ApplyMovement();
+    }
+
+    void Reset()
+    {
+        if (dialogueSystem == null)
+        {
+            dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem").GetComponent<DialogueSystem>();
+        }
     }
 
     public void Pan(InputAction.CallbackContext ctx)
@@ -137,8 +154,7 @@ public class Scanner : MonoBehaviour
         EnhancePerformed?.Invoke(eventArgs);
         if(!eventArgs.successful) // no enhance hotspots reported success
         {
-            Debug.Log("Nothing to enhance here.");
-            //TODO: Produce an effect or run dialogue.
+            dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
         }
 
     }
@@ -157,6 +173,13 @@ public class Scanner : MonoBehaviour
         {
             viewBoundingShape = null;
         }
+
+        if (newFile.playDialogueOnFirstFocus && !newFile.viewedBefore)
+        {
+            dialogueSystem.RunDialogue(newFile.dialogueNode);
+        }
+
+        newFile.viewedBefore = true;
     }
 
     [YarnCommand("maxZoom")]
@@ -164,6 +187,12 @@ public class Scanner : MonoBehaviour
     {
         maxZoomLevel = newMax;
         MaxZoomLevelChanged?.Invoke(newMax);
+    }
+
+    [YarnCommand("specialZoomout")]
+    public void SetSpecialZoomoutMode(bool enabled)
+    {
+        specialZoomoutMode = enabled;
     }
 
     /** Use the camera's settings to update the areaInView field **/
@@ -193,6 +222,10 @@ public class Scanner : MonoBehaviour
         {
             ZoomChanged = true;
             float modifier = lastZoomByScroll ? zoomSpeedScrollModifier : zoomSpeedKeysModifier;
+            if (specialZoomoutMode)
+            {
+                modifier *= specialZoomSpeedModifier;
+            }
             float zoomDelta = (zoomSpeed * modifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
             if (lastZoomByScroll) {
@@ -248,6 +281,12 @@ public class Scanner : MonoBehaviour
         else if (zoomLevel < minZoomLevel)
         {
             cam.m_Lens.OrthographicSize = baseOrthoSize / minZoomLevel;
+            if (specialZoomoutMode)
+            {
+                zoomSpeed = 0f;
+                d3SceneManager.SwitchTo3D();
+            }
+
         }
     }
 
@@ -276,6 +315,5 @@ public class Scanner : MonoBehaviour
             LeftNearHotspot?.Invoke();
         }
     }
-
 
 }

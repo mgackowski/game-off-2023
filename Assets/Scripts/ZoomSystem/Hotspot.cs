@@ -9,7 +9,7 @@ using Yarn.Unity;
 public class Hotspot : MonoBehaviour
 {
     public Scanner scannableBy;
-    public DialogueRunner dialogueSystem;
+    public DialogueSystem dialogueSystem;
 
     [SerializeField] EvidenceImage parentImage;
     
@@ -59,11 +59,7 @@ public class Hotspot : MonoBehaviour
             return;
         }
 
-        dialogueSystem?.StartDialogue(dialogueNode);
-        if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
-        {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
-        }
+        dialogueSystem.RunDialogue(dialogueNode);
 
     }
 
@@ -165,7 +161,7 @@ public class Hotspot : MonoBehaviour
         if (dialogueSystem == null)
         {
             dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem")
-                .GetComponent<DialogueRunner>();
+                .GetComponent<DialogueSystem>();
         }
     }
 
