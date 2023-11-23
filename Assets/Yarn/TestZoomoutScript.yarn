@@ -1,5 +1,12 @@
 ﻿title: TestZoomoutScript
 ---
+
+/// Fade to black immediately and slowly fade in
+<<fadeOut BlackScreen 0>>
+<<wait  0.1>>
+<<fadeIn BlackScreen 0.9>>
+<<wait  0.9>>
+
 Narrator: Testing the zoomout. Try zooming out.
 <<specialZoomout Scanner true>>
 ===
@@ -28,5 +35,8 @@ Narrator: And now, it's time to notice the pinboard
 <<specialZoomout Scanner false>> /// Disables zooming out again
 
 Narrator: What do we have here?
+<<fadeOut BlackScreen 2>>
+<<wait  2>>
+<<setActive SceneComposer Credits true>>
 
 ===
