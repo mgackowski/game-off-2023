@@ -47,7 +47,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] Transform followTarget;
 
     [Header("Dialogue")]
-    [SerializeField] DialogueRunner dialogueSystem;
+    [SerializeField] DialogueSystem dialogueSystem;
     [SerializeField] string onEnhanceFailedNodeName;
 
     [Header("Ending")]
@@ -97,7 +97,7 @@ public class Scanner : MonoBehaviour
     {
         if (dialogueSystem == null)
         {
-            dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem").GetComponent<DialogueRunner>();
+            dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem").GetComponent<DialogueSystem>();
         }
     }
 
@@ -154,7 +154,7 @@ public class Scanner : MonoBehaviour
         EnhancePerformed?.Invoke(eventArgs);
         if(!eventArgs.successful) // no enhance hotspots reported success
         {
-            RunDialogue(onEnhanceFailedNodeName);
+            dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
         }
 
     }
@@ -176,7 +176,7 @@ public class Scanner : MonoBehaviour
 
         if (newFile.playDialogueOnFirstFocus && !newFile.viewedBefore)
         {
-            RunDialogue(newFile.dialogueNode);
+            dialogueSystem.RunDialogue(newFile.dialogueNode);
         }
 
         newFile.viewedBefore = true;
@@ -315,18 +315,5 @@ public class Scanner : MonoBehaviour
             LeftNearHotspot?.Invoke();
         }
     }
-
-    /* Run dialogue from a given node using Yarn Spinner.
-     * TODO: This should be extracted into its own class, to be called by Scanner and Hotspot
-     */
-    void RunDialogue(string nodeName)
-    {
-        dialogueSystem?.StartDialogue(nodeName);
-        if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
-        {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
-        }
-    }
-
 
 }
