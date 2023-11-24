@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7596
+  m_VersionIndex: 7599
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3129,7 +3129,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2261
+  m_VersionIndex: 2264
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2090
+  m_VersionIndex: 2093
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4606,6 +4606,8 @@ GameObject:
   - component: {fileID: 4914020303343025948}
   - component: {fileID: 7480008041733319274}
   - component: {fileID: 3506603154968691819}
+  - component: {fileID: 9181088729827276439}
+  - component: {fileID: 3773247183852706359}
   m_Layer: 6
   m_Name: Computer Line View
   m_TagString: Untagged
@@ -4659,7 +4661,19 @@ MonoBehaviour:
   useTypewriterEffect: 1
   onCharacterTyped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3773247183852706359}
+        m_TargetAssemblyTypeName: DialogueSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   typewriterEffectSpeed: 20
   continueButton: {fileID: 5298122239543401340}
   holdTime: 0
@@ -4719,6 +4733,115 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!82 &9181088729827276439
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010013062691283162}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 15806da66fb3f0a44bdaf60ca0149895, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.148
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3773247183852706359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010013062691283162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa70be1ad12a8447aabb93c811c94eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchVariance: 0.1
 --- !u!1001 &1426489811739240304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4800,7 +4923,7 @@ PrefabInstance:
     - target: {fileID: 2597999373068443130, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4834
+      value: 4837
       objectReference: {fileID: 0}
     - target: {fileID: 2908617403418842492, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
@@ -4810,7 +4933,7 @@ PrefabInstance:
     - target: {fileID: 3008128413870209242, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4451
+      value: 4454
       objectReference: {fileID: 0}
     - target: {fileID: 3041404283846083560, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
@@ -4820,7 +4943,7 @@ PrefabInstance:
     - target: {fileID: 3092585026035150409, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3982
+      value: 3985
       objectReference: {fileID: 0}
     - target: {fileID: 3258873700998828623, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
@@ -4830,7 +4953,7 @@ PrefabInstance:
     - target: {fileID: 3677122311786405928, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 599
+      value: 602
       objectReference: {fileID: 0}
     - target: {fileID: 3682278803665160206, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
@@ -4865,7 +4988,7 @@ PrefabInstance:
     - target: {fileID: 4169409624774146331, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 7480
+      value: 7483
       objectReference: {fileID: 0}
     - target: {fileID: 4302339514521553603, guid: ebb56d988c283e845893fcaead83673d,
         type: 3}

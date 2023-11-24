@@ -73,6 +73,10 @@ Assistant: You should now be able to switch to that file. Give it a go!
 title: StreetViewFile
 ---
 /// This node plays when the file is first viewed
+
+<<playMusic>>
+<<setIntensity 0>>
+
 Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
 

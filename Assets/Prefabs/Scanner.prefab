@@ -177,6 +177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSource: {fileID: 8081773840015099769}
+  zoomClip: {fileID: 8300000, guid: daaecfab5a69e014b8e6d61425a4400e, type: 3}
+  scanClip: {fileID: 8300000, guid: 86ea8cfcc7e1360489d8c0dde2a0ef29, type: 3}
+  enhanceClip: {fileID: 8300000, guid: 86ea8cfcc7e1360489d8c0dde2a0ef29, type: 3}
+  successClip: {fileID: 8300000, guid: 11750fd8d99f7d44f988723ee0e8d0cc, type: 3}
+  failClip: {fileID: 8300000, guid: 662e7ec5d67834747acf3d3f49a6193a, type: 3}
 --- !u!82 &351741967519618629
 AudioSource:
   m_ObjectHideFlags: 0
