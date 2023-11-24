@@ -52,7 +52,6 @@ public class Scanner : MonoBehaviour
 
     [Header("Ending")]
     [SerializeField] D3SceneManager d3SceneManager;
-    //[SerializeField] bool specialZoomoutMode = false;
     [SerializeField] float specialZoomSpeedModifier = 0.5f;
 
     CinemachineVirtualCamera cam;
@@ -64,6 +63,7 @@ public class Scanner : MonoBehaviour
     Collider2D viewBoundingShape;
     bool closeToHotspot = false;
     bool specialZoomoutMode = false;
+    float lastZoomLevel = 1f;
 
     void Start()
     {
@@ -132,6 +132,10 @@ public class Scanner : MonoBehaviour
             areaInView = areaInView
         };
         ScanPerformed?.Invoke(eventArgs);
+        if (eventArgs.successful == true)
+        {
+            LeftNearHotspot?.Invoke(); // stop showing the hint
+        }
 
     }
 
@@ -239,8 +243,9 @@ public class Scanner : MonoBehaviour
 
         SnapToBounds();
 
-        if (ZoomChanged) //Fire event with correct zoom level after it's snapped
+        if (ZoomChanged && zoomLevel != lastZoomLevel) //Fire event with correct zoom level after it's snapped
         {
+            lastZoomLevel = zoomLevel;
             ZoomLevelChanged?.Invoke(zoomLevel);
         }
         if (ZoomChanged || panDelta.magnitude > 0f)
@@ -292,7 +297,7 @@ public class Scanner : MonoBehaviour
 
     /* Perform an "invisible" scan so that the user can get a hint if there's a hotspot nearby.
      */
-    void EvaluateForHotspots()
+    public void EvaluateForHotspots()
     {
         //Debug.Log("Evaluating for hotspots...");
 
