@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using Yarn.Unity;
 
 [DefaultExecutionOrder(-1)]
 public class MusicManager : MonoBehaviour {
@@ -25,7 +26,24 @@ public class MusicManager : MonoBehaviour {
             sources[i].outputAudioMixerGroup = output;
             sources[i].volume = i == 0 ? 1 : 0;
             sources[i].loop = true;
-            sources[i].Play();
+        }
+    }
+
+    [YarnCommand("playMusic")]
+    public static void PlayMusic()
+    {
+        for (int i = 0; i < Instance.music.Length; i++)
+        {
+            Instance.sources[i].Play();
+        }
+    }
+
+    [YarnCommand("stopMusic")]
+    public static void StopMusic()
+    {
+        for (int i = 0; i < Instance.music.Length; i++)
+        {
+            Instance.sources[i].Stop();
         }
     }
 
@@ -34,6 +52,7 @@ public class MusicManager : MonoBehaviour {
     /// The first clip is always at max volume and each other is gradually increased.
     /// </summary>
     /// <param name="intensity">0 to 1</param>
+    [YarnCommand("setIntensity")]
     public static void SetIntensity(float intensity) {
         var clips = Instance.music.Length - 1;
         if (clips <= 0) {

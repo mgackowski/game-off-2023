@@ -9,9 +9,22 @@ using Yarn.Unity;
 [RequireComponent(typeof(DialogueRunner))]
 public class DialogueCompletionHandler : MonoBehaviour
 {
+    [SerializeField] Scanner scanner;
+
+    private void Awake()
+    {
+       if (scanner == null)
+        {
+            scanner = GameObject.FindGameObjectWithTag("Scanner").GetComponent<Scanner>();
+
+        }
+    }
+
     public void OnDialogueComplete()
     {
         InputManager.Instance.SwitchTo(InputManager.Instance.Gameplay);
+        scanner?.EvaluateForHotspots(); // restore hourglass hint after dialogue
+
     }
 
 }
