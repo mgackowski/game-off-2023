@@ -17,6 +17,7 @@ public class EvidenceImage : MonoBehaviour
     [SerializeField] bool locked = true;
 
     Renderer rend;
+    ScreenFade fader;
 
     // TODO: Unimplemented; zoomed image stays at max opacity once unlocked
     // Instead this behaviour is reserved for child class DetailTextureImage
@@ -32,11 +33,17 @@ public class EvidenceImage : MonoBehaviour
         locked = newLocked;
         rend.forceRenderingOff = newLocked;
         ImageLockStateChanged?.Invoke(newLocked);
+
+        if(!newLocked && fader != null)
+        {
+            fader.FadeOut(0.5f);  // "out" means it goes from 0 to 1 opacity here
+        }
     }
 
     private void Start()
     {
         rend = GetComponent<Renderer>();
+        fader = GetComponent<ScreenFade>();
         rend.forceRenderingOff = locked;
         ImageLockStateChanged?.Invoke(locked);
     }

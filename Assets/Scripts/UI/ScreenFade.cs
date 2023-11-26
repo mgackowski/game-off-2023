@@ -6,41 +6,71 @@ using Yarn.Unity;
 public class ScreenFade : MonoBehaviour
 {
     Image image;
+    SpriteRenderer sprite;
+    Mode mode;
+
+    enum Mode
+    {
+        Image, SpriteRenderer
+    }
 
     void Awake()
     {
         image = GetComponent<Image>();
+        sprite = GetComponent<SpriteRenderer>();
+
+        mode = image != null ? Mode.Image : Mode.SpriteRenderer;
     }
 
     [YarnCommand("fadeOut")]
     public void FadeOut(float duration)
     {
         StopAllCoroutines();
-        StartCoroutine(Fade(1f, duration));
+        StartCoroutine(Fade(0f, 1f, duration));
     }
 
     [YarnCommand("fadeIn")]
     public void FadeIn(float duration)
     {
         StopAllCoroutines();
-        StartCoroutine(Fade(0f, duration));
+        StartCoroutine(Fade(1f, 0f, duration));
     }
 
-    IEnumerator Fade(float target, float duration)
+    IEnumerator Fade(float from, float target, float duration)
     {
-        Color newColor = image.color;
-        float initialAlpha = newColor.a;
+        Color newColor;
+        if (mode == Mode.Image)
+        {
+            newColor = image.color;
+        }
+        else
+        {
+            newColor = sprite.color;
+        }
         float timeElapsed = 0f;
 
         while (timeElapsed < duration)
         {
-            newColor.a = Mathf.Lerp(initialAlpha, target, timeElapsed / duration);
-            image.color = newColor;
-
+            newColor.a = Mathf.Lerp(from, target, timeElapsed / duration);
+            if (mode == Mode.Image)
+            {
+                image.color = newColor;
+            }
+            else
+            {
+                sprite.color = newColor;
+            }
             timeElapsed += Time.deltaTime;
             yield return null;
         }
         newColor.a = target;
-        image.color = newColor;
+        if (mode == Mode.Image)
+        {
+            image.color = newColor;
+        }
+        else
+        {
+            sprite.color = newColor;
+        }
     }
 }

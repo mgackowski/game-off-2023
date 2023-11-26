@@ -9,6 +9,7 @@ using Yarn.Unity;
 public class Hotspot : MonoBehaviour
 {
     public Scanner scannableBy;
+    public ScanningEffects effects;
     public DialogueSystem dialogueSystem;
 
     [SerializeField] EvidenceImage parentImage;
@@ -110,7 +111,12 @@ public class Hotspot : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        if (scannableBy != null)
+        if (effects != null) // subscribing to effect finish is ideal
+        {
+            effects.ScanAnimationFinished += OnScanPerformed;
+            effects.FinishedWithoutAnimation += OnScanPerformed;
+        }
+        else if (scannableBy != null) // if unavailable, subscribe directly to scanner
         {
             scannableBy.ScanPerformed += OnScanPerformed;
         }
@@ -140,7 +146,12 @@ public class Hotspot : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        if (scannableBy != null)
+        if (effects != null)
+        {
+            effects.ScanAnimationFinished -= OnScanPerformed;
+            effects.FinishedWithoutAnimation -= OnScanPerformed;
+        }
+        else if (scannableBy != null)
         {
             scannableBy.ScanPerformed -= OnScanPerformed;
         }
