@@ -31,6 +31,12 @@ public class EnhanceHotspot : Hotspot
         locked = true;
     }
 
+    /* Run when an Enhance is successful and the animation has finished */
+    public void EnhanceFinished()
+    {
+        //TODO: Implement this so that this is run separately
+    }
+
     /* Same criteria as OnScanPerformed.
      */
     void OnEnhancePerformed(Scanner.EnhanceEventArgs args)
@@ -49,7 +55,11 @@ public class EnhanceHotspot : Hotspot
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (scannableBy != null)
+        if (effects != null)
+        {
+            effects.EnhanceAnimationFinished += OnEnhancePerformed;
+        }
+        else if (scannableBy != null)
         {
             scannableBy.EnhancePerformed += OnEnhancePerformed;
         }
@@ -58,7 +68,11 @@ public class EnhanceHotspot : Hotspot
     protected override void OnDisable()
     {
         base.OnDisable();
-        if (scannableBy != null)
+        if (effects != null)
+        {
+            effects.EnhanceAnimationFinished -= OnEnhancePerformed;
+        }
+        else if (scannableBy != null)
         {
             scannableBy.EnhancePerformed -= OnEnhancePerformed;
         }

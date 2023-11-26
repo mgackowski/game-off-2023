@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Tracing;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -45,6 +46,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
+    [SerializeField] ScanningEffects effects;
 
     [Header("Dialogue")]
     [SerializeField] DialogueSystem dialogueSystem;
@@ -78,6 +80,9 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Scan.performed += Scan;
         InputManager.Instance.Gameplay.Enhance.performed += Enhance;
         fileSwitcher.FileSwitched += SwitchFile;
+        effects.ScanAnimationFinished += ScanComplete;
+        effects.EnhanceAnimationFinished += EnhanceComplete;
+        effects.FinishedWithoutAnimation += EvaluationFinished;
     }
 
     private void OnDisable() {
@@ -86,6 +91,9 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Scan.performed -= Scan;
         InputManager.Instance.Gameplay.Enhance.performed -= Enhance;
         fileSwitcher.FileSwitched -= SwitchFile;
+        effects.ScanAnimationFinished -= ScanComplete;
+        effects.EnhanceAnimationFinished -= EnhanceComplete;
+        effects.FinishedWithoutAnimation -= EvaluationFinished;
     }
 
     void LateUpdate()
@@ -122,6 +130,7 @@ public class Scanner : MonoBehaviour
         }
     }
 
+    /* Begin a scan. */
     public void Scan(InputAction.CallbackContext ctx)
     {
         UpdateAreaInView();
@@ -132,13 +141,23 @@ public class Scanner : MonoBehaviour
             areaInView = areaInView
         };
         ScanPerformed?.Invoke(eventArgs);
-        if (eventArgs.successful == true)
+        if (effects == null)
+        {
+            ScanComplete(eventArgs); // don't wait on effects to finish because there aren't any
+        }
+        
+    }
+
+    /* Finish up after scan effects have taken place. */
+    public void ScanComplete(ScanEventArgs args)
+    {
+        if (args.successful == true)
         {
             LeftNearHotspot?.Invoke(); // stop showing the hint
         }
-
     }
 
+    /* Begin an enhance. */
     public void Enhance(InputAction.CallbackContext ctx)
     {
         /*if (zoomLevel < maxZoomLevel)
@@ -156,11 +175,19 @@ public class Scanner : MonoBehaviour
 
         };
         EnhancePerformed?.Invoke(eventArgs);
-        if(!eventArgs.successful) // no enhance hotspots reported success
+        if (effects == null)
+        {
+            EnhanceComplete(eventArgs); // don't wait on effects to finish because there aren't any
+        }
+    }
+
+    /* Finish up an ehnance after effects are complete. */
+    public void EnhanceComplete(EnhanceEventArgs args)
+    {
+        if (!args.successful) // no enhance hotspots reported success
         {
             dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
         }
-
     }
 
     public void SwitchFile(EvidenceFile newFile)
@@ -309,12 +336,22 @@ public class Scanner : MonoBehaviour
             areaInView = areaInView
         };
         ScanPerformed?.Invoke(eventArgs);
-        if (eventArgs.successful && !closeToHotspot)
+
+        if (effects == null)
+        {
+            EvaluationFinished(eventArgs);
+        }
+        
+    }
+
+    void EvaluationFinished(ScanEventArgs args)
+    {
+        if (args.successful && !closeToHotspot)
         {
             closeToHotspot = true;
             EnteredNearHotspot?.Invoke();
         }
-        else if(!eventArgs.successful && closeToHotspot)
+        else if (!args.successful && closeToHotspot)
         {
             closeToHotspot = false;
             LeftNearHotspot?.Invoke();
