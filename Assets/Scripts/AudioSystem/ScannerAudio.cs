@@ -73,6 +73,8 @@ public class ScannerAudio : MonoBehaviour
         eventSource.ZoomLevelChanged += OnZoomChanged;
         eventSource.ScanPerformed += OnScanPerformed;
         eventSource.EnhancePerformed += OnEnhancePerformed;
+        eventSource.EnhanceSuccessful += PlaySuccessSound;
+        eventSource.EnhanceUnsuccessful += PlayFailSound;
     }
 
     private void OnDisable()
@@ -80,5 +82,7 @@ public class ScannerAudio : MonoBehaviour
         eventSource.ZoomLevelChanged -= OnZoomChanged;
         eventSource.ScanPerformed -= OnScanPerformed;
         eventSource.EnhancePerformed -= OnEnhancePerformed;
+        eventSource.EnhanceSuccessful -= PlaySuccessSound;
+        eventSource.EnhanceUnsuccessful -= PlayFailSound;
     }
 }
