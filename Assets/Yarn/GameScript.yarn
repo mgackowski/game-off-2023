@@ -5,6 +5,7 @@
 <<displayTime ETA false>>
 <<declare $nightclubFoundClues = 0 as number>>
 <<declare $hospitalFoundSuspects = 0 as number>>
+<<declare $officeCluesFound = 0 as number>>
 
 /// Files:
 <<lockFile MissionBriefFile false>>
@@ -22,11 +23,12 @@
 
 title: Intro
 ---
-///Start music
-
 <<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
+<<fadeOut BlackScreen 0>>
+<<wait  0.1>>
+<<fadeIn BlackScreen 0.9>>
+<<wait  0.9>>
 
-<<wait  1>>
 Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
 Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
 Narrator: As a sinister plot lurks, a group are planning to attack! You don't know how.
@@ -236,6 +238,7 @@ Dr A. Corn: It's thanks to those cameras we can keep people safe, together.
 
 title : StreetSceneSolved
 ---
+<<setTime ETA 10 days 3>>
 Player: This may be a long shot, but...
 Player: Dr Corn, can you interface with the surveillance network and pull an image from the nightclub?
 Dr A. Corn: Done.
@@ -276,13 +279,24 @@ Player: ...
 
 title: BartenderGlasses
 ---
-Player: You can see her in the reflection!
-Player: She's showing ID...
-Player: Odd. That's clearly not her in the photo.
-Dr A. Corn: The bartender does not seem to mind.
-Player: Almost as if this is just theater.
-Dr A. Corn: Perhaps she is not here to buy drinks.
-<<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+
+
+
+Player: You can see her ID the reflection!
+<<stopMusic>>
+Player: Wait a second...!
+Player: !
+Player: She's...
+Player: No, can it really be her?
+Dr A. Corn: Is something the matter?
+Player: ...
+<<playMusic>>
+Player: (I didn't recognise her with the scar, but now...)
+Player: Let's continue the investigation.
+
+<<if not visited("BartenderGlasses")>>
+    <<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+<<endif>>
 
 <<if $nightclubFoundClues is 3>>
     <<jump NightclubSolved>>
@@ -300,7 +314,10 @@ Player: What's wrong?
 Dr A. Corn: My apologies, I think I simply forgot what it was.
 Player: Forgot? How can you forget?
 Dr A. Corn: There are no matches for this query.
-<<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+
+<<if not visited("BartenderKey")>>
+    <<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+<<endif>>
 
 <<if $nightclubFoundClues is 3>>
     <<jump NightclubSolved>>
@@ -309,10 +326,14 @@ Dr A. Corn: There are no matches for this query.
 
 title: ScarLady
 ---
-Player: It's... it's really her.
-Dr A. Corn: It is very probable that this individual is here to conduct criminal activities.
-Dr A. Corn: Do you know anything about their identity?
-Player: ...
+<<if visited("BartenderGlasses")>>
+    Player: It's... it's really her.
+    Dr A. Corn: It is very probable that this individual is here to conduct criminal activities.
+    Dr A. Corn: Do you know anything about their identity?
+    Player: ...
+<<else>>
+    Player: She looks... familiar.
+<<endif>>
 ===
 
 title: Arcade
@@ -346,7 +367,10 @@ Dr A. Corn: My apologies. It looks like the feed form this camera is being tampe
 Dr A. Corn: Unless it's 01/01/1970 today, we must assume that the timestamp on this footage is invalid.
 Player: OK. But this guy went to the hospital three weeks ago, right?
 Dr A. Corn: That is the date that matches the ticket.
-<<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+
+<<if not visited("BusTicket")>>
+    <<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+<<endif>>
 
 <<if $nightclubFoundClues is 3>>
     <<jump NightclubSolved>>
@@ -395,14 +419,7 @@ title: BarE
 ---
 Player: Well well, what do we have here...
 Player: Looks like she's being checked for ID.
-<<stopMusic>>
-Player: !
-Player: She's...
-Player: No, can it really be her?
-Dr A. Corn: Is something the matter?
-Player: ...
 Dr A. Corn: I suggest we examine this scene in more detail.
-<<playMusic>>
 ===
 
 title: Table
@@ -425,6 +442,7 @@ Player: OK, let's summarise.
 Dr A. Corn: The patrons of this club appear to be affiliated with various anti-AI movements.
 Dr A. Corn: They are composed of climate groups, alt right groups, and otherwise unaffiliated criminals.
 Player: And the hospital link? Are patients in danger?
+<<setTime ETA 20 hours 3>>
 Dr A. Corn: We cannot exclude the possibility. I have downloaded footage from the hospital, based on the arrival time we got from the bus ticket.
 Dr A. Corn: Please examine it closely.
 <<lockFile HospitalFile false>>
@@ -444,7 +462,13 @@ Dr A. Corn: Now, let us investigate.
 title: Reception
 ---
 Player: Another one of those masks. Those anti-AI guys are here, all right. But what are they doing at the hospital?
-<<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+
+<<if not visited("Reception")>>
+    <<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<endif>>
+<<if $hospitalFoundSuspects is 3>>
+    <<jump HospitalSolved>>
+<<endif>>
 ===
 
 title: Toys
@@ -457,7 +481,12 @@ title: Protester
 Player: I recognise the jacket.
 Dr A. Corn: Definitely a connection to the rioters.
 Player: They look like they're in bad shape.
-<<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<if not visited("Protester")>>
+    <<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<endif>>
+<<if $hospitalFoundSuspects is 3>>
+    <<jump HospitalSolved>>
+<<endif>>
 ===
 
 title: Sign
@@ -491,7 +520,12 @@ title: Slogans
 Player: Banners with slogans on them.
 Dr A. Corn: "A network of lies", "Unplug the Network", "Plants Seeds for Privacy".
 Player: So those eco activists are here at the hospital as well...
-<<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<if not visited("Slogans")>>
+    <<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<endif>>
+<<if $hospitalFoundSuspects is 3>>
+    <<jump HospitalSolved>>
+<<endif>>
 ===
 
 title: Ward
@@ -504,6 +538,17 @@ title: OtherMedicalHistory
 Player: No. I'm not checking some random person's medical history.
 ===
 
+title: HospitalSolved
+---
+<<setTime ETA 50 minutes 9>>
+Player: They're all connected to the anti-AI movement.
+Player: Corn, can we see other rooms?
+<<maxZoom Scanner 100>>
+Dr A. Corn: The zoom cabalility is now set to 100x.
+Dr A. Corn: However, this is the only angle we can observe from.
+Player: I guess we'll have to see where this takes us.
+===
+
 title: Door
 ---
 Player: There's a window. You can see into the ward.
@@ -511,6 +556,8 @@ Player: There's a window. You can see into the ward.
 
 title: DoorE
 ---
+Dr A. Corn: Interesting. Let's try a 1000x zoom.
+<<maxZoom Scanner 1000>>
 Player: Just how much can you keep enhancing those images? This is getting ridiculous.
 <<setTime ETA 3 minutes 1>>
 Dr A. Corn: My subroutine is almost complete. We're close.
@@ -518,14 +565,12 @@ Dr A. Corn: My subroutine is almost complete. We're close.
 
 title: ScarLadyHospital
 ---
-<<if not visited("MedicalHistory")>>
-    <<stopMusic>>
-    Player: It's...!
-    Dr A. Corn: This is the woman from the bar.
-    Player: What's wrong with her?! Where is she now?!
-    Dr A. Corn: It's a hospital. They're bound to have some kind of record.
-    <<playMusic>>
-<<endif>>
+<<stopMusic>>
+Player: It's...!
+Dr A. Corn: This is the woman from the bar.
+Player: What's wrong with her?! Where is she now?!
+Dr A. Corn: It's a hospital. They're bound to have some kind of record.
+<<playMusic>>
 ===
 
 title: MedicalHistory
@@ -540,6 +585,8 @@ title: MedicalHistory
     <<lockHotspot PhotoHotspot false>>
     <<lockHotspot BrokenMaskHotspot false>>
     Dr A. Corn: There is more here to investigate. Let us check her possessions for possible accomplices.
+    Dr A. Corn: My analysis is almost complete. We have enough power for a 2000x zoom.
+    <<maxZoom Scanner 2000>>
 <<endif>>
 ===
 
@@ -561,8 +608,91 @@ Player: I didn't...
 
 title: PhoneCall
 ---
+/// Play sound of phone ringing
+Player: Someone's calling me?
+///Click
+Familiar voice: Surprised to see you?
+Player: Piney?! Piney, is that you?
+Player: Piney. What's going on? Are you ok? What are you involved in?
+Piney: It's good to hear your voice, dear brother.
+Player: Piney. We couldn't find you for years. You completely fell off the grid.
+Piney: I had a good reason.
+Piney: And I could really use your help now.
+Player: Of course. Anything.
+Piney: But first, there's something I'd like you to see.
+<<setTime ETA 0 seconds 0>>
+Dr A. Corn: SUBROUTINE COMPLETE.
+Player: Doc? Doctor Corn?
+Dr A. Corn: ZOOM CAPABILITY EXPANDED.
+Jackie: I know in my heart that you can make the right decision.
+Jackie: You just need to take a big step back.
+///Click!
+Player: A big step back...
+<<setIntensity 1>>
+<<setActive SceneComposer "3D Scene" true>>
+<<specialZoomout Scanner true>>
+===
 
+title: MaxZoomoutAchieved
+---
+Player: Holy...
+Player: They're looking for me. I'm going to be a suspect.
+Player: ... OK, this is no time to panic. I need to look around.
+<<jump InvestigateOffice>>
+===
 
+title: InvestigateOffice
+---
+<<if $officeCluesFound is 3>>
+    <<jump OfficeSolved>>
+<<endif>>
+
+-> Check computer
+    Player: Looks like Dr A. Corn's programming was compromised somehow. Was all of this planned?
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<jump InvestigateOffice>>
+-> Check desk
+    Player: All my things are intact.
+    Player: Wait... the key to my office? I'll grab that. I need to check something.
+    /// grab key
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<jump InvestigateOffice>>
+-> Other cubicles
+    Player: How much time before someone knocks on my door?
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<jump InvestigateOffice>>
+===
+
+title: OfficeSolved
+---
+Player: OK, I think it's coming together.
+
+<<switchToPinboard "3D Scene">>
+<<wait 1>>
+
+/// Hide files
+<<lockFile MissionBriefFile true>>
+<<lockFile StreetViewFile true>> 
+<<lockFile NightclubFile true>>
+<<lockFile HospitalFile true>>
+
+/// Make pinboard only file available
+<<lockFile PinboardFile false>>
+<<selectFile FileSwitcher PinboardFile>>
+
+/// Hide computer interface
+<<playAnimation ComputerUI PinboardMode>>
+
+<<wait  1>>
+<<specialZoomout Scanner false>> /// Disables zooming out again
+<<setActive SceneComposer "3D Scene" false>>
+
+Player: Let's "scan" this pinboard.
+
+Narrator: This is how much game we have so far.
+<<fadeOut BlackScreen 2>>
+<<wait  2>>
+<<setActive SceneComposer Credits true>>
 ===
 
 title: Placeholder
