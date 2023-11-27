@@ -30,6 +30,8 @@ public class Scanner : MonoBehaviour
     public event Action EnhanceAttemptedAtLowZoom;
     public event Action EnteredNearHotspot;
     public event Action LeftNearHotspot;
+    public event Action EnhanceSuccessful;
+    public event Action EnhanceUnsuccessful;
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
@@ -184,8 +186,13 @@ public class Scanner : MonoBehaviour
     /* Finish up an ehnance after effects are complete. */
     public void EnhanceComplete(EnhanceEventArgs args)
     {
-        if (!args.successful) // no enhance hotspots reported success
+        if (args.successful)
         {
+            EnhanceSuccessful?.Invoke();
+        }
+        else // no enhance hotspots reported success
+        {
+            EnhanceUnsuccessful?.Invoke();
             dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
         }
     }
