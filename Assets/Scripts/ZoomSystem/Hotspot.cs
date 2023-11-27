@@ -105,7 +105,7 @@ public class Hotspot : MonoBehaviour
         float aInB = (b.width - Mathf.Abs(a.min.x - b.min.x))
             * (b.height - Mathf.Abs(a.min.y - b.min.y))
             / (b.width * b.height);
-        //Debug.Log($"Overlaps: {bInA}, {aInB}");
+        Debug.Log($"Overlaps: {bInA}, {aInB}");
         return Mathf.Min(bInA, aInB);
     }
 
