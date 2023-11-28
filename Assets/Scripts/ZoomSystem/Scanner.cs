@@ -36,6 +36,7 @@ public class Scanner : MonoBehaviour
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
     public float maximumZoomLevel { get { return maxZoomLevel; } set { SetMaxZoomLevel(value); } }
+    public bool enhancingEnabled { get { return enhanceEnabled; } set { SetEnhancingEnabled(value); } }
 
     [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
@@ -46,6 +47,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
     [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
+    [SerializeField] bool enhanceEnabled = true;
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
     [SerializeField] ScanningEffects effects;
@@ -169,6 +171,11 @@ public class Scanner : MonoBehaviour
             return;
         }*/
 
+        if (!enhanceEnabled)
+        {
+            return;
+        }
+
         UpdateAreaInView();
         EnhanceEventArgs eventArgs = new EnhanceEventArgs()
         {
@@ -231,6 +238,12 @@ public class Scanner : MonoBehaviour
     public void SetSpecialZoomoutMode(bool enabled)
     {
         specialZoomoutMode = enabled;
+    }
+
+    [YarnCommand("enhanceEnabled")]
+    public void SetEnhancingEnabled(bool enabled)
+    {
+        enhanceEnabled = enabled;
     }
 
     /** Use the camera's settings to update the areaInView field **/
