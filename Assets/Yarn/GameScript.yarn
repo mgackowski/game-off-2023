@@ -1,4 +1,4 @@
-﻿title: InitialiseVariables
+title: InitialiseVariables
 ---
 /// When starting a new game, start at this node to ensure the game state is reset.
 <<maxZoom Scanner 1>>
@@ -621,11 +621,12 @@ Piney: And I could really use your help now.
 Player: Of course. Anything.
 Piney: But first, there's something I'd like you to see.
 <<setTime ETA 0 seconds 0>>
+<<playMusic>>
 Dr A. Corn: SUBROUTINE COMPLETE.
 Player: Doc? Doctor Corn?
 Dr A. Corn: ZOOM CAPABILITY EXPANDED.
-Jackie: I know in my heart that you can make the right decision.
-Jackie: You just need to take a big step back.
+Piney: I know in my heart that you can make the right decision.
+Piney: You just need to take a big step back.
 ///Click!
 Player: A big step back...
 <<setIntensity 1>>
