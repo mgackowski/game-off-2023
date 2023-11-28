@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5907634010139130752}
   - component: {fileID: 6253885141798791040}
   - component: {fileID: 6287236445972575919}
+  - component: {fileID: 8382578809441314245}
   m_Layer: 6
   m_Name: Evidence Image
   m_TagString: Untagged
@@ -149,3 +150,15 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &8382578809441314245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751832838386295617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1958d6a82fb078542b68d52834c4ff16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

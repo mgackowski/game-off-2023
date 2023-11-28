@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &455991095973661243
+--- !u!1 &625269459084279189
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5824151322580680571}
-  - component: {fileID: 753020844485170832}
-  - component: {fileID: 2614881605864635938}
-  - component: {fileID: 5693422123597034087}
+  - component: {fileID: 6028788153215647318}
+  - component: {fileID: 5329054905248785741}
+  - component: {fileID: 2356071775733402178}
+  - component: {fileID: 7253580804512376538}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -19,40 +19,68 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5824151322580680571
+--- !u!4 &6028788153215647318
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455991095973661243}
+  m_GameObject: {fileID: 625269459084279189}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5834386738302130612}
+  m_Father: {fileID: 1959526272888034799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &753020844485170832
+--- !u!114 &5329054905248785741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455991095973661243}
+  m_GameObject: {fileID: 625269459084279189}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2614881605864635938
+--- !u!114 &2356071775733402178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455991095973661243}
+  m_GameObject: {fileID: 625269459084279189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418e42c7d0405cc48a7b83f63ea53bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Path: {fileID: 8071872032007919682}
+  m_PathPosition: 0
+  m_PositionUnits: 0
+  m_PathOffset: {x: 0, y: 0, z: 0}
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 1
+  m_CameraUp: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AutoDolly:
+    m_Enabled: 0
+    m_PositionOffset: 0
+    m_SearchRadius: 2
+    m_SearchResolution: 5
+--- !u!114 &7253580804512376538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625269459084279189}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
@@ -73,28 +101,6 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &5693422123597034087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455991095973661243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!1 &2977874220073619307
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,9 +131,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5834386738302130612}
   - {fileID: 6877648013013437230}
   - {fileID: 5411343877050400012}
+  - {fileID: 2134848177206703108}
+  - {fileID: 1959526272888034799}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6909895459841937039
@@ -143,11 +150,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  d3Camera: {fileID: 5593373541705886462}
+  d3Camera: {fileID: 948124674026174968}
+  pinboardCamera: {fileID: 0}
+  scannerCamera: {fileID: 0}
   basePriority: 10
   activePriority: 50
+  zoomSpeedKeysModifier: 0.2
+  zoomSpeedScrollModifier: 0.25
+  zoomSpeedScrollDampOver: 10
+  dialogueSystem: {fileID: 0}
+  nodeOnMaxZoomoutReached: TestMaxZoomoutReached
   scanner: {fileID: 0}
   characterManager: {fileID: 2563837846348309525}
+--- !u!1 &3247094812767815094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959526272888034799}
+  - component: {fileID: 948124674026174968}
+  m_Layer: 0
+  m_Name: Zoomout Twist Camera CM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1959526272888034799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247094812767815094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0372897, y: 0.009128711, z: -0.00034065798, w: 0.99926275}
+  m_LocalPosition: {x: 0, y: -2.5, z: 3.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6028788153215647318}
+  m_Father: {fileID: 9190889033482693076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &948124674026174968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247094812767815094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 0
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 60
+    OrthographicSize: 0.5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 6028788153215647318}
 --- !u!1 &3457225022995616147
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +506,61 @@ Transform:
   - {fileID: 2267628790276623023}
   m_Father: {fileID: 5411343877050400012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5733508482566724991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134848177206703108}
+  - component: {fileID: 8071872032007919682}
+  m_Layer: 0
+  m_Name: Dolly Track
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134848177206703108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733508482566724991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.188, y: 2.33, z: -0.8779998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9190889033482693076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8071872032007919682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733508482566724991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0.03, y: 0.67, z: 2.51}
+    roll: 0
+  - position: {x: 0.03281513, y: 7.438637, z: -13.784046}
+    roll: 0
 --- !u!1 &6206311415383994209
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,78 +680,6 @@ Transform:
   - {fileID: 984656886208947125}
   m_Father: {fileID: 5411343877050400012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7324640938127627529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5834386738302130612}
-  - component: {fileID: 5593373541705886462}
-  m_Layer: 0
-  m_Name: 3DScene Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5834386738302130612
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7324640938127627529}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.29514942, y: -0.0060291737, z: 0.0018625191, w: 0.95543027}
-  m_LocalPosition: {x: 0, y: 13.32, z: -16.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5824151322580680571}
-  m_Father: {fileID: 9190889033482693076}
-  m_LocalEulerAnglesHint: {x: 21.865, y: 11.851, z: 0}
---- !u!114 &5593373541705886462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7324640938127627529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 55
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 6877648013013437230}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 68.178566
-    OrthographicSize: 0.5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 5824151322580680571}
 --- !u!1 &7489629243692445850
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +963,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -908,6 +1002,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -978,6 +1082,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -992,6 +1121,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1062,6 +1201,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1076,6 +1240,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1146,6 +1320,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1160,6 +1359,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1230,6 +1439,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1244,6 +1478,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1314,6 +1558,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1328,6 +1597,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1398,6 +1677,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1412,6 +1716,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1482,6 +1796,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1496,6 +1835,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1566,6 +1915,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1580,6 +1954,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1650,6 +2034,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1664,6 +2073,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1734,6 +2153,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1748,6 +2192,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1818,6 +2272,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1832,6 +2311,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1852,10 +2341,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5411343877050400012}
     m_Modifications:
+    - target: {fileID: 485995852140125001, guid: d743408219d505549b44dd564129e16e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263694754196385218, guid: d743408219d505549b44dd564129e16e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
     - target: {fileID: 2212628611429168258, guid: d743408219d505549b44dd564129e16e,
         type: 3}
       propertyPath: m_Name
       value: CubicleBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985274130094236831, guid: d743408219d505549b44dd564129e16e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671367428736346260, guid: d743408219d505549b44dd564129e16e,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     - target: {fileID: 7302584454112617996, guid: d743408219d505549b44dd564129e16e,
         type: 3}
@@ -1976,6 +2485,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -1990,6 +2524,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2060,6 +2604,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2074,6 +2643,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2144,6 +2723,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2158,6 +2762,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2228,6 +2842,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2242,6 +2881,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2312,6 +2961,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2326,6 +3000,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2396,6 +3080,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2410,6 +3119,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2480,6 +3199,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2494,6 +3238,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2564,6 +3318,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2578,6 +3357,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2648,6 +3437,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2662,6 +3476,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2732,6 +3556,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2746,6 +3595,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2816,6 +3675,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2830,6 +3714,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2900,6 +3794,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2914,6 +3833,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2984,6 +3913,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -2998,6 +3952,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3068,6 +4032,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3082,6 +4071,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3152,6 +4151,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3166,6 +4190,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3236,6 +4270,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3250,6 +4309,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3320,6 +4389,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3334,6 +4428,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3404,6 +4508,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3418,6 +4547,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3488,6 +4627,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3502,6 +4666,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3572,6 +4746,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3586,6 +4785,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3656,6 +4865,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3670,6 +4904,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3740,6 +4984,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3754,6 +5023,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3824,6 +5103,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3838,6 +5142,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3908,6 +5222,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -3922,6 +5261,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3992,6 +5341,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4006,6 +5380,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4076,6 +5460,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4090,6 +5499,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4160,6 +5579,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4174,6 +5618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4244,6 +5698,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4258,6 +5737,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4328,6 +5817,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4342,6 +5856,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4412,6 +5936,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4426,6 +5975,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4496,6 +6055,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4510,6 +6094,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4580,6 +6174,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4594,6 +6213,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4664,6 +6293,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4678,6 +6332,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4748,6 +6412,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4762,6 +6451,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4832,6 +6531,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4846,6 +6570,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4916,6 +6650,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -4930,6 +6689,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5000,6 +6769,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5014,6 +6808,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5084,6 +6888,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5098,6 +6927,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5168,6 +7007,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5182,6 +7046,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5252,6 +7126,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5266,6 +7165,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5336,6 +7245,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5350,6 +7284,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5420,6 +7364,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5434,6 +7403,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5504,6 +7483,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5518,6 +7522,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5588,6 +7602,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5602,6 +7641,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5672,6 +7721,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5686,6 +7760,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5756,6 +7840,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5770,6 +7879,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5840,6 +7959,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5854,6 +7998,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5924,6 +8078,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -5938,6 +8117,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6008,6 +8197,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6022,6 +8236,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6092,6 +8316,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6106,6 +8355,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6176,6 +8435,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6190,6 +8474,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6260,6 +8554,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6274,6 +8593,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6344,6 +8673,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6358,6 +8712,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6428,6 +8792,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6442,6 +8831,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6512,6 +8911,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6526,6 +8950,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6596,6 +9030,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6610,6 +9069,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6680,6 +9149,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6694,6 +9188,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6764,6 +9268,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6778,6 +9307,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6848,6 +9387,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773669792856063039, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848225617052025734, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906550723449453648, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566990268684667611, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 10334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910460967781949295, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7593
+      objectReference: {fileID: 0}
     - target: {fileID: 5574589824441231495, guid: 774e48a0a37429b49811b92a25c02fd3,
         type: 3}
       propertyPath: m_Name
@@ -6862,6 +9426,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379482422555669227, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427467120938893, guid: 774e48a0a37429b49811b92a25c02fd3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

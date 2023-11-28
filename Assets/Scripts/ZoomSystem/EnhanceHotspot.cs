@@ -12,34 +12,6 @@ public class EnhanceHotspot : Hotspot
 
     bool enhancedOnce = false;
 
-    /* Run when a scan is successful */
-/*    public override void Scan()
-    {
-        if (locked)
-        {
-            return;
-        }
-
-        Debug.Log(gameObject.name + " scanned.");
-
-        if (onlyRunDialogueOnce && scannedOnce)
-        {
-            return;
-        }
-
-        scannedOnce = true;
-
-        if (!string.IsNullOrEmpty(dialogueNode))
-        {
-            dialogueSystem?.StartDialogue(dialogueNode);
-            if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
-            {
-                InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
-            }
-        }
-
-    }*/
-
     /* Run when an Enhance is successful */
     public void Enhance()
     {
@@ -53,32 +25,17 @@ public class EnhanceHotspot : Hotspot
 
         if (startDialogueOnSuccess && !string.IsNullOrEmpty(dialogueNodeAfterEnhance))
         {
-            dialogueSystem?.StartDialogue(dialogueNodeAfterEnhance);
-            if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
-            {
-                InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
-            }
+            dialogueSystem.RunDialogue(dialogueNodeAfterEnhance);
         }
 
         locked = true;
     }
 
-    /* A hotspot is successfully caught in a scan if:
-    * 1. The center of the hotspot is within the area scanned
-    * 2. A minimum ratio of the hotspot and scan areas' overlap
-    */
-/*    protected override void OnScanPerformed(Scanner.ScanEventArgs eventArgs)
+    /* Run when an Enhance is successful and the animation has finished */
+    public void EnhanceFinished()
     {
-        if (!eventArgs.areaInView.Contains(hotspotArea.center))
-        {
-            return;
-        }
-        if (CalculateOverlap(eventArgs.areaInView, hotspotArea) >= requiredOverlapRatio)
-        {
-            Scan();
-        }
-
-    }*/
+        //TODO: Implement this so that this is run separately
+    }
 
     /* Same criteria as OnScanPerformed.
      */
@@ -98,7 +55,11 @@ public class EnhanceHotspot : Hotspot
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (scannableBy != null)
+        if (effects != null)
+        {
+            effects.EnhanceAnimationFinished += OnEnhancePerformed;
+        }
+        else if (scannableBy != null)
         {
             scannableBy.EnhancePerformed += OnEnhancePerformed;
         }
@@ -107,7 +68,11 @@ public class EnhanceHotspot : Hotspot
     protected override void OnDisable()
     {
         base.OnDisable();
-        if (scannableBy != null)
+        if (effects != null)
+        {
+            effects.EnhanceAnimationFinished -= OnEnhancePerformed;
+        }
+        else if (scannableBy != null)
         {
             scannableBy.EnhancePerformed -= OnEnhancePerformed;
         }

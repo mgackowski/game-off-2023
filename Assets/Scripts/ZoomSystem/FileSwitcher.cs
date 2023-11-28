@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Yarn.Unity;
 
 [Serializable]
 public class FileSwitcher : MonoBehaviour
@@ -14,6 +16,17 @@ public class FileSwitcher : MonoBehaviour
     public EvidenceFile GetFile()
     {
         return files[selectedIndex];
+    }
+
+    /* Switch focus to an unlocked file by providing its name (case-insensitive). */
+    [YarnCommand("selectFile")]
+    public void SelectFile(string name)
+    {
+        EvidenceFile file = files.Where(x => x.name.ToLower() == name.ToLower()).First();
+        if (file!= null && !file.Hidden)
+        {
+            FileSwitched?.Invoke(file);
+        }
     }
 
     void SelectNext(InputAction.CallbackContext ctx)

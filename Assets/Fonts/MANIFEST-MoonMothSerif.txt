@@ -1,0 +1,20 @@
+% A template for the MANIFEST.txt file for works released
+% under the GUST Font License.
+%
+% Fonts whose names should be changed in derived works as requested
+% by clause 1 of GUST-FONT-LICENSE.txt:
+MoonMothSerifRegular
+MoonMothSerifBold
+
+% Files whose names should be changed in derived works as requested
+% by clause 1 of GUST-FONT-LICENSE.txt:
+MoonMothSerifRegular.otf
+MoonMothSerifBold.otf
+MoonMothSerifRegular.otf.meta
+MoonMothSerifBold.otf.meta
+MANIFEST-MoonMothSerif.txt
+MANIFEST-MoonMothSerif.txt.meta
+
+% Files whose names need not be changed in derived works as requested
+% by clause 1 of GUST-FONT-LICENSE.txt:
+GUST-FONT-LICENSE.txt

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Tracing;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,10 +30,13 @@ public class Scanner : MonoBehaviour
     public event Action EnhanceAttemptedAtLowZoom;
     public event Action EnteredNearHotspot;
     public event Action LeftNearHotspot;
+    public event Action EnhanceSuccessful;
+    public event Action EnhanceUnsuccessful;
 
     // Recommended property to get zoom level in familar format e.g. 1x, 10x etc.
     public float zoomLevel { get { return baseOrthoSize / cam.m_Lens.OrthographicSize; ; } }
     public float maximumZoomLevel { get { return maxZoomLevel; } set { SetMaxZoomLevel(value); } }
+    public bool enhancingEnabled { get { return enhanceEnabled; } set { SetEnhancingEnabled(value); } }
 
     [SerializeField] EvidenceImage imageInFocus;
     [SerializeField] float panSpeedModifier = 1f;
@@ -43,9 +47,18 @@ public class Scanner : MonoBehaviour
     [SerializeField] float maxZoomLevel = 5f;
     [SerializeField] float maxPanDistanceFromEdge = 0f;
     [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
+    [SerializeField] bool enhanceEnabled = true;
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
-    
+    [SerializeField] ScanningEffects effects;
+
+    [Header("Dialogue")]
+    [SerializeField] DialogueSystem dialogueSystem;
+    [SerializeField] string onEnhanceFailedNodeName;
+
+    [Header("Ending")]
+    [SerializeField] D3SceneManager d3SceneManager;
+    [SerializeField] float specialZoomSpeedModifier = 0.5f;
 
     CinemachineVirtualCamera cam;
     Vector2 panningSpeed = Vector2.zero;
@@ -55,6 +68,8 @@ public class Scanner : MonoBehaviour
     Rect areaInView;
     Collider2D viewBoundingShape;
     bool closeToHotspot = false;
+    bool specialZoomoutMode = false;
+    float lastZoomLevel = 1f;
 
     void Start()
     {
@@ -69,6 +84,9 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Scan.performed += Scan;
         InputManager.Instance.Gameplay.Enhance.performed += Enhance;
         fileSwitcher.FileSwitched += SwitchFile;
+        effects.ScanAnimationFinished += ScanComplete;
+        effects.EnhanceAnimationFinished += EnhanceComplete;
+        effects.FinishedWithoutAnimation += EvaluationFinished;
     }
 
     private void OnDisable() {
@@ -77,11 +95,22 @@ public class Scanner : MonoBehaviour
         InputManager.Instance.Gameplay.Scan.performed -= Scan;
         InputManager.Instance.Gameplay.Enhance.performed -= Enhance;
         fileSwitcher.FileSwitched -= SwitchFile;
+        effects.ScanAnimationFinished -= ScanComplete;
+        effects.EnhanceAnimationFinished -= EnhanceComplete;
+        effects.FinishedWithoutAnimation -= EvaluationFinished;
     }
 
     void LateUpdate()
     {
         ApplyMovement();
+    }
+
+    void Reset()
+    {
+        if (dialogueSystem == null)
+        {
+            dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem").GetComponent<DialogueSystem>();
+        }
     }
 
     public void Pan(InputAction.CallbackContext ctx)
@@ -105,6 +134,7 @@ public class Scanner : MonoBehaviour
         }
     }
 
+    /* Begin a scan. */
     public void Scan(InputAction.CallbackContext ctx)
     {
         UpdateAreaInView();
@@ -115,9 +145,23 @@ public class Scanner : MonoBehaviour
             areaInView = areaInView
         };
         ScanPerformed?.Invoke(eventArgs);
-
+        if (effects == null)
+        {
+            ScanComplete(eventArgs); // don't wait on effects to finish because there aren't any
+        }
+        
     }
 
+    /* Finish up after scan effects have taken place. */
+    public void ScanComplete(ScanEventArgs args)
+    {
+        if (args.successful == true)
+        {
+            LeftNearHotspot?.Invoke(); // stop showing the hint
+        }
+    }
+
+    /* Begin an enhance. */
     public void Enhance(InputAction.CallbackContext ctx)
     {
         /*if (zoomLevel < maxZoomLevel)
@@ -127,6 +171,11 @@ public class Scanner : MonoBehaviour
             return;
         }*/
 
+        if (!enhanceEnabled)
+        {
+            return;
+        }
+
         UpdateAreaInView();
         EnhanceEventArgs eventArgs = new EnhanceEventArgs()
         {
@@ -135,12 +184,24 @@ public class Scanner : MonoBehaviour
 
         };
         EnhancePerformed?.Invoke(eventArgs);
-        if(!eventArgs.successful) // no enhance hotspots reported success
+        if (effects == null)
         {
-            Debug.Log("Nothing to enhance here.");
-            //TODO: Produce an effect or run dialogue.
+            EnhanceComplete(eventArgs); // don't wait on effects to finish because there aren't any
         }
+    }
 
+    /* Finish up an ehnance after effects are complete. */
+    public void EnhanceComplete(EnhanceEventArgs args)
+    {
+        if (args.successful)
+        {
+            EnhanceSuccessful?.Invoke();
+        }
+        else // no enhance hotspots reported success
+        {
+            EnhanceUnsuccessful?.Invoke();
+            dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
+        }
     }
 
     public void SwitchFile(EvidenceFile newFile)
@@ -157,6 +218,13 @@ public class Scanner : MonoBehaviour
         {
             viewBoundingShape = null;
         }
+
+        if (newFile.playDialogueOnFirstFocus && !newFile.viewedBefore)
+        {
+            dialogueSystem.RunDialogue(newFile.dialogueNode);
+        }
+
+        newFile.viewedBefore = true;
     }
 
     [YarnCommand("maxZoom")]
@@ -164,6 +232,18 @@ public class Scanner : MonoBehaviour
     {
         maxZoomLevel = newMax;
         MaxZoomLevelChanged?.Invoke(newMax);
+    }
+
+    [YarnCommand("specialZoomout")]
+    public void SetSpecialZoomoutMode(bool enabled)
+    {
+        specialZoomoutMode = enabled;
+    }
+
+    [YarnCommand("enhanceEnabled")]
+    public void SetEnhancingEnabled(bool enabled)
+    {
+        enhanceEnabled = enabled;
     }
 
     /** Use the camera's settings to update the areaInView field **/
@@ -181,6 +261,12 @@ public class Scanner : MonoBehaviour
     /** Calculate and apply the next frame's zoom and position **/
     void ApplyMovement()
     {
+        if (!InputManager.Instance.Gameplay.enabled)
+        {
+            panningSpeed = Vector2.zero;
+            return;
+        }
+
         Vector3 panDelta = panningSpeed * Time.deltaTime * panSpeedModifier / zoomLevel;
         
         Vector3 currentPosition = followTarget.localPosition; 
@@ -193,6 +279,10 @@ public class Scanner : MonoBehaviour
         {
             ZoomChanged = true;
             float modifier = lastZoomByScroll ? zoomSpeedScrollModifier : zoomSpeedKeysModifier;
+            if (specialZoomoutMode)
+            {
+                modifier *= specialZoomSpeedModifier;
+            }
             float zoomDelta = (zoomSpeed * modifier * Time.deltaTime) + 1f;
             cam.m_Lens.OrthographicSize /= zoomDelta;
             if (lastZoomByScroll) {
@@ -206,8 +296,9 @@ public class Scanner : MonoBehaviour
 
         SnapToBounds();
 
-        if (ZoomChanged) //Fire event with correct zoom level after it's snapped
+        if (ZoomChanged && zoomLevel != lastZoomLevel) //Fire event with correct zoom level after it's snapped
         {
+            lastZoomLevel = zoomLevel;
             ZoomLevelChanged?.Invoke(zoomLevel);
         }
         if (ZoomChanged || panDelta.magnitude > 0f)
@@ -248,12 +339,18 @@ public class Scanner : MonoBehaviour
         else if (zoomLevel < minZoomLevel)
         {
             cam.m_Lens.OrthographicSize = baseOrthoSize / minZoomLevel;
+            if (specialZoomoutMode)
+            {
+                zoomSpeed = 0f;
+                d3SceneManager.SwitchTo3D();
+            }
+
         }
     }
 
     /* Perform an "invisible" scan so that the user can get a hint if there's a hotspot nearby.
      */
-    void EvaluateForHotspots()
+    public void EvaluateForHotspots()
     {
         //Debug.Log("Evaluating for hotspots...");
 
@@ -265,17 +362,26 @@ public class Scanner : MonoBehaviour
             areaInView = areaInView
         };
         ScanPerformed?.Invoke(eventArgs);
-        if (eventArgs.successful && !closeToHotspot)
+
+        if (effects == null)
+        {
+            EvaluationFinished(eventArgs);
+        }
+        
+    }
+
+    void EvaluationFinished(ScanEventArgs args)
+    {
+        if (args.successful && !closeToHotspot)
         {
             closeToHotspot = true;
             EnteredNearHotspot?.Invoke();
         }
-        else if(!eventArgs.successful && closeToHotspot)
+        else if (!args.successful && closeToHotspot)
         {
             closeToHotspot = false;
             LeftNearHotspot?.Invoke();
         }
     }
-
 
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -7,6 +8,11 @@ public class EvidenceFile : MonoBehaviour
     [SerializeField] public EvidenceImage defaultImage;
     /* Parent Transform of all images held in this file */
     [SerializeField] GameObject imageGroup;
+
+    [SerializeField] public bool playDialogueOnFirstFocus = false;
+    [SerializeField] public string dialogueNode;
+
+    [NonSerialized] public bool viewedBefore = false;
 
     /* A file may be hidden until a progression event occurs */
     [Header("Initial value in Inspector only")]

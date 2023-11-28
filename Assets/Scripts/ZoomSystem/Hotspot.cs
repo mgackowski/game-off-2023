@@ -9,7 +9,8 @@ using Yarn.Unity;
 public class Hotspot : MonoBehaviour
 {
     public Scanner scannableBy;
-    public DialogueRunner dialogueSystem;
+    public ScanningEffects effects;
+    public DialogueSystem dialogueSystem;
 
     [SerializeField] EvidenceImage parentImage;
     
@@ -59,11 +60,7 @@ public class Hotspot : MonoBehaviour
             return;
         }
 
-        dialogueSystem?.StartDialogue(dialogueNode);
-        if (dialogueSystem != null && dialogueSystem.IsDialogueRunning)
-        {
-            InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
-        }
+        dialogueSystem.RunDialogue(dialogueNode);
 
     }
 
@@ -102,19 +99,48 @@ public class Hotspot : MonoBehaviour
      */
     protected float CalculateOverlap(Rect a, Rect b)
     {
-        float bInA = (a.width - Mathf.Abs(a.min.x - b.min.x))
-            * (a.height - Mathf.Abs(a.min.y - b.min.y))
-            / (a.width * a.height);
-        float aInB = (b.width - Mathf.Abs(a.min.x - b.min.x))
-            * (b.height - Mathf.Abs(a.min.y - b.min.y))
-            / (b.width * b.height);
-        //Debug.Log($"Overlaps: {bInA}, {aInB}");
-        return Mathf.Min(bInA, aInB);
+        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMin, a.yMax, 0f));
+        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMax, a.yMin, 0f));
+        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMin, a.yMax, 0f));
+        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMax, a.yMin, 0f));
+
+        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMin, b.yMax, 0f));
+        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMax, b.yMin, 0f));
+        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMin, b.yMax, 0f));
+        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMax, b.yMin, 0f));
+
+        // Determine common rectangle, c
+        Rect c = Rect.zero;
+        c.xMin = Mathf.Max(a.xMin, b.xMin);
+        c.xMax = Mathf.Min(a.xMax, b.xMax);
+        c.yMin = Mathf.Max(a.yMin, b.yMin);
+        c.yMax = Mathf.Min(a.yMax, b.yMax);
+        if (c.width <= 0f || c.height <= 0f)
+        {
+            return 0f; // No overlap
+        }
+
+        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMin, c.yMax, 0f));
+        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMax, c.yMin, 0f));
+        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMin, c.yMax, 0f));
+        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMax, c.yMin, 0f));
+
+        float cArea = c.width * c.height;
+        float cInA = cArea / (a.width * a.height);
+        float cInB = cArea / (b.width * b.height);
+
+        Debug.Log($"Overlaps: {cInA}, {cInB}");
+        return Mathf.Min(cInA, cInB);
     }
 
     protected virtual void OnEnable()
     {
-        if (scannableBy != null)
+        if (effects != null) // subscribing to effect finish is ideal
+        {
+            effects.ScanAnimationFinished += OnScanPerformed;
+            effects.FinishedWithoutAnimation += OnScanPerformed;
+        }
+        else if (scannableBy != null) // if unavailable, subscribe directly to scanner
         {
             scannableBy.ScanPerformed += OnScanPerformed;
         }
@@ -144,7 +170,12 @@ public class Hotspot : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        if (scannableBy != null)
+        if (effects != null)
+        {
+            effects.ScanAnimationFinished -= OnScanPerformed;
+            effects.FinishedWithoutAnimation -= OnScanPerformed;
+        }
+        else if (scannableBy != null)
         {
             scannableBy.ScanPerformed -= OnScanPerformed;
         }
@@ -165,7 +196,7 @@ public class Hotspot : MonoBehaviour
         if (dialogueSystem == null)
         {
             dialogueSystem = GameObject.FindGameObjectWithTag("DialogueSystem")
-                .GetComponent<DialogueRunner>();
+                .GetComponent<DialogueSystem>();
         }
     }
 
