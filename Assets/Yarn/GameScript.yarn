@@ -8,6 +8,7 @@ title: InitialiseVariables
 <<declare $nightclubFoundClues = 0 as number>>
 <<declare $hospitalFoundSuspects = 0 as number>>
 <<declare $officeCluesFound = 0 as number>>
+<<declare $pinboardCluesFound = 0 as number>>
 
 /// Files:
 <<lockFile MissionBriefFile false>>
@@ -698,7 +699,7 @@ title: InvestigateOfficeCubicles
 ---
 <<setActive SceneComposer "Office CM" false>>
 Player: How much time before someone knocks on my door?
-<<if not visited("title: InvestigateOfficeCubicles")>>
+<<if not visited("InvestigateOfficeCubicles")>>
     <<set $officeCluesFound = $officeCluesFound + 1>>
 <<endif>>
 <<jump InvestigateOffice>>
@@ -734,11 +735,145 @@ Player: OK, I think it's coming together.
 Player: Let's "scan" around this pinboard and see what we have.
 ===
 
+title: PinboardTicket
+---
+Player: We know from the ticket that around thr 10th of November, the protesters were at the hospital.
+===
+
+title: PineyAtHospital
+---
+Player: My sister, Piney. For so long, she seemed to have disappeared off the face of the earth.
+Player: Now, it seems like she was one of the protesters.
+Player: She has my picture open on the bedside table. Was she shinking about me?
+<<if not visited("PineyAtHospital")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: ProtestersAtHospital
+---
+Player: The protests went poorly for the activists, with many injured.
+Player: I definitely have enough footage to report them all...
+<<if not visited("ProtestersAtHospital")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: MCPhoto
+---
+Player: That's me. Just your average squirrel. Working security for the government.
+Player: Probably not for long.
+<<if not visited("MCPhoto")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: PineyAtBar
+---
+Player: The bar footage is from after the protesters got injured.
+Player: Piney already has the scar.
+<<if not visited("PineyAtBar")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: BartenderPhoto
+---
+Player: Dr Corn mentioned this guy was notorious.
+Player: The key in his pocket matches the one to my office. I knew it.
+<<if not visited("BartenderPhoto")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: Key
+---
+Player: Looks like I'm not the only one with access to the office.
+===
+
+title: DrACorn
+---
+Player: They planted something into him. Some subroutine.
+Player: He wasn't just increasing my zoom.
+Player: They wanted me to see outward, to wake up and reach for the truth.
+<<if not visited("DrACorn")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: Organisation
+---
+Player: Look, from a certain angle, you can make everything look like an oppresive regime.
+<<if not visited("Organisation")>>
+    <<set $pinboardCluesFound = $pinboardCluesFound + 1>>
+<<endif>>
+<<if $pinboardCluesFound is 7>>
+    <<jump PinboardSummary>>
+<<endif>>
+===
+
+title: TodaysDate
+---
+Player: That's today.
+===
+
+title: PinboardSummary
+---
+Player: !
+Player: Someboby's calling me again.
+/// click!
+Piney: Do you see now?
+Piney: The people who run this city, they don't really care about us.
+Piney: The use of AI in city monitoring, its impact on our privacy, the environment - we never wanted any of it.
+Piney: But they never listen. We've exhausted all possibilities.
+Piney: We need someone within the system. We need you, my brother.
+-> You know I'm with you, no matter what.
+    Player: You know I'm with you, no matter what.
+    Piney: Thank you.
+-> What you're doing is illegal.
+    Player: Piney, this isn't worth the trouble. You're running from the law. You'll get seriously hurt.
+    Piney: Trust me. If we give up, it's going to hurt us more.
+
+<<jump BigChoice>>
+===
+
+title: BigChoice
+---
+Piney: Will you join us?
+Player: Piney...
+Piney: It's ok. I know it's a big decision, and you don't have to decide now.
+Piney: Let me know. You know where to find me now.
+Player: ...
+Piney: Oh, and brother?
+Player: Yes?
+Piney: Don't wait too long.
+/// Click
+<<jump TheEnd>>
+===
+
 title: TheEnd
 ---
-Narrator: This is how much game we have so far.
-<<fadeOut BlackScreen 2>>
-<<wait 2>>
+<<fadeOut BlackScreen 4>>
+<<wait 4>>
+<<setActive SceneComposer Scanner false>>
 <<setActive SceneComposer Credits true>>
 ===
 
