@@ -1,8 +1,9 @@
-﻿title: InitialiseVariables
+title: InitialiseVariables
 ---
 /// When starting a new game, start at this node to ensure the game state is reset.
 <<maxZoom Scanner 1>>
 <<displayTime ETA false>>
+
 <<declare $nightclubFoundClues = 0 as number>>
 <<declare $hospitalFoundSuspects = 0 as number>>
 <<declare $officeCluesFound = 0 as number>>
@@ -11,12 +12,18 @@
 <<lockFile MissionBriefFile false>>
 <<lockFile StreetViewFile true>>
 <<lockFile NightclubFile true>>
+<<lockFile HospitalFile true>>
+<<lockFile PinboardFile true>>
 
 // Animation and animation states
 <<playAnimation ComputerUI Off>>
 
 /// Hide any 3d elements and leave just the computer
 <<setActive SceneComposer "3D Scene" false>>
+<<setActive SceneComposer "Key" true>>
+<<setActive SceneComposer "Office CM" false>>
+<<setActive SceneComposer "Desk CM" false>>
+<<setActive SceneComposer "Intro CM" false>>
 
 <<jump Intro>>
 ===
@@ -218,7 +225,7 @@ Player: I can't make this out.
 
 title: FlyerE15x
 ---
-Player: Moths?
+Player: I get the acorn... but moths?
 Dr A. Corn: The moths are insignia of a nightclub and local music scene. Many of the cities troublesome squirrels lurk in it.
 <<if not visited("GraffitiE15")>>
     Player: Hey, haven't we seen something like this just a second ago?
@@ -533,6 +540,11 @@ title: Ward
 Player: Who designed this hospital? Why is the X-ray room so far from the ward?
 ===
 
+title: XRayRoom
+---
+Player: I can't see through. The window is completely opaque.
+===
+
 title: OtherMedicalHistory
 ---
 Player: No. I'm not checking some random person's medical history.
@@ -621,11 +633,12 @@ Piney: And I could really use your help now.
 Player: Of course. Anything.
 Piney: But first, there's something I'd like you to see.
 <<setTime ETA 0 seconds 0>>
+<<playMusic>>
 Dr A. Corn: SUBROUTINE COMPLETE.
 Player: Doc? Doctor Corn?
 Dr A. Corn: ZOOM CAPABILITY EXPANDED.
-Jackie: I know in my heart that you can make the right decision.
-Jackie: You just need to take a big step back.
+Piney: I know in my heart that you can make the right decision.
+Piney: You just need to take a big step back.
 ///Click!
 Player: A big step back...
 <<setIntensity 1>>
@@ -643,6 +656,7 @@ Player: ... OK, this is no time to panic. I need to look around.
 
 title: InvestigateOffice
 ---
+<<setActive SceneComposer "Office CM" true>>
 <<if $officeCluesFound is 3>>
     <<jump OfficeSolved>>
 <<endif>>
@@ -652,12 +666,15 @@ title: InvestigateOffice
     <<set $officeCluesFound = $officeCluesFound + 1>>
     <<jump InvestigateOffice>>
 -> Check desk
+    <<setActive SceneComposer "Desk CM" true>>
     Player: All my things are intact.
     Player: Wait... the key to my office? I'll grab that. I need to check something.
-    /// grab key
+    <<setActive SceneComposer "Key" false>>
     <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<setActive SceneComposer "Desk CM" false>>
     <<jump InvestigateOffice>>
 -> Other cubicles
+    <<setActive SceneComposer "Office CM" false>>
     Player: How much time before someone knocks on my door?
     <<set $officeCluesFound = $officeCluesFound + 1>>
     <<jump InvestigateOffice>>
@@ -667,6 +684,7 @@ title: OfficeSolved
 ---
 Player: OK, I think it's coming together.
 
+<<setActive SceneComposer "Office CM" false>>
 <<switchToPinboard "3D Scene">>
 <<wait 1>>
 
@@ -683,15 +701,15 @@ Player: OK, I think it's coming together.
 /// Hide computer interface
 <<playAnimation ComputerUI PinboardMode>>
 
-<<wait  1>>
+<<wait 1>>
 <<specialZoomout Scanner false>> /// Disables zooming out again
 <<setActive SceneComposer "3D Scene" false>>
 
-Player: Let's "scan" this pinboard.
+Player: Let's "scan" around this pinboard and see what we have.
 
 Narrator: This is how much game we have so far.
 <<fadeOut BlackScreen 2>>
-<<wait  2>>
+<<wait 2>>
 <<setActive SceneComposer Credits true>>
 ===
 

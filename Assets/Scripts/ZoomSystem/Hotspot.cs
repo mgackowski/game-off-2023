@@ -99,15 +99,15 @@ public class Hotspot : MonoBehaviour
      */
     protected float CalculateOverlap(Rect a, Rect b)
     {
-        Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMin, a.yMax, 0f));
-        Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMax, a.yMin, 0f));
-        Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMin, a.yMax, 0f));
-        Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMax, a.yMin, 0f));
+        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMin, a.yMax, 0f));
+        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMax, a.yMin, 0f));
+        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMin, a.yMax, 0f));
+        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMax, a.yMin, 0f));
 
-        Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMin, b.yMax, 0f));
-        Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMax, b.yMin, 0f));
-        Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMin, b.yMax, 0f));
-        Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMax, b.yMin, 0f));
+        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMin, b.yMax, 0f));
+        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMax, b.yMin, 0f));
+        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMin, b.yMax, 0f));
+        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMax, b.yMin, 0f));
 
         // Determine common rectangle, c
         Rect c = Rect.zero;
@@ -120,22 +120,14 @@ public class Hotspot : MonoBehaviour
             return 0f; // No overlap
         }
 
-        Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMin, c.yMax, 0f));
-        Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMax, c.yMin, 0f));
-        Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMin, c.yMax, 0f));
-        Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMax, c.yMin, 0f));
+        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMin, c.yMax, 0f));
+        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMax, c.yMin, 0f));
+        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMin, c.yMax, 0f));
+        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMax, c.yMin, 0f));
 
         float cArea = c.width * c.height;
         float cInA = cArea / (a.width * a.height);
         float cInB = cArea / (b.width * b.height);
-
-        // Old method
-        //float bInA = (a.width - Mathf.Abs(a.min.x - b.min.x))
-        //    * (a.height - Mathf.Abs(a.min.y - b.min.y))
-        //    / (a.width * a.height);
-        //float aInB = (b.width - Mathf.Abs(a.min.x - b.min.x))
-        //    * (b.height - Mathf.Abs(a.min.y - b.min.y))
-        //    / (b.width * b.height);
 
         Debug.Log($"Overlaps: {cInA}, {cInB}");
         return Mathf.Min(cInA, cInB);

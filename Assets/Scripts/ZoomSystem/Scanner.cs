@@ -248,6 +248,12 @@ public class Scanner : MonoBehaviour
     /** Calculate and apply the next frame's zoom and position **/
     void ApplyMovement()
     {
+        if (!InputManager.Instance.Gameplay.enabled)
+        {
+            panningSpeed = Vector2.zero;
+            return;
+        }
+
         Vector3 panDelta = panningSpeed * Time.deltaTime * panSpeedModifier / zoomLevel;
         
         Vector3 currentPosition = followTarget.localPosition; 
