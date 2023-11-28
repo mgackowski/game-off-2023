@@ -3,6 +3,7 @@ title: InitialiseVariables
 /// When starting a new game, start at this node to ensure the game state is reset.
 <<maxZoom Scanner 1>>
 <<displayTime ETA false>>
+<<enhanceEnabled Scanner true>>
 
 <<declare $nightclubFoundClues = 0 as number>>
 <<declare $hospitalFoundSuspects = 0 as number>>
@@ -573,6 +574,8 @@ Dr A. Corn: Interesting. Let's try a 1000x zoom.
 Player: Just how much can you keep enhancing those images? This is getting ridiculous.
 <<setTime ETA 3 minutes 1>>
 Dr A. Corn: My subroutine is almost complete. We're close.
+<<lockHotspot BrokenMaskHotspot true>>
+<<lockHotspot PhotoHotspot true>>
 ===
 
 title: ScarLadyHospital
@@ -662,22 +665,43 @@ title: InvestigateOffice
 <<endif>>
 
 -> Check computer
-    Player: Looks like Dr A. Corn's programming was compromised somehow. Was all of this planned?
-    <<set $officeCluesFound = $officeCluesFound + 1>>
-    <<jump InvestigateOffice>>
+    <<jump InvestigateOfficeComputer>>
 -> Check desk
-    <<setActive SceneComposer "Desk CM" true>>
-    Player: All my things are intact.
-    Player: Wait... the key to my office? I'll grab that. I need to check something.
-    <<setActive SceneComposer "Key" false>>
-    <<set $officeCluesFound = $officeCluesFound + 1>>
-    <<setActive SceneComposer "Desk CM" false>>
-    <<jump InvestigateOffice>>
+    <<jump InvestigateOfficeDesk>>
 -> Other cubicles
-    <<setActive SceneComposer "Office CM" false>>
-    Player: How much time before someone knocks on my door?
+    <<jump InvestigateOfficeCubicles>>
+===
+
+title: InvestigateOfficeComputer
+---
+Player: Looks like Dr A. Corn's programming was compromised somehow. Was all of this planned?
+<<if not visited("InvestigateOfficeComputer")>>
     <<set $officeCluesFound = $officeCluesFound + 1>>
-    <<jump InvestigateOffice>>
+<<endif>>
+<<jump InvestigateOffice>>
+===
+
+title: InvestigateOfficeDesk
+---
+<<setActive SceneComposer "Desk CM" true>>
+Player: All my things are intact.
+Player: Wait... the key to my office? I'll grab that. I need to check something.
+<<setActive SceneComposer "Key" false>>
+<<if not visited("InvestigateOfficeDesk")>>
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+<<endif>>
+<<setActive SceneComposer "Desk CM" false>>
+<<jump InvestigateOffice>>
+===
+
+title: InvestigateOfficeCubicles
+---
+<<setActive SceneComposer "Office CM" false>>
+Player: How much time before someone knocks on my door?
+<<if not visited("title: InvestigateOfficeCubicles")>>
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+<<endif>>
+<<jump InvestigateOffice>>
 ===
 
 title: OfficeSolved
@@ -704,9 +728,14 @@ Player: OK, I think it's coming together.
 <<wait 1>>
 <<specialZoomout Scanner false>> /// Disables zooming out again
 <<setActive SceneComposer "3D Scene" false>>
+<<maxZoom Scanner 3>>
+<<enhanceEnabled Scanner false>>
 
 Player: Let's "scan" around this pinboard and see what we have.
+===
 
+title: TheEnd
+---
 Narrator: This is how much game we have so far.
 <<fadeOut BlackScreen 2>>
 <<wait 2>>
