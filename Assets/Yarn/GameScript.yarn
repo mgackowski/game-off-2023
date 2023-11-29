@@ -210,7 +210,7 @@ Player: What a waste of flowers... they look so tasty, too.
 
 title: ID
 ---
-Player: Someone's now buying any drinks tonight!
+Player: Someone's not buying any drinks tonight!
 ===
 
 title: Graffiti
@@ -380,7 +380,7 @@ Player: Ok, that's a lot of information. So, this guy went to a hospital - three
 Player: How old is this footage?
 Dr A. Corn: The footage you are looking at was taken approximately... 22 years and 11 months ago.
 Player: What?!
-Dr A. Corn: My apologies. It looks like the feed form this camera is being tampered with.
+Dr A. Corn: My apologies. It looks like the feed from this camera is being tampered with.
 Dr A. Corn: Unless it's 01/01/1970 today, we must assume that the timestamp on this footage is invalid.
 Player: OK. But this guy went to the hospital three weeks ago, right?
 Dr A. Corn: That is the date that matches the ticket.
@@ -632,9 +632,14 @@ Player: I didn't...
 
 title: PhoneCall
 ---
-/// Play sound of phone ringing
+<<playSound  0 true>> // Phone ring
+<<wait 1>>
 Player: Someone's calling me?
-///Click
+<<wait 0.5>>
+<<stopSound 0>>
+<<playSound 1 false>> // Phone button click
+<<wait  1.5>>
+
 Familiar voice: Surprised to see you?
 Player: Piney?! Piney, is that you?
 Player: Piney. What's going on? Are you ok? What are you involved in?
@@ -651,7 +656,9 @@ Player: Doc? Doctor Corn?
 Dr A. Corn: ZOOM CAPABILITY EXPANDED.
 Piney: I know in my heart that you can make the right decision.
 Piney: You just need to take a big step back.
-///Click!
+<<wait  0.5>>
+<<playSound 2 false>> // hang up sound
+<<wait 1.5>>
 Player: A big step back...
 <<setIntensity 0.8>>
 <<setActive SceneComposer "3D Scene" true>>
@@ -848,9 +855,14 @@ Player: That's today.
 title: PinboardSummary
 ---
 <<setIntensity 0>>
+<<playSound 0 true>>
+<<wait  1>>
 Player: !
-Player: Someboby's calling me again.
-/// click!
+Player: Somebody's calling me again.
+<<wait  0.5>>
+<<stopSound 0>>
+<<playSound 1 false>> // click!
+<<wait 1.5>>
 Piney: Do you see now?
 Piney: The people who run this city, they don't really care about us.
 Piney: The use of AI in city monitoring, its impact on our privacy, the environment - we never wanted any of it.
@@ -877,7 +889,8 @@ Player: ...
 Piney: Oh, and brother?
 Player: Yes?
 Piney: Don't wait too long.
-/// Click
+<<playSound 2 false>>
+<<wait>>
 <<jump TheEnd>>
 ===
 
