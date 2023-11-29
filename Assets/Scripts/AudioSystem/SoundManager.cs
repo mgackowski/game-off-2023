@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using Yarn.Unity;
+using static Unity.VisualScripting.Member;
 
 [DefaultExecutionOrder(-1)]
 public class SoundManager : MonoBehaviour {
@@ -35,6 +36,14 @@ public class SoundManager : MonoBehaviour {
                 return;
             }
         }
+
+        var newSource = Instance.gameObject.AddComponent<AudioSource>();
+        newSource.playOnAwake = false;
+        newSource.outputAudioMixerGroup = Instance.output;
+        newSource.clip = Instance.clips[index];
+        newSource.loop = looped;
+        newSource.Play();
+        Instance.sources.Add(newSource);
     }
 
     [YarnCommand("stopSound")]
@@ -66,4 +75,5 @@ public class SoundManager : MonoBehaviour {
         newSource.PlayOneShot(clip);
         Instance.sources.Add(newSource);
     }
+
 }

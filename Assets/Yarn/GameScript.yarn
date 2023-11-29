@@ -632,7 +632,7 @@ Player: I didn't...
 
 title: PhoneCall
 ---
-<<playSound  0 true>> // Phone ring
+<<playSound 0 true>> // Phone ring
 <<wait 1>>
 Player: Someone's calling me?
 <<wait 0.5>>
@@ -890,7 +890,7 @@ Piney: Oh, and brother?
 Player: Yes?
 Piney: Don't wait too long.
 <<playSound 2 false>>
-<<wait>>
+<<wait 1>>
 <<jump TheEnd>>
 ===
 
