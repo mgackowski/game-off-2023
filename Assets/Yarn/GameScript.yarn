@@ -1,6 +1,7 @@
 title: InitialiseVariables
 ---
 /// When starting a new game, start at this node to ensure the game state is reset.
+<<declare $graphicsQuality = "Full" as string>>
 <<maxZoom Scanner 1>>
 <<displayTime ETA false>>
 <<enhanceEnabled Scanner true>>
@@ -26,12 +27,16 @@ title: InitialiseVariables
 <<setActive SceneComposer "Office CM" false>>
 <<setActive SceneComposer "Desk CM" false>>
 <<setActive SceneComposer "Intro CM" false>>
+<<setActive SceneComposer "Options List View" false>>
+<<setActive SceneComposer "Menu Options List View" true>>
 
-<<jump Intro>>
+<<jump MainMenu>>
 ===
 
 title: Intro
 ---
+<<setActive SceneComposer "Options List View" true>>
+<<setActive SceneComposer "Menu Options List View" false>>
 <<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
 <<fadeOut BlackScreen 0>>
 <<wait  0.1>>

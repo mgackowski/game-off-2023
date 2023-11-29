@@ -21,7 +21,7 @@ public class CreditRoll : MonoBehaviour
     IEnumerator ScrollCredits()
     {
         Vector2 pos = rectTransform.anchoredPosition;
-        float target = (rectTransform.sizeDelta.y / 2f) + 540f;
+        float target = (rectTransform.sizeDelta.y / 2f) + 1080f;
         pos.y = -target;
         rectTransform.anchoredPosition = pos;
 
@@ -35,4 +35,12 @@ public class CreditRoll : MonoBehaviour
         StartCoroutine(ScrollCredits());
 
     }
+
+    private void OnEnable()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ScrollCredits());
+    }
+
+
 }
