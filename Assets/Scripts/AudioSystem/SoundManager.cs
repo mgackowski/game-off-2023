@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Yarn.Unity;
+using static Unity.VisualScripting.Member;
 
 [DefaultExecutionOrder(-1)]
 public class SoundManager : MonoBehaviour {
     private static SoundManager Instance;
 
+    [SerializeField] private List<AudioClip> clips;
     [SerializeField] private AudioMixerGroup output;
 
     private List<AudioSource> sources = new List<AudioSource>();
@@ -16,6 +19,43 @@ public class SoundManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
             return;
+        }
+    }
+
+    [YarnCommand("playSound")]
+    public static void PlayFromList(int index, bool looped)
+    {
+        for (int i = 0; i < Instance.sources.Count; i++)
+        {
+            var source = Instance.sources[i];
+            if (!source.isPlaying)
+            {
+                source.clip = Instance.clips[index];
+                source.loop = looped;
+                source.Play();
+                return;
+            }
+        }
+
+        var newSource = Instance.gameObject.AddComponent<AudioSource>();
+        newSource.playOnAwake = false;
+        newSource.outputAudioMixerGroup = Instance.output;
+        newSource.clip = Instance.clips[index];
+        newSource.loop = looped;
+        newSource.Play();
+        Instance.sources.Add(newSource);
+    }
+
+    [YarnCommand("stopSound")]
+    public static void StopFromList(int index)
+    {
+        for (int i = 0; i < Instance.sources.Count; i++)
+        {
+            var source = Instance.sources[i];
+            if (source.clip == Instance.clips[index] && source.isPlaying)
+            {
+                source.Stop();
+            }
         }
     }
 
@@ -35,4 +75,5 @@ public class SoundManager : MonoBehaviour {
         newSource.PlayOneShot(clip);
         Instance.sources.Add(newSource);
     }
+
 }

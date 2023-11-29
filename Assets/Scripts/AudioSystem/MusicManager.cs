@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using Yarn.Unity;
@@ -8,6 +9,7 @@ public class MusicManager : MonoBehaviour {
 
     [SerializeField] AudioClip[] music;
     [SerializeField] AudioMixerGroup output;
+    [SerializeField] float transitionTime = 1.0f;
 
     private AudioSource[] sources;
 
@@ -63,11 +65,26 @@ public class MusicManager : MonoBehaviour {
         for (int i = 0; i < clips; i++) {
             if (intensity > 0) {
                 var vol = intensity > intensityPerTrack ? 1 : intensity / intensityPerTrack;
-                Instance.sources[i + 1].volume = vol;
+                //Instance.sources[i + 1].volume = vol;
+                Instance.StartCoroutine(fadeGradually(Instance.sources[i + 1], vol, Instance.transitionTime));
                 intensity -= intensityPerTrack;
             } else {
                 Instance.sources[i + 1].volume = 0;
             }
         }
     }
+
+    static IEnumerator fadeGradually(AudioSource source, float targetVol, float transitionTime)
+    {
+        float timeElapsed = 0f;
+        float startVol = source.volume;
+        while (timeElapsed < transitionTime)
+        {
+            source.volume = Mathf.Lerp(startVol, targetVol, timeElapsed / transitionTime);
+            yield return null;
+            timeElapsed += Time.deltaTime;
+        }
+        source.volume = targetVol;
+    }
+
 }

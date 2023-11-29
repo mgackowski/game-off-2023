@@ -1,0 +1,28 @@
+﻿title: MainMenu
+---
+<<setActive SceneComposer "Menu CM" true>>
+<<setActive SceneComposer "TitleScreen" true>>
+<<fadeOut TitleScreen 0>>
+-> Play
+	<<fadeIn TitleScreen 0.5>>
+	<<wait  0.5>>
+	<<setActive SceneComposer "TitleScreen" false>>
+	<<setActive SceneComposer "Menu CM" false>>
+	<<jump Intro>>
+-> Quality - {$graphicsQuality}
+	<<if $graphicsQuality is "Full">>
+		<<set $graphicsQuality = "Half Res">>
+		<<setQuality half>>
+	<<else>>
+		<<set $graphicsQuality = "Full">>
+		<<setQuality full>>
+	<<endif>>
+	<<jump MainMenu>>
+-> Credits
+	<<fadeOut BlackScreen 0.5>>
+	<<setActive SceneComposer Credits true>>
+	Narrator: // Wait for player to click
+	<<setActive  SceneComposer Credits false>>
+	<<fadeIn  BlackScreen 0.5>>
+	<<jump MainMenu>>
+===

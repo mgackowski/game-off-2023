@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -7,6 +9,9 @@ using Yarn.Unity;
 [RequireComponent(typeof(DialogueRunner))]
 public class DialogueSystem : MonoBehaviour
 {
+    [SerializeField] DialogueViewBase menuOptionView;
+    [SerializeField] DialogueViewBase characterOptionView;
+
     DialogueRunner runner;
 
     private void Awake()
@@ -28,5 +33,14 @@ public class DialogueSystem : MonoBehaviour
             InputManager.Instance.SwitchTo(InputManager.Instance.Dialogue);
         }
 
+    }
+
+    [YarnCommand("disableMenu")]
+    public void DisableMenuView()
+    {
+        List<DialogueViewBase> views = runner.dialogueViews.ToList();
+        views.Remove(menuOptionView);
+        views.Add(characterOptionView);
+        runner.SetDialogueViews(views.ToArray());
     }
 }
