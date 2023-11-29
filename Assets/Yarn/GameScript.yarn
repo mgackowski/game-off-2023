@@ -37,11 +37,15 @@ title: Intro
 ---
 <<setActive SceneComposer "Options List View" true>>
 <<setActive SceneComposer "Menu Options List View" false>>
+<<disableMenu "Dialogue System">>
 <<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
 <<fadeOut BlackScreen 0>>
 <<wait  0.1>>
 <<fadeIn BlackScreen 0.9>>
 <<wait  0.9>>
+
+<<playMusic>>
+<<setIntensity 0>>
 
 Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
 Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
@@ -67,6 +71,8 @@ Assistant: When you've had a proper look, let me know by giving it a <b>scan</b>
         Assistant: Scanning is how you examine things in this world. Go ahead, have a read and then hit the scan button to let me know.
     -> I can handle this.
         Assistant: I'll be right around the corner.
+
+<<setIntensity 0.2>>
 ===
 
 title: MissionBrief
@@ -90,8 +96,7 @@ title: StreetViewFile
 ---
 /// This node plays when the file is first viewed
 
-<<playMusic>>
-<<setIntensity 0>>
+<<setIntensity 0.4>>
 
 Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
@@ -465,7 +470,7 @@ Player: (OK. Time to switch files again.)
 
 title: HospitalFile
 ---
-<<setIntensity 0.5>>
+<<setIntensity 0.6>>
 Player: What the... Dr Corn, what kind of feed is this?
 Dr A. Corn: One of the hospital staff must have left their camera-enabled personal device idle at reception.
 Player: We can access that?!
@@ -650,13 +655,14 @@ Piney: I know in my heart that you can make the right decision.
 Piney: You just need to take a big step back.
 ///Click!
 Player: A big step back...
-<<setIntensity 1>>
+<<setIntensity 0.8>>
 <<setActive SceneComposer "3D Scene" true>>
 <<specialZoomout Scanner true>>
 ===
 
 title: MaxZoomoutAchieved
 ---
+<<setIntensity 1>>
 Player: Holy...
 Player: They're looking for me. I'm going to be a suspect.
 Player: ... OK, this is no time to panic. I need to look around.
@@ -713,6 +719,7 @@ Player: How much time before someone knocks on my door?
 title: OfficeSolved
 ---
 Player: OK, I think it's coming together.
+<<setIntensity 0.6>>
 
 <<setActive SceneComposer "Office CM" false>>
 <<switchToPinboard "3D Scene">>
@@ -842,6 +849,7 @@ Player: That's today.
 
 title: PinboardSummary
 ---
+<<setIntensity 0>>
 Player: !
 Player: Someboby's calling me again.
 /// click!
@@ -862,6 +870,7 @@ Piney: We need someone within the system. We need you, my brother.
 
 title: BigChoice
 ---
+<<setIntensity 0.4>>
 Piney: Will you join us?
 Player: Piney...
 Piney: It's ok. I know it's a big decision, and you don't have to decide now.
@@ -878,6 +887,7 @@ title: TheEnd
 ---
 <<fadeOut BlackScreen 4>>
 <<wait 4>>
+<<setIntensity 1>>
 <<setActive SceneComposer Scanner false>>
 <<setActive SceneComposer Credits true>>
 ===
