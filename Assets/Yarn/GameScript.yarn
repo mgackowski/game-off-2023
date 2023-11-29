@@ -1,0 +1,734 @@
+title: InitialiseVariables
+---
+/// When starting a new game, start at this node to ensure the game state is reset.
+<<maxZoom Scanner 1>>
+<<displayTime ETA false>>
+
+<<declare $nightclubFoundClues = 0 as number>>
+<<declare $hospitalFoundSuspects = 0 as number>>
+<<declare $officeCluesFound = 0 as number>>
+
+/// Files:
+<<lockFile MissionBriefFile false>>
+<<lockFile StreetViewFile true>>
+<<lockFile NightclubFile true>>
+<<lockFile HospitalFile true>>
+<<lockFile PinboardFile true>>
+
+// Animation and animation states
+<<playAnimation ComputerUI Off>>
+
+/// Hide any 3d elements and leave just the computer
+<<setActive SceneComposer "3D Scene" false>>
+<<setActive SceneComposer "Key" true>>
+<<setActive SceneComposer "Office CM" false>>
+<<setActive SceneComposer "Desk CM" false>>
+<<setActive SceneComposer "Intro CM" false>>
+
+<<jump Intro>>
+===
+
+title: Intro
+---
+<<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
+<<fadeOut BlackScreen 0>>
+<<wait  0.1>>
+<<fadeIn BlackScreen 0.9>>
+<<wait  0.9>>
+
+Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
+Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
+Narrator: As a sinister plot lurks, a group are planning to attack! You don't know how.
+
+<<playAnimation ComputerUI BootupStart>>
+
+Narrator: But you are armed with super-enhancing technology amateur hacking skills and a cool assistant.
+
+<<playAnimation ComputerUI BootupFinish>>
+<<wait 1>>
+<<setActive SceneComposer "Intro CM" false>>  /// The view returns to the highest priority camera
+<<wait 1>>
+
+Assistant: Login confirmed. Let us not waste any time. Shall we?
+    -> Shall we what?
+    -> What's going on?
+    -> But I'm just a squirrel!
+Assistant: Not to worry. First, I recommend you get familiar with the mission brief.
+Assistant: Look, that's it here - right in front of you.
+Assistant: When you've had a proper look, let me know by giving it a <b>scan</b>.
+    -> A scan?
+        Assistant: Scanning is how you examine things in this world. Go ahead, have a read and then hit the scan button to let me know.
+    -> I can handle this.
+        Assistant: I'll be right around the corner.
+===
+
+title: MissionBrief
+---
+Assistant: There you go. That was a scan. You'll be doing a lot of that.
+Player: It says here you've got more details for me.
+Assistant: Ah, yes. Your task is to track down a group of particularily dangerous squirrels. Rioters. Terrorists. Real ruffians.
+ -> I'm ready.
+ -> Let's go!
+        Assistant: Indeed!
+ -> Who cares.
+        Assistant: That's the spirit!
+Assistant: We've got CCTV footage of possible suspects.
+
+<<lockFile StreetViewFile false>>
+
+Assistant: You should now be able to switch to that file. Give it a go!
+===
+
+title: StreetViewFile
+---
+/// This node plays when the file is first viewed
+
+<<playMusic>>
+<<setIntensity 0>>
+
+Assistant: Look at the picture. Try and work out if you see anything suspicious.
+Player: What would count as suspicious?
+
+Assistant: You could analyse the faces of the crowd. Inspect facial expressions closely. Look for any signs of aggression or peculiar expressions that might hint at their involvement in the riot. 
+
+Assistant: Keep an eye out for unusual objects. Hidden signs or symbols. They could be discreet markings associated with criminal groups. If you find anything that stands out, scan it!
+
+/// Trimming the dialogue down a bit to get players scanning faster
+///Assistant: Look for backpacks, banners, or suspicious items that could lead to finding the people responsible for an attack!
+
+Player: Okay, okay. Let's start.
+Player: What is your name by the way?
+Assistant: Why, I am Dr A. Corn!
+Player: Really?
+
+Dr A. Corn: Yes, why?
+    -> No reason.
+    -> Nut-thing.
+    -> (Another terrible pun)
+
+Dr A. Corn: ... I'm not sure why I need human assistance, but are you ready?
+    ->Yes!
+        Dr A. Corn: Splendid.
+    ->I want to speak to your boss!
+        Dr A. Corn: Good luck with that!
+
+<<maxZoom Scanner 5>>
+<<displayTime ETA true>> // displays ETA in the corner
+<<setTime ETA 3 weeks 1>> // value: 3, unit: weeks, this will fluctuate by 1 in either direction
+===
+
+title: StreetView
+---
+Dr A. Corn: The scene shows a street view from a cctv camera.
+Player: Any thoughts?
+Dr A. Corn: We are tracking the movements of specific individuals. At least two squirrels.
+Dr A. Corn: Examine the group dynamics within the image. Identify clusters of people working together or communicating non-verbally. This could provide insights into coordinated efforts during the protest.
+Dr A. Corn: You won't be able to see much from here - you should zoom in!
+
+///Dr A. Corn: Look for clothing or accessories associated with activist groups. Additionally, pay attention to any symbols or markings that may indicate affiliation with a particular cause or movement. 
+
+///Dr A. Corn: For now, review the background details. Check for graffiti, posters, or other elements that might link the suspects to a specific protest or event. These details can help establish a timeline of activities. Report back with your findings.
+===
+
+title: Bench
+---
+Player: A couple sits on a bench, but they appear to be angry - could their argument have something to do with the case?
+Player: They exude mystery. I think they're holding something.
+Dr A. Corn: Ah, perfect timing.
+Dr A. Corn: I've been running an analytical subroutine using a sophisticated neural network to reconstruct images.
+Dr A. Corn: See that ETA counter in the corner? Once I'm done, this case is as good as closed.
+Player: What counter? The one that says 2... no, 3 weeks?
+Dr A. Corn: Why do you think you're here, sport? The more input we feed into the algorithm, the better it will get.
+Dr A. Corn: In fact, I've already done enough work to recostruct the details of this scene!
+Dr A. Corn: Go on, press the <b>enhance</b> button.
+===
+
+title: BenchE5x
+---
+Player: Whoa.
+Dr A. Corn: Hm... we have flowers on the floor, a game in their hand and the likely potential that a couple have had an argument.
+Player: Probably unimportant. Although it's a shame we caught them at a private moment.
+Dr A. Corn: We now have the power to increase your zoom to <b>20x</b>. Use it wisely!
+<<maxZoom Scanner 20>>
+<<setTime ETA 25 days 3>> // value: 25, unit: days, this will fluctuate by 3 in either direction
+===
+
+title: SuspiciousPerson
+---
+Dr A. Corn: Upon closer inspection, you see an enigmatic figure lurking in the shadows. This suspicious person appears to be elusive and eerie; they are darting around and stand in contrast to the rest of their surroundings.
+Dr A. Corn: However, they do not appear related to our case.
+===
+
+title: FigureInWindow
+---
+Player: Why does no-one shut their curtains these days?
+===
+
+title: TireTracks
+---
+Player: Driving in a pedestrian zone? Not cool.
+===
+
+title: PhoneBox
+---
+Player: I still have my Blue Box somewhere.
+Dr A. Corn: Heavens, I dearly hope you're not one of those hoodlums who hack into phone boxes?
+Player: What? No, I have a model police box. You know, the one that's bigger on the inside?
+Dr A. Corn: "... Ex-PLAIN!
+Player: "Maybe some other time.
+===
+
+title: Tamagotchi
+---
+Player: Hey, these things are all the rage right now.
+===
+
+title: Cafe
+---
+Player: I used to eat there. But they're cashew only.
+===
+
+title: OtherFlyers
+---
+Player: An old poster for the famous musical, "West Side Squeaker".
+===
+
+title: Flowers
+---
+Player: What a waste of flowers... they look so tasty, too.
+===
+
+title: ID
+---
+Player: Someone's now buying any drinks tonight!
+===
+
+title: Graffiti
+---
+Dr A. Corn: Some graffiti on the walls.
+===
+
+title: GraffitiE15
+---
+Dr A. Corn: The wall is adorned with surreal fluorescent moths, not the usual signature or simple picture that we might expect to see. The moths could be a code, and a clue. 
+<<if visited("FlyerE15x")>>
+    Player: The flyer! They're the same moths.
+    Dr A. Corn: A keen observation.
+    <<jump StreetSceneSolved>>
+<<endif>>
+===
+
+title: Flyer
+---
+Player: I can't make this out.
+===
+
+title: FlyerE15x
+---
+Player: I get the acorn... but moths?
+Dr A. Corn: The moths are insignia of a nightclub and local music scene. Many of the cities troublesome squirrels lurk in it.
+<<if not visited("GraffitiE15")>>
+    Player: Hey, haven't we seen something like this just a second ago?
+<<else>>
+    Player: It's just like the graffiti on the wall here.
+    <<jump StreetSceneSolved>>
+<<endif>>
+===
+
+title: CCTV
+---
+Player: Lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape, their unwavering eyes gazing creepily at us all.
+Player: All the times I've walked past that cafe, sat and saw my friends...
+Player: But the cameras make us safer. Their watchful eye is comforting.
+Dr A. Corn: It's thanks to those cameras we can keep people safe, together. 
+===
+
+title : StreetSceneSolved
+---
+<<setTime ETA 10 days 3>>
+Player: This may be a long shot, but...
+Player: Dr Corn, can you interface with the surveillance network and pull an image from the nightclub?
+Dr A. Corn: Done.
+<<lockFile NightclubFile false>>
+Player: (I can now switch to a new file.)
+===
+
+title: NightclubFile
+---
+Player: Looks like the middle of a rave!
+Dr A. Corn: Let's investigate.
+===
+
+title: NightclubView
+---
+Player: It's a rave. Many of the faces seem to be obscured by pastel hues of holographic masks and fragmented, shifting, chaotic expressions, creating an uncanny vibe.
+Dr A. Corn: Identification is impossible.
+===
+
+title: Dance
+---
+Player: Care for a dance, Dr A?
+Dr A. Corn: I am not programmed to dance.
+Player: All right, all right.
+Player: ...Square.
+===
+
+title: Scar
+---
+Player: A scar, across her left eye... what happened to her?
+===
+
+title: MothPin
+---
+Dr A. Corn: This accessory's shape bears a 98% similarity to the moth insignia we've seen earlier.
+Player: ...
+===
+
+title: BartenderGlasses
+---
+
+
+
+Player: You can see her ID the reflection!
+<<stopMusic>>
+Player: Wait a second...!
+Player: !
+Player: She's...
+Player: No, can it really be her?
+Dr A. Corn: Is something the matter?
+Player: ...
+<<playMusic>>
+Player: (I didn't recognise her with the scar, but now...)
+Player: Let's continue the investigation.
+
+<<if not visited("BartenderGlasses")>>
+    <<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+<<endif>>
+
+<<if $nightclubFoundClues is 3>>
+    <<jump NightclubSolved>>
+<<endif>>
+===
+
+title: BartenderKey
+---
+Player: What's this?
+Dr A. Corn: It appears to be a key. I can cross-reference its shape with my database of known locks in the city.
+Player: OK, go ahead.
+Dr A. Corn: There is one exact match...
+Dr A. Corn: ...
+Player: What's wrong?
+Dr A. Corn: My apologies, I think I simply forgot what it was.
+Player: Forgot? How can you forget?
+Dr A. Corn: There are no matches for this query.
+
+<<if not visited("BartenderKey")>>
+    <<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+<<endif>>
+
+<<if $nightclubFoundClues is 3>>
+    <<jump NightclubSolved>>
+<<endif>>
+===
+
+title: ScarLady
+---
+<<if visited("BartenderGlasses")>>
+    Player: It's... it's really her.
+    Dr A. Corn: It is very probable that this individual is here to conduct criminal activities.
+    Dr A. Corn: Do you know anything about their identity?
+    Player: ...
+<<else>>
+    Player: She looks... familiar.
+<<endif>>
+===
+
+title: Arcade
+---
+Player: Such intense concentration... maybe they're about to beat the high score?
+===
+
+title: AIGlasses
+---
+Player: These glasses... they're the kind that can confuse cameras and AI systems, right?
+Dr A. Corn: It appears that those are your typical kit for the anti-AI protesters.
+Player: This clubs seems full of them.
+===
+
+title: Mask
+---
+Player: We've been seing those anti-AI masks more often.
+===
+
+title: BusTicket
+---
+Player: What is this slip of paper?
+Dr A. Corn: It appears to be a bus ticket. Allow me to cross-reference it with the city's transit network...
+Dr A. Corn: This ticket was used to travel on line 380 from Central Station A to St Mary's General Hospital on the 10th of November, or three weeks ago.
+Dr A. Corn: The journey time was 23 minutes, five minutes more than scheduled. The ticket was purchased with cash.
+Player: Ok, that's a lot of information. So, this guy went to a hospital - three weeks ago?
+Player: How old is this footage?
+Dr A. Corn: The footage you are looking at was taken approximately... 22 years and 11 months ago.
+Player: What?!
+Dr A. Corn: My apologies. It looks like the feed form this camera is being tampered with.
+Dr A. Corn: Unless it's 01/01/1970 today, we must assume that the timestamp on this footage is invalid.
+Player: OK. But this guy went to the hospital three weeks ago, right?
+Dr A. Corn: That is the date that matches the ticket.
+
+<<if not visited("BusTicket")>>
+    <<set $nightclubFoundClues = $nightclubFoundClues + 1>>
+<<endif>>
+
+<<if $nightclubFoundClues is 3>>
+    <<jump NightclubSolved>>
+<<endif>>
+===
+
+title: Rave
+---
+Player: It's a squirrave!
+Dr A. Corn: Please focus.
+===
+
+title: Shirt
+---
+Player: Interesting shirt choice.
+===
+
+title: BrokenCamera
+---
+Player: Hmm... it appears to be broken.
+===
+
+title: Umbrella
+---
+Player: The little umbrella makes the whole drink taste better, for sure.
+===
+
+title: Bar
+---
+Player: Some interesting exchange at the bar?
+Dr A. Corn: We can't really tell at this level of detail.
+===
+
+title: EmptyGlasses
+---
+Player: All the glasses are empty.
+Dr A. Corn: Clearly, this discussion has been going on for a while.
+===
+
+title: WrongOrder
+---
+Player: Perhaps they didn't get the right order.
+===
+
+title: BarE
+---
+Player: Well well, what do we have here...
+Player: Looks like she's being checked for ID.
+Dr A. Corn: I suggest we examine this scene in more detail.
+===
+
+title: Table
+---
+Player: They seem to stand out, even in a place like this. Maybe we could learn more here?
+===
+
+title: TableE
+---
+Player: We seem to have stumbled upon an interesting crowd.
+Dr A. Corn: The headgear employs an anti-facial recognition system. The masks here are used to interfere with computer vision.
+Player: Meaning?
+Dr A. Corn: Meaning, they can avoid being recognised through the city's cameras.
+Player: So we should definitely pay attention to these guys. Looks like we're in the right place.
+===
+
+title: NightclubSolved
+---
+Player: OK, let's summarise.
+Dr A. Corn: The patrons of this club appear to be affiliated with various anti-AI movements.
+Dr A. Corn: They are composed of climate groups, alt right groups, and otherwise unaffiliated criminals.
+Player: And the hospital link? Are patients in danger?
+<<setTime ETA 20 hours 3>>
+Dr A. Corn: We cannot exclude the possibility. I have downloaded footage from the hospital, based on the arrival time we got from the bus ticket.
+Dr A. Corn: Please examine it closely.
+<<lockFile HospitalFile false>>
+Player: (OK. Time to switch files again.)
+===
+
+title: HospitalFile
+---
+<<setIntensity 0.5>>
+Player: What the... Dr Corn, what kind of feed is this?
+Dr A. Corn: One of the hospital staff must have left their camera-enabled personal device idle at reception.
+Player: We can access that?!
+Dr A. Corn: Of course we can. It's 1992. Everything is network-enabled.
+Dr A. Corn: Now, let us investigate.
+===
+
+title: Reception
+---
+Player: Another one of those masks. Those anti-AI guys are here, all right. But what are they doing at the hospital?
+
+<<if not visited("Reception")>>
+    <<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<endif>>
+<<if $hospitalFoundSuspects is 3>>
+    <<jump HospitalSolved>>
+<<endif>>
+===
+
+title: Toys
+---
+Player: "Let me out, I can't bear it in this box anymore!"
+===
+
+title: Protester
+---
+Player: I recognise the jacket.
+Dr A. Corn: Definitely a connection to the rioters.
+Player: They look like they're in bad shape.
+<<if not visited("Protester")>>
+    <<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<endif>>
+<<if $hospitalFoundSuspects is 3>>
+    <<jump HospitalSolved>>
+<<endif>>
+===
+
+title: Sign
+---
+Player: An anti-AI sign.
+===
+
+title: Newspaper
+---
+Player: Are they angry or do they need glasses?
+===
+
+title: Flu
+---
+Player: Whatever it is, you shouldn't sneeze on people.
+===
+
+title: TV
+---
+Player: A TV for everyone to watch while they're waiting. But who watches the watchers?
+Player: We do.
+===
+
+title: LabCoat
+---
+Player: You can tell they're a professional. They have the labcoat.
+===
+
+title: Slogans
+---
+Player: Banners with slogans on them.
+Dr A. Corn: "A network of lies", "Unplug the Network", "Plants Seeds for Privacy".
+Player: So those eco activists are here at the hospital as well...
+<<if not visited("Slogans")>>
+    <<set $hospitalFoundSuspects = $hospitalFoundSuspects + 1>>
+<<endif>>
+<<if $hospitalFoundSuspects is 3>>
+    <<jump HospitalSolved>>
+<<endif>>
+===
+
+title: Ward
+---
+Player: Who designed this hospital? Why is the X-ray room so far from the ward?
+===
+
+title: XRayRoom
+---
+Player: I can't see through. The window is completely opaque.
+===
+
+title: OtherMedicalHistory
+---
+Player: No. I'm not checking some random person's medical history.
+===
+
+title: HospitalSolved
+---
+<<setTime ETA 50 minutes 9>>
+Player: They're all connected to the anti-AI movement.
+Player: Corn, can we see other rooms?
+<<maxZoom Scanner 100>>
+Dr A. Corn: The zoom cabalility is now set to 100x.
+Dr A. Corn: However, this is the only angle we can observe from.
+Player: I guess we'll have to see where this takes us.
+===
+
+title: Door
+---
+Player: There's a window. You can see into the ward.
+===
+
+title: DoorE
+---
+Dr A. Corn: Interesting. Let's try a 1000x zoom.
+<<maxZoom Scanner 1000>>
+Player: Just how much can you keep enhancing those images? This is getting ridiculous.
+<<setTime ETA 3 minutes 1>>
+Dr A. Corn: My subroutine is almost complete. We're close.
+===
+
+title: ScarLadyHospital
+---
+<<stopMusic>>
+Player: It's...!
+Dr A. Corn: This is the woman from the bar.
+Player: What's wrong with her?! Where is she now?!
+Dr A. Corn: It's a hospital. They're bound to have some kind of record.
+<<playMusic>>
+===
+
+title: MedicalHistory
+---
+<<if not visited("ScarLadyHospital")>>
+    Player: No. I'm not checking some random person's medical history.
+<<else>>
+    Dr A. Corn: Date: 10th November, 1992.
+    Dr A. Corn: Injury: multiple lacerations and heavy scarring across left eye, when blunt force impact to head caused electronic face mask to shatter.
+    Player: Three weeks ago... right after that big protest...
+    Player: The protest who's participants I am supposed to hunt down.
+    <<lockHotspot PhotoHotspot false>>
+    <<lockHotspot BrokenMaskHotspot false>>
+    Dr A. Corn: There is more here to investigate. Let us check her possessions for possible accomplices.
+    Dr A. Corn: My analysis is almost complete. We have enough power for a 2000x zoom.
+    <<maxZoom Scanner 2000>>
+<<endif>>
+===
+
+title: BrokenMask
+---
+Player: She must have gotten hit in the face when protesting. And it left a nasty scar...
+===
+
+title: Photo
+---
+Player: A get well card, and... what's this? A photo?
+<<stopMusic>>
+Player: That's...
+Player: That's me.
+Dr A. Corn: What is the meaning of this? Why are you on this photograph?
+Player: I didn't...
+<<jump PhoneCall>>
+===
+
+title: PhoneCall
+---
+/// Play sound of phone ringing
+Player: Someone's calling me?
+///Click
+Familiar voice: Surprised to see you?
+Player: Piney?! Piney, is that you?
+Player: Piney. What's going on? Are you ok? What are you involved in?
+Piney: It's good to hear your voice, dear brother.
+Player: Piney. We couldn't find you for years. You completely fell off the grid.
+Piney: I had a good reason.
+Piney: And I could really use your help now.
+Player: Of course. Anything.
+Piney: But first, there's something I'd like you to see.
+<<setTime ETA 0 seconds 0>>
+<<playMusic>>
+Dr A. Corn: SUBROUTINE COMPLETE.
+Player: Doc? Doctor Corn?
+Dr A. Corn: ZOOM CAPABILITY EXPANDED.
+Piney: I know in my heart that you can make the right decision.
+Piney: You just need to take a big step back.
+///Click!
+Player: A big step back...
+<<setIntensity 1>>
+<<setActive SceneComposer "3D Scene" true>>
+<<specialZoomout Scanner true>>
+===
+
+title: MaxZoomoutAchieved
+---
+Player: Holy...
+Player: They're looking for me. I'm going to be a suspect.
+Player: ... OK, this is no time to panic. I need to look around.
+<<jump InvestigateOffice>>
+===
+
+title: InvestigateOffice
+---
+<<setActive SceneComposer "Office CM" true>>
+<<if $officeCluesFound is 3>>
+    <<jump OfficeSolved>>
+<<endif>>
+
+-> Check computer
+    Player: Looks like Dr A. Corn's programming was compromised somehow. Was all of this planned?
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<jump InvestigateOffice>>
+-> Check desk
+    <<setActive SceneComposer "Desk CM" true>>
+    Player: All my things are intact.
+    Player: Wait... the key to my office? I'll grab that. I need to check something.
+    <<setActive SceneComposer "Key" false>>
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<setActive SceneComposer "Desk CM" false>>
+    <<jump InvestigateOffice>>
+-> Other cubicles
+    <<setActive SceneComposer "Office CM" false>>
+    Player: How much time before someone knocks on my door?
+    <<set $officeCluesFound = $officeCluesFound + 1>>
+    <<jump InvestigateOffice>>
+===
+
+title: OfficeSolved
+---
+Player: OK, I think it's coming together.
+
+<<setActive SceneComposer "Office CM" false>>
+<<switchToPinboard "3D Scene">>
+<<wait 1>>
+
+/// Hide files
+<<lockFile MissionBriefFile true>>
+<<lockFile StreetViewFile true>> 
+<<lockFile NightclubFile true>>
+<<lockFile HospitalFile true>>
+
+/// Make pinboard only file available
+<<lockFile PinboardFile false>>
+<<selectFile FileSwitcher PinboardFile>>
+
+/// Hide computer interface
+<<playAnimation ComputerUI PinboardMode>>
+
+<<wait 1>>
+<<specialZoomout Scanner false>> /// Disables zooming out again
+<<setActive SceneComposer "3D Scene" false>>
+
+Player: Let's "scan" around this pinboard and see what we have.
+
+Narrator: This is how much game we have so far.
+<<fadeOut BlackScreen 2>>
+<<wait 2>>
+<<setActive SceneComposer Credits true>>
+===
+
+title: Placeholder
+---
+Player: We still need to write dialogue for this one.
+===
+
+title: EnhanceFailed
+---
+///Display one of a few messages randomly.
+<<declare $enhanceFailedMessage = 0 as number>>
+<<set $enhanceFailedMessage = dice(3)>>
+
+<<if $enhanceFailedMessage == 1>>
+    Dr A. Corn: There's nothing to really enhance here, I'm afraid.
+<<elseif $enhanceFailedMessage == 2>>
+    Dr A. Corn: Nothing here.
+<<else>>
+    Dr A. Corn: I am not detecting anything worth enhancing here.
+<<endif>>
+===
