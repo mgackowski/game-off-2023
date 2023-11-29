@@ -71,12 +71,11 @@ Assistant: When you've had a proper look, let me know by giving it a <b>scan</b>
         Assistant: Scanning is how you examine things in this world. Go ahead, have a read and then hit the scan button to let me know.
     -> I can handle this.
         Assistant: I'll be right around the corner.
-
-<<setIntensity 0.2>>
 ===
 
 title: MissionBrief
 ---
+<<setIntensity 0.2>>
 Assistant: There you go. That was a scan. You'll be doing a lot of that.
 Player: It says here you've got more details for me.
 Assistant: Ah, yes. Your task is to track down a group of particularily dangerous squirrels. Rioters. Terrorists. Real ruffians.
@@ -95,8 +94,6 @@ Assistant: You should now be able to switch to that file. Give it a go!
 title: StreetViewFile
 ---
 /// This node plays when the file is first viewed
-
-<<setIntensity 0.4>>
 
 Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
@@ -127,6 +124,7 @@ Dr A. Corn: ... I'm not sure why I need human assistance, but are you ready?
 <<maxZoom Scanner 5>>
 <<displayTime ETA true>> // displays ETA in the corner
 <<setTime ETA 3 weeks 1>> // value: 3, unit: weeks, this will fluctuate by 1 in either direction
+<<setIntensity 0.4>>
 ===
 
 title: StreetView
@@ -885,9 +883,9 @@ Piney: Don't wait too long.
 
 title: TheEnd
 ---
+<<setIntensity 1>>
 <<fadeOut BlackScreen 4>>
 <<wait 4>>
-<<setIntensity 1>>
 <<setActive SceneComposer Scanner false>>
 <<setActive SceneComposer Credits true>>
 ===
