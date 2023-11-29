@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -129,7 +128,7 @@ public class Hotspot : MonoBehaviour
         float cInA = cArea / (a.width * a.height);
         float cInB = cArea / (b.width * b.height);
 
-        Debug.Log($"Overlaps: {cInA}, {cInB}");
+        //Debug.Log($"Overlaps: {cInA}, {cInB}");
         return Mathf.Min(cInA, cInB);
     }
 

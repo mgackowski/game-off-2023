@@ -1,5 +1,6 @@
 using System;
-using System.Diagnostics.Tracing;
+using System.Collections;
+using System.Runtime.CompilerServices;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public class Scanner : MonoBehaviour
 {
     public class EnhanceEventArgs
     {
+        //public Scanner performedBy;
         public Rect areaInView; // XY (world space) of area scanned
         public bool successful;
     }
@@ -27,7 +29,7 @@ public class Scanner : MonoBehaviour
     public event Action<float> MaxZoomLevelChanged;
     public event Action<ScanEventArgs> ScanPerformed;
     public event Action<EnhanceEventArgs> EnhancePerformed;
-    public event Action EnhanceAttemptedAtLowZoom;
+    //public event Action EnhanceAttemptedAtLowZoom;
     public event Action EnteredNearHotspot;
     public event Action LeftNearHotspot;
     public event Action EnhanceSuccessful;
@@ -155,9 +157,16 @@ public class Scanner : MonoBehaviour
     /* Finish up after scan effects have taken place. */
     public void ScanComplete(ScanEventArgs args)
     {
-        if (args.successful == true)
+        // Wrapped in a coroutine to wait one frame; this is a hacky solution
+        // to ensure this runs after Hotspot.OnScanPerformed
+        StartCoroutine(ScanCompleteCoroutine());
+        IEnumerator ScanCompleteCoroutine()
         {
-            LeftNearHotspot?.Invoke(); // stop showing the hint
+            yield return null;
+            if (args.successful == true)
+            {
+                LeftNearHotspot?.Invoke(); // stop showing the hint
+            }
         }
     }
 
@@ -179,6 +188,7 @@ public class Scanner : MonoBehaviour
         UpdateAreaInView();
         EnhanceEventArgs eventArgs = new EnhanceEventArgs()
         {
+            //performedBy = this,
             successful = false,
             areaInView = areaInView,
 
@@ -193,16 +203,25 @@ public class Scanner : MonoBehaviour
     /* Finish up an ehnance after effects are complete. */
     public void EnhanceComplete(EnhanceEventArgs args)
     {
-        if (args.successful)
+        // Wrapped in a coroutine to wait one frame; this is a hacky solution
+        // to ensure this runs after EnhanceHotspot.OnEnhancePerformed
+        StartCoroutine(EnhanceCompleteCoroutine());
+        IEnumerator EnhanceCompleteCoroutine()
         {
-            EnhanceSuccessful?.Invoke();
-        }
-        else // no enhance hotspots reported success
-        {
-            EnhanceUnsuccessful?.Invoke();
-            dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
+            yield return null;
+            if (args.successful)
+            {
+                EnhanceSuccessful?.Invoke();
+            }
+            else // no enhance hotspots reported success
+            {
+                EnhanceUnsuccessful?.Invoke();
+                dialogueSystem.RunDialogue(onEnhanceFailedNodeName);
+            }
         }
     }
+
+    
 
     public void SwitchFile(EvidenceFile newFile)
     {
@@ -372,16 +391,23 @@ public class Scanner : MonoBehaviour
 
     void EvaluationFinished(ScanEventArgs args)
     {
-        if (args.successful && !closeToHotspot)
+        // Wrapped in a coroutine to wait one frame; this is a hacky solution
+        // to ensure this runs after Hotspot.OnScanPerformed
+        StartCoroutine(EvaluationFinishedCoroutine());
+        IEnumerator EvaluationFinishedCoroutine()
         {
-            closeToHotspot = true;
-            EnteredNearHotspot?.Invoke();
-        }
-        else if (!args.successful && closeToHotspot)
-        {
-            closeToHotspot = false;
-            LeftNearHotspot?.Invoke();
-        }
+            yield return null;
+            if (args.successful && !closeToHotspot)
+            {
+                closeToHotspot = true;
+                EnteredNearHotspot?.Invoke();
+            }
+            else if (!args.successful && closeToHotspot)
+            {
+                closeToHotspot = false;
+                LeftNearHotspot?.Invoke();
+            }
+        } 
     }
 
 }

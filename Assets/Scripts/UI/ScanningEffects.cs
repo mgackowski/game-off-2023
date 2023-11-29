@@ -29,7 +29,7 @@ public class ScanningEffects : MonoBehaviour
 
     void OnEnhancePerformed(Scanner.EnhanceEventArgs args)
     {
-        StartCoroutine(DisplayEnhanceEffect(scanEffectDuration, args));
+        StartCoroutine(DisplayEnhanceEffect(enhanceEffectDuration, args));
     }
 
     IEnumerator DisplayScanEffect(float duration, Scanner.ScanEventArgs onCompleteArgs)
