@@ -2674,6 +2674,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 198733045931505973}
     m_Modifications:
+    - target: {fileID: 1295021152195689445, guid: d743408219d505549b44dd564129e16e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86417cb82bf023f48b4087268344400f, type: 2}
     - target: {fileID: 2212628611429168258, guid: d743408219d505549b44dd564129e16e,
         type: 3}
       propertyPath: m_Name
@@ -2732,8 +2737,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7631849565860954922, guid: d743408219d505549b44dd564129e16e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3924953712506273857}
   m_SourcePrefab: {fileID: 100100000, guid: d743408219d505549b44dd564129e16e, type: 3}
+--- !u!1 &5116503015610082355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7631849565860954922, guid: d743408219d505549b44dd564129e16e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3380161375966586649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3924953712506273857
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116503015610082355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70323423803adfc4da438c059f2ac4a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5458154949673730325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7302584454112617996, guid: d743408219d505549b44dd564129e16e,
