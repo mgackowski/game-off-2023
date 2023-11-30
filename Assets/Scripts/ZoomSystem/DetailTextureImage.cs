@@ -30,7 +30,10 @@ public class DetailTextureImage : EvidenceImage
 
     void OnLockStateChanged(bool locked)
     {
-        rend.forceRenderingOff = locked;
+        if (rend != null)
+        {
+            rend.forceRenderingOff = locked;
+        }  
     }
 
     void OnEnable()
