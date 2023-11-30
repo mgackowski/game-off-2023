@@ -1,6 +1,7 @@
 title: InitialiseVariables
 ---
 /// When starting a new game, start at this node to ensure the game state is reset.
+<<declare $graphicsQuality = "Full" as string>>
 <<maxZoom Scanner 1>>
 <<displayTime ETA false>>
 <<enhanceEnabled Scanner true>>
@@ -26,17 +27,24 @@ title: InitialiseVariables
 <<setActive SceneComposer "Office CM" false>>
 <<setActive SceneComposer "Desk CM" false>>
 <<setActive SceneComposer "Intro CM" false>>
+<<setActive SceneComposer "Options List View" false>>
+<<setActive SceneComposer "Menu Options List View" true>>
 
-<<jump Intro>>
+<<jump MainMenu>>
 ===
 
 title: Intro
 ---
+<<setActive SceneComposer "Options List View" true>>
+<<setActive SceneComposer "Menu Options List View" false>>
+<<disableMenu "Dialogue System">>
 <<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
 <<fadeOut BlackScreen 0>>
-<<wait  0.1>>
 <<fadeIn BlackScreen 0.9>>
-<<wait  0.9>>
+//<<wait  0.9>>
+
+<<playMusic>>
+<<setIntensity 0>>
 
 Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
 Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
@@ -66,6 +74,7 @@ Assistant: When you've had a proper look, let me know by giving it a <b>scan</b>
 
 title: MissionBrief
 ---
+<<setIntensity 0.2>>
 Assistant: There you go. That was a scan. You'll be doing a lot of that.
 Player: It says here you've got more details for me.
 Assistant: Ah, yes. Your task is to track down a group of particularily dangerous squirrels. Rioters. Terrorists. Real ruffians.
@@ -84,9 +93,6 @@ Assistant: You should now be able to switch to that file. Give it a go!
 title: StreetViewFile
 ---
 /// This node plays when the file is first viewed
-
-<<playMusic>>
-<<setIntensity 0>>
 
 Assistant: Look at the picture. Try and work out if you see anything suspicious.
 Player: What would count as suspicious?
@@ -117,6 +123,7 @@ Dr A. Corn: ... I'm not sure why I need human assistance, but are you ready?
 <<maxZoom Scanner 5>>
 <<displayTime ETA true>> // displays ETA in the corner
 <<setTime ETA 3 weeks 1>> // value: 3, unit: weeks, this will fluctuate by 1 in either direction
+<<setIntensity 0.4>>
 ===
 
 title: StreetView
@@ -202,7 +209,7 @@ Player: What a waste of flowers... they look so tasty, too.
 
 title: ID
 ---
-Player: Someone's now buying any drinks tonight!
+Player: Someone's not buying any drinks tonight!
 ===
 
 title: Graffiti
@@ -372,7 +379,7 @@ Player: Ok, that's a lot of information. So, this guy went to a hospital - three
 Player: How old is this footage?
 Dr A. Corn: The footage you are looking at was taken approximately... 22 years and 11 months ago.
 Player: What?!
-Dr A. Corn: My apologies. It looks like the feed form this camera is being tampered with.
+Dr A. Corn: My apologies. It looks like the feed from this camera is being tampered with.
 Dr A. Corn: Unless it's 01/01/1970 today, we must assume that the timestamp on this footage is invalid.
 Player: OK. But this guy went to the hospital three weeks ago, right?
 Dr A. Corn: That is the date that matches the ticket.
@@ -460,7 +467,7 @@ Player: (OK. Time to switch files again.)
 
 title: HospitalFile
 ---
-<<setIntensity 0.5>>
+<<setIntensity 0.6>>
 Player: What the... Dr Corn, what kind of feed is this?
 Dr A. Corn: One of the hospital staff must have left their camera-enabled personal device idle at reception.
 Player: We can access that?!
@@ -624,9 +631,14 @@ Player: I didn't...
 
 title: PhoneCall
 ---
-/// Play sound of phone ringing
+<<playSound 0 true>> // Phone ring
+<<wait 1>>
 Player: Someone's calling me?
-///Click
+<<wait 0.5>>
+<<stopSound 0>>
+<<playSound 1 false>> // Phone button click
+<<wait  1.5>>
+
 Familiar voice: Surprised to see you?
 Player: Piney?! Piney, is that you?
 Player: Piney. What's going on? Are you ok? What are you involved in?
@@ -643,15 +655,18 @@ Player: Doc? Doctor Corn?
 Dr A. Corn: ZOOM CAPABILITY EXPANDED.
 Piney: I know in my heart that you can make the right decision.
 Piney: You just need to take a big step back.
-///Click!
+<<wait  0.5>>
+<<playSound 2 false>> // hang up sound
+<<wait 1.5>>
 Player: A big step back...
-<<setIntensity 1>>
+<<setIntensity 0.8>>
 <<setActive SceneComposer "3D Scene" true>>
 <<specialZoomout Scanner true>>
 ===
 
 title: MaxZoomoutAchieved
 ---
+<<setIntensity 1>>
 Player: Holy...
 Player: They're looking for me. I'm going to be a suspect.
 Player: ... OK, this is no time to panic. I need to look around.
@@ -708,6 +723,7 @@ Player: How much time before someone knocks on my door?
 title: OfficeSolved
 ---
 Player: OK, I think it's coming together.
+<<setIntensity 0.6>>
 
 <<setActive SceneComposer "Office CM" false>>
 <<switchToPinboard "3D Scene">>
@@ -726,7 +742,7 @@ Player: OK, I think it's coming together.
 /// Hide computer interface
 <<playAnimation ComputerUI PinboardMode>>
 
-<<wait 1>>
+<<wait 2>>
 <<specialZoomout Scanner false>> /// Disables zooming out again
 <<setActive SceneComposer "3D Scene" false>>
 <<maxZoom Scanner 3>>
@@ -837,9 +853,15 @@ Player: That's today.
 
 title: PinboardSummary
 ---
+<<setIntensity 0>>
+<<playSound 0 true>>
+<<wait  1>>
 Player: !
-Player: Someboby's calling me again.
-/// click!
+Player: Somebody's calling me again.
+<<wait  0.5>>
+<<stopSound 0>>
+<<playSound 1 false>> // click!
+<<wait 1.5>>
 Piney: Do you see now?
 Piney: The people who run this city, they don't really care about us.
 Piney: The use of AI in city monitoring, its impact on our privacy, the environment - we never wanted any of it.
@@ -857,6 +879,7 @@ Piney: We need someone within the system. We need you, my brother.
 
 title: BigChoice
 ---
+<<setIntensity 0.4>>
 Piney: Will you join us?
 Player: Piney...
 Piney: It's ok. I know it's a big decision, and you don't have to decide now.
@@ -865,12 +888,14 @@ Player: ...
 Piney: Oh, and brother?
 Player: Yes?
 Piney: Don't wait too long.
-/// Click
+<<playSound 2 false>>
+<<wait 1>>
 <<jump TheEnd>>
 ===
 
 title: TheEnd
 ---
+<<setIntensity 1>>
 <<fadeOut BlackScreen 4>>
 <<wait 4>>
 <<setActive SceneComposer Scanner false>>
