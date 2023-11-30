@@ -16,7 +16,7 @@ public class EvidenceImage : MonoBehaviour
     [Header("Only sets initial state in Edit Mode")] // Inspector unaware of Properties
     [SerializeField] bool locked = true;
 
-    Renderer rend;
+    protected Renderer rend;
     ScreenFade fader;
 
     // TODO: Unimplemented; zoomed image stays at max opacity once unlocked
@@ -27,6 +27,13 @@ public class EvidenceImage : MonoBehaviour
     //[SerializeField] float zoomLevelForMaxOpacity = 5f; // calculate from zoom
     //float opacityTransitionZoomLevel;
 
+    private void Awake()
+    {
+        if (rend != null)
+        {
+            rend.forceRenderingOff = locked;
+        }  
+    }
 
     public void SetLockedState(bool newLocked)
     {

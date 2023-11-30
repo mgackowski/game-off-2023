@@ -40,9 +40,8 @@ title: Intro
 <<disableMenu "Dialogue System">>
 <<setActive SceneComposer "Intro CM" true>>   /// The intro camera activates and starts playing its animation
 <<fadeOut BlackScreen 0>>
-<<wait  0.1>>
 <<fadeIn BlackScreen 0.9>>
-<<wait  0.9>>
+//<<wait  0.9>>
 
 <<playMusic>>
 <<setIntensity 0>>
@@ -743,7 +742,7 @@ Player: OK, I think it's coming together.
 /// Hide computer interface
 <<playAnimation ComputerUI PinboardMode>>
 
-<<wait 1>>
+<<wait 2>>
 <<specialZoomout Scanner false>> /// Disables zooming out again
 <<setActive SceneComposer "3D Scene" false>>
 <<maxZoom Scanner 3>>
