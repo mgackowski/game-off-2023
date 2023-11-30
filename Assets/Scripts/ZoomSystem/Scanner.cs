@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using Yarn.Unity;
 
 /** Controls panning, zooming, scanning and enhancing.
@@ -50,6 +51,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] float maxPanDistanceFromEdge = 0f;
     [SerializeField] float baseOrthoSize = 0.5f; // Camera's ortho size property that maps to a 1x zoom level
     [SerializeField] bool enhanceEnabled = true;
+    [SerializeField] float zoomResetDuration = 0.2f;
     [SerializeField] FileSwitcher fileSwitcher;
     [SerializeField] Transform followTarget;
     [SerializeField] ScanningEffects effects;
@@ -244,6 +246,7 @@ public class Scanner : MonoBehaviour
         }
 
         newFile.viewedBefore = true;
+        ResetZoom();
     }
 
     [YarnCommand("maxZoom")]
@@ -263,6 +266,37 @@ public class Scanner : MonoBehaviour
     public void SetEnhancingEnabled(bool enabled)
     {
         enhanceEnabled = enabled;
+    }
+
+    /* Set zoom to 1x over a brief period */
+    [YarnCommand("resetZoom")]
+    public void ResetZoom()
+    {
+        if (zoomLevel != 1f)
+        {
+            StartCoroutine(TransitionTo1xZoom());
+        }
+        
+    }
+
+    IEnumerator TransitionTo1xZoom()
+    {
+        float elapsedTime = 0f;
+        float initialLens = cam.m_Lens.OrthographicSize;
+        while (elapsedTime <= zoomResetDuration)
+        {
+            if (zoomSpeed > 0f)
+            {
+                break;
+            }
+            float t = Mathf.Pow(elapsedTime / zoomResetDuration, 2f); // use smaller increments at higher zoom
+            cam.m_Lens.OrthographicSize = Mathf.SmoothStep(initialLens, baseOrthoSize, t);
+            ZoomLevelChanged?.Invoke(zoomLevel);
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
+        cam.m_Lens.OrthographicSize = baseOrthoSize;
+        ZoomLevelChanged?.Invoke(zoomLevel);
     }
 
     /** Use the camera's settings to update the areaInView field **/
