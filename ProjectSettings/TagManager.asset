@@ -40,6 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: EvidenceImage1
+    uniqueID: 3651528503
+    locked: 0
+  - name: EvidenceImage2
+    uniqueID: 3457751785
+    locked: 0
+  - name: EvidenceImage3
+    uniqueID: 516509741
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

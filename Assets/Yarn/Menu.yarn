@@ -4,6 +4,8 @@
 <<setActive SceneComposer "TitleScreen" true>>
 <<fadeOut TitleScreen 0>>
 -> Play
+	<<fadeOut BlackScreen 0.5>>
+	<<wait  0.5>>
 	<<fadeIn TitleScreen 0.5>>
 	<<wait  0.5>>
 	<<setActive SceneComposer "TitleScreen" false>>
