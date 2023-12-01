@@ -3,6 +3,12 @@
 <<setActive SceneComposer "Menu CM" true>>
 <<setActive SceneComposer "TitleScreen" true>>
 <<fadeOut TitleScreen 0>>
+<<playSound 3 true>> // title music, looped
+<<jump MainMenuOptions>>
+===
+
+title: MainMenuOptions
+---
 -> Play
 	<<fadeOut BlackScreen 0.5>>
 	<<wait  0.5>>
@@ -11,6 +17,7 @@
 	<<wait  0.5>>
 	<<setActive SceneComposer "TitleScreen" false>>
 	<<setActive SceneComposer "Menu CM" false>>
+	<<stopSound 3>>
 	<<jump Intro>>
 -> Quality - {$graphicsQuality}
 	<<if $graphicsQuality is "Full">>
@@ -20,7 +27,7 @@
 		<<set $graphicsQuality = "Full">>
 		<<setQuality full>>
 	<<endif>>
-	<<jump MainMenu>>
+	<<jump MainMenuOptions>>
 -> Credits
 	<<fadeOut BlackScreen 0.5>>
 	<<fadeIn TextEffect 0.5>>
@@ -29,5 +36,5 @@
 	<<setActive  SceneComposer Credits false>>
 	<<fadeIn  BlackScreen 0.5>>
 	<<fadeOut TextEffect 0.5>>
-	<<jump MainMenu>>
+	<<jump MainMenuOptions>>
 ===
