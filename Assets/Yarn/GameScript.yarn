@@ -47,12 +47,14 @@ title: Intro
 <<setIntensity 0>>
 
 Narrator:  01.12.1992<br>User logging on.///Inserting <br> Can be used to force a line break.
-Narrator: Economic recessions have led to low morale, corruption and dissension. Crime is rising. The world sees political divide, riots and extremism.
-Narrator: As a sinister plot lurks, a group are planning to attack! You don't know how.
+Narrator: Economic recessions have led to low morale, corruption and dissension. The world sees political divide, riots and extremism.
+Narrator: New technology can combat the growing threat of disruption and violence.
+Narrator: Groups have been planning a sinister attack, to harm society - corporations, nuclear power plants, airports even schools.
+Narrator: You don't their plan but it's up to you to find and stop them.
 
 <<playAnimation ComputerUI BootupStart>>
 
-Narrator: But you are armed with super-enhancing technology amateur hacking skills and a cool assistant.
+Narrator: You joined an organistation, combating organised crime. Armed with super-enhancing technology amateur hacking skills and a cool assistant.
 
 <<playAnimation ComputerUI BootupFinish>>
 <<wait 1>>
@@ -114,11 +116,11 @@ Dr A. Corn: Yes, why?
     -> Nut-thing.
     -> (Another terrible pun)
 
-Dr A. Corn: ... I'm not sure why I need human assistance, but are you ready?
+Dr A. Corn: In all honesty... I'm not sure why I need human assistance, but are you ready?
     ->Yes!
         Dr A. Corn: Splendid.
     ->I want to speak to your boss!
-        Dr A. Corn: Good luck with that!
+        Dr A. Corn: Sure, Karen. 
 
 <<maxZoom Scanner 5>>
 <<displayTime ETA true>> // displays ETA in the corner
@@ -142,7 +144,7 @@ Dr A. Corn: You won't be able to see much from here - you should zoom in!
 title: Bench
 ---
 Player: A couple sits on a bench, but they appear to be angry - could their argument have something to do with the case?
-Player: They exude mystery. I think they're holding something.
+Player: They exude an air of suspicion. I think they're holding something.
 Dr A. Corn: Ah, perfect timing.
 Dr A. Corn: I've been running an analytical subroutine using a sophisticated neural network to reconstruct images.
 Dr A. Corn: See that ETA counter in the corner? Once I'm done, this case is as good as closed.
@@ -246,7 +248,7 @@ Dr A. Corn: The moths are insignia of a nightclub and local music scene. Many of
 
 title: CCTV
 ---
-Player: Lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape, their unwavering eyes gazing creepily at us all.
+Player: Lenses everywhere, capturing the moves of the squirrels on the streets. Strategically placed around the cityscape.
 Player: All the times I've walked past that cafe, sat and saw my friends...
 Player: But the cameras make us safer. Their watchful eye is comforting.
 Dr A. Corn: It's thanks to those cameras we can keep people safe, together. 
@@ -567,6 +569,7 @@ Player: Corn, can we see other rooms?
 <<maxZoom Scanner 100>>
 Dr A. Corn: The zoom cabalility is now set to 100x.
 Dr A. Corn: However, this is the only angle we can observe from.
+Dr A. Corn: Where can we find a new view on this case? 
 Player: I guess we'll have to see where this takes us.
 ===
 
