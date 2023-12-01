@@ -10,6 +10,7 @@ public class DetailTextureImage : EvidenceImage
 {
     [Header("Detail texture-specific fields")]
     [SerializeField] Scanner scannedBy;
+    [SerializeField] EvidenceImage baseImage;
     [SerializeField] float minOpacity = 0f;
     [SerializeField] float maxOpacity = 0.75f;
     [SerializeField] float zoomLevelForMinOpacity = 1f;
@@ -27,12 +28,24 @@ public class DetailTextureImage : EvidenceImage
         mat.color = matColor;
     }
 
+    void OnLockStateChanged(bool locked)
+    {
+        if (rend != null)
+        {
+            rend.forceRenderingOff = locked;
+        }  
+    }
+
     void OnEnable()
     {
         if (scannedBy != null)
         {
            scannedBy.ZoomLevelChanged += OnZoomChanged;
-        }  
+        }
+        if (baseImage != null)
+        {
+            baseImage.ImageLockStateChanged += OnLockStateChanged;
+        }
     }
 
     void OnDisable()
@@ -40,6 +53,10 @@ public class DetailTextureImage : EvidenceImage
         if (scannedBy != null)
         {
             scannedBy.ZoomLevelChanged -= OnZoomChanged;
+        }
+        if (baseImage != null)
+        {
+            baseImage.ImageLockStateChanged -= OnLockStateChanged;
         }
     }
 }

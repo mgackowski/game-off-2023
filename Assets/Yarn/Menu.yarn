@@ -4,7 +4,10 @@
 <<setActive SceneComposer "TitleScreen" true>>
 <<fadeOut TitleScreen 0>>
 -> Play
+	<<fadeOut BlackScreen 0.5>>
+	<<wait  0.5>>
 	<<fadeIn TitleScreen 0.5>>
+	<<fadeIn TextEffect 0.5>>
 	<<wait  0.5>>
 	<<setActive SceneComposer "TitleScreen" false>>
 	<<setActive SceneComposer "Menu CM" false>>
@@ -20,9 +23,11 @@
 	<<jump MainMenu>>
 -> Credits
 	<<fadeOut BlackScreen 0.5>>
+	<<fadeIn TextEffect 0.5>>
 	<<setActive SceneComposer Credits true>>
 	Narrator: // Wait for player to click
 	<<setActive  SceneComposer Credits false>>
 	<<fadeIn  BlackScreen 0.5>>
+	<<fadeOut TextEffect 0.5>>
 	<<jump MainMenu>>
 ===
