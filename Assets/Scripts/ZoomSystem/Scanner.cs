@@ -214,6 +214,7 @@ public class Scanner : MonoBehaviour
             if (args.successful)
             {
                 EnhanceSuccessful?.Invoke();
+                LeftNearHotspot?.Invoke(); // stop showing the hint
             }
             else // no enhance hotspots reported success
             {
