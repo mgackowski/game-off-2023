@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using Yarn.Unity;
 using static Unity.VisualScripting.Member;
 
@@ -10,6 +11,7 @@ public class SoundManager : MonoBehaviour {
 
     [SerializeField] private List<AudioClip> clips;
     [SerializeField] private AudioMixerGroup output;
+    [SerializeField] private float volume = 1f;
 
     private List<AudioSource> sources = new List<AudioSource>();
 
@@ -41,6 +43,7 @@ public class SoundManager : MonoBehaviour {
         newSource.playOnAwake = false;
         newSource.outputAudioMixerGroup = Instance.output;
         newSource.clip = Instance.clips[index];
+        newSource.volume = Instance.volume;
         newSource.loop = looped;
         newSource.Play();
         Instance.sources.Add(newSource);
