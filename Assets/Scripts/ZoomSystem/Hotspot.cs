@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using Yarn.Unity;
 
 /**
@@ -23,10 +26,12 @@ public class Hotspot : MonoBehaviour
     [Header("Leave empty to calculate from renderer")]
     [SerializeField] protected Rect hotspotArea;
 
-    [Header("Debug")]
-    [SerializeField] protected bool showInPlayMode = true;
+    [Header("Hint display")]
+    [SerializeField] protected Color highlightColour = Color.white;
+    [SerializeField] protected float highlightDuration = 1f;
 
     protected bool scannedOnce = false;
+    SpriteRenderer rend;
 
 
     /* Individually lock the hotspot, preventing it from being interacted with.
@@ -98,16 +103,6 @@ public class Hotspot : MonoBehaviour
      */
     protected float CalculateOverlap(Rect a, Rect b)
     {
-        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMin, a.yMax, 0f));
-        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMax, a.yMin, 0f));
-        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMin, a.yMax, 0f));
-        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMax, a.yMin, 0f));
-
-        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMin, b.yMax, 0f));
-        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMax, b.yMin, 0f));
-        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMin, b.yMax, 0f));
-        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMax, b.yMin, 0f));
-
         // Determine common rectangle, c
         Rect c = Rect.zero;
         c.xMin = Mathf.Max(a.xMin, b.xMin);
@@ -119,17 +114,45 @@ public class Hotspot : MonoBehaviour
             return 0f; // No overlap
         }
 
-        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMin, c.yMax, 0f));
-        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMax, c.yMin, 0f));
-        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMin, c.yMax, 0f));
-        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMax, c.yMin, 0f));
-
         float cArea = c.width * c.height;
         float cInA = cArea / (a.width * a.height);
         float cInB = cArea / (b.width * b.height);
 
         //Debug.Log($"Overlaps: {cInA}, {cInB}");
         return Mathf.Min(cInA, cInB);
+    }
+
+    /*
+     * Provide a hint about the hotspot's location by highlighting it.
+     */
+    protected void Highlight(InputAction.CallbackContext ctx)
+    {
+        if (locked || parentImage == null || !parentImage.gameObject.activeInHierarchy || parentImage.Locked)
+        {
+            return;
+        }
+        StopAllCoroutines();
+        StartCoroutine(HighlightWithFadeOut());
+    }
+
+    IEnumerator HighlightWithFadeOut()
+    {
+        rend.forceRenderingOff = false;
+        Color originalColour = rend.color;  //TODO: This is lost if coroutine interrupted
+        Color currentColour = highlightColour;
+        float maxOpacity = highlightColour.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < highlightDuration)
+        {
+            currentColour.a = Mathf.Lerp(maxOpacity, 0f, elapsedTime / highlightDuration);
+            rend.color = currentColour;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        rend.forceRenderingOff = true;
+        rend.color = originalColour;
     }
 
     protected virtual void OnEnable()
@@ -147,24 +170,27 @@ public class Hotspot : MonoBehaviour
         {
             parentImage.ImageLockStateChanged += OnImageLockStateChanged;
         }
+
+        InputManager.Instance.Gameplay.Hint.performed += Highlight;
     }
 
     void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
+
         // If using a visible sprite or mesh to help position hotspot,
         // retrieve its bounds; then make invisible
-        if (GetComponent<Renderer>() != null && hotspotArea == Rect.zero)
+
+        if (rend != null && hotspotArea == Rect.zero)
         {
-            Renderer renderer = GetComponent<Renderer>();
-            Bounds bounds = renderer.bounds;
+            Renderer rend = GetComponent<Renderer>();
+            Bounds bounds = rend.bounds;
             hotspotArea.Set(
                 bounds.center.x - bounds.extents.x,
                 bounds.center.y - bounds.extents.y,
                 bounds.size.x, bounds.size.y);
-
-            renderer.forceRenderingOff = !showInPlayMode;
         }
-
+        rend.forceRenderingOff = true;
     }
 
     protected virtual void OnDisable()
@@ -182,6 +208,8 @@ public class Hotspot : MonoBehaviour
         {
             parentImage.ImageLockStateChanged += OnImageLockStateChanged;
         }
+
+        InputManager.Instance.Gameplay.Hint.performed -= Highlight;
     }
 
     void Reset()

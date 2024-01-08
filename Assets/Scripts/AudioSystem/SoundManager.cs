@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
+using UnityEngine.InputSystem;
 using Yarn.Unity;
-using static Unity.VisualScripting.Member;
 
 [DefaultExecutionOrder(-1)]
 public class SoundManager : MonoBehaviour {
@@ -77,6 +76,21 @@ public class SoundManager : MonoBehaviour {
         newSource.outputAudioMixerGroup = Instance.output;
         newSource.PlayOneShot(clip);
         Instance.sources.Add(newSource);
+    }
+
+    static void PlayHintSound(InputAction.CallbackContext ctx)
+    {
+        PlayFromList(4, false);
+    }
+
+    private void OnEnable()
+    {
+        InputManager.Instance.Gameplay.Hint.performed += PlayHintSound;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.Gameplay.Hint.performed -= PlayHintSound;
     }
 
 }

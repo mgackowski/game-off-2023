@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.045, y: 0.327, z: 0}
-  m_LocalScale: {x: 0.30286247, y: 0.20224111, z: 1}
+  m_LocalScale: {x: 0.07268699, y: 0.048537865, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,12 +74,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfdcbb1988fdf4248a06936a0c03e908, type: 3}
   m_Color: {r: 0.8962264, g: 0.42661202, b: 0.35933605, a: 0.2509804}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -99,10 +98,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scannableBy: {fileID: 0}
+  effects: {fileID: 0}
   dialogueSystem: {fileID: 0}
   parentImage: {fileID: 0}
   locked: 0
   requiredOverlapRatio: 0.7
+  toleranceForHint: 0.9
   dialogueNode: Start
   onlyRunDialogueOnce: 0
   hotspotArea:
@@ -111,4 +112,5 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  showInPlayMode: 1
+  highlightColour: {r: 0.19215688, g: 1, b: 0.76470596, a: 0.101960786}
+  highlightDuration: 1
