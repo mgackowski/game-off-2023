@@ -99,16 +99,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scannableBy: {fileID: 0}
+  effects: {fileID: 0}
+  dialogueSystem: {fileID: 0}
   parentImage: {fileID: 0}
-  scannedOnce: 0
   locked: 0
   requiredOverlapRatio: 0.7
+  toleranceForHint: 0.9
+  dialogueNode: 
+  onlyRunDialogueOnce: 0
   hotspotArea:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0
     height: 0
-  showInPlayMode: 1
+  highlightColour: {r: 1, g: 1, b: 1, a: 0.101960786}
+  highlightDuration: 1
   unlocksImage: {fileID: 0}
   startDialogueOnSuccess: 0
+  dialogueNodeAfterEnhance: 

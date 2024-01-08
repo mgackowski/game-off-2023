@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using Yarn.Unity;
 
 /**
@@ -24,10 +26,12 @@ public class Hotspot : MonoBehaviour
     [Header("Leave empty to calculate from renderer")]
     [SerializeField] protected Rect hotspotArea;
 
-    [Header("Debug")]
-    [SerializeField] protected bool showInPlayMode = true;
+    [Header("Hint display")]
+    [SerializeField] protected Color highlightColour = Color.white;
+    [SerializeField] protected float highlightDuration = 1f;
 
     protected bool scannedOnce = false;
+    SpriteRenderer rend;
 
 
     /* Individually lock the hotspot, preventing it from being interacted with.
@@ -127,7 +131,28 @@ public class Hotspot : MonoBehaviour
         {
             return;
         }
-        Debug.Log($"I am {name}!");
+        StopAllCoroutines();
+        StartCoroutine(HighlightWithFadeOut());
+    }
+
+    IEnumerator HighlightWithFadeOut()
+    {
+        rend.forceRenderingOff = false;
+        Color originalColour = rend.color;  //TODO: This is lost if coroutine interrupted
+        Color currentColour = highlightColour;
+        float maxOpacity = highlightColour.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < highlightDuration)
+        {
+            currentColour.a = Mathf.Lerp(maxOpacity, 0f, elapsedTime / highlightDuration);
+            rend.color = currentColour;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        rend.forceRenderingOff = true;
+        rend.color = originalColour;
     }
 
     protected virtual void OnEnable()
@@ -151,20 +176,21 @@ public class Hotspot : MonoBehaviour
 
     void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
+
         // If using a visible sprite or mesh to help position hotspot,
         // retrieve its bounds; then make invisible
-        if (GetComponent<Renderer>() != null && hotspotArea == Rect.zero)
+
+        if (rend != null && hotspotArea == Rect.zero)
         {
-            Renderer renderer = GetComponent<Renderer>();
-            Bounds bounds = renderer.bounds;
+            Renderer rend = GetComponent<Renderer>();
+            Bounds bounds = rend.bounds;
             hotspotArea.Set(
                 bounds.center.x - bounds.extents.x,
                 bounds.center.y - bounds.extents.y,
                 bounds.size.x, bounds.size.y);
-
-            renderer.forceRenderingOff = !showInPlayMode;
         }
-
+        rend.forceRenderingOff = true;
     }
 
     protected virtual void OnDisable()
