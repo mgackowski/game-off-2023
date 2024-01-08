@@ -113,7 +113,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  highlightColour: {r: 1, g: 1, b: 1, a: 0.101960786}
+  highlightColour: {r: 0.19215688, g: 1, b: 0.76470596, a: 0.101960786}
   highlightDuration: 1
   unlocksImage: {fileID: 0}
   startDialogueOnSuccess: 0
