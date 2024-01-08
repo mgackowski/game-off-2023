@@ -208,6 +208,8 @@ public class Hotspot : MonoBehaviour
         {
             parentImage.ImageLockStateChanged += OnImageLockStateChanged;
         }
+
+        InputManager.Instance.Gameplay.Hint.performed -= Highlight;
     }
 
     void Reset()
