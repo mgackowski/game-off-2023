@@ -98,6 +98,7 @@ public class InputManager : MonoBehaviour {
         public InputAction SwitchLeft { get { return inputActions.FindAction("SwitchLeft"); } }
         public InputAction SwitchRight { get { return inputActions.FindAction("SwitchRight"); } }
         public InputAction QuitGame { get { return inputActions.FindAction("QuitGame"); } }
+        public InputAction Hint{ get { return inputActions.FindAction("Hint"); } }
     }
 
     public class MenuActionMap : InternalActionMap {

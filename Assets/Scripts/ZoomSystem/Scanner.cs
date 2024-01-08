@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 using Yarn.Unity;
 
 /** Controls panning, zooming, scanning and enhancing.

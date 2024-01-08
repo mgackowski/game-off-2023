@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Yarn.Unity;
 
 /**
@@ -98,16 +99,6 @@ public class Hotspot : MonoBehaviour
      */
     protected float CalculateOverlap(Rect a, Rect b)
     {
-        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMin, a.yMax, 0f));
-        //Debug.DrawLine(new Vector3(a.xMin, a.yMin, 0f), new Vector3(a.xMax, a.yMin, 0f));
-        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMin, a.yMax, 0f));
-        //Debug.DrawLine(new Vector3(a.xMax, a.yMax, 0f), new Vector3(a.xMax, a.yMin, 0f));
-
-        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMin, b.yMax, 0f));
-        //Debug.DrawLine(new Vector3(b.xMin, b.yMin, 0f), new Vector3(b.xMax, b.yMin, 0f));
-        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMin, b.yMax, 0f));
-        //Debug.DrawLine(new Vector3(b.xMax, b.yMax, 0f), new Vector3(b.xMax, b.yMin, 0f));
-
         // Determine common rectangle, c
         Rect c = Rect.zero;
         c.xMin = Mathf.Max(a.xMin, b.xMin);
@@ -119,17 +110,24 @@ public class Hotspot : MonoBehaviour
             return 0f; // No overlap
         }
 
-        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMin, c.yMax, 0f));
-        //Debug.DrawLine(new Vector3(c.xMin, c.yMin, 0f), new Vector3(c.xMax, c.yMin, 0f));
-        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMin, c.yMax, 0f));
-        //Debug.DrawLine(new Vector3(c.xMax, c.yMax, 0f), new Vector3(c.xMax, c.yMin, 0f));
-
         float cArea = c.width * c.height;
         float cInA = cArea / (a.width * a.height);
         float cInB = cArea / (b.width * b.height);
 
         //Debug.Log($"Overlaps: {cInA}, {cInB}");
         return Mathf.Min(cInA, cInB);
+    }
+
+    /*
+     * Provide a hint about the hotspot's location by highlighting it.
+     */
+    protected void Highlight(InputAction.CallbackContext ctx)
+    {
+        if (locked || parentImage == null || !parentImage.gameObject.activeInHierarchy || parentImage.Locked)
+        {
+            return;
+        }
+        Debug.Log($"I am {name}!");
     }
 
     protected virtual void OnEnable()
@@ -147,6 +145,8 @@ public class Hotspot : MonoBehaviour
         {
             parentImage.ImageLockStateChanged += OnImageLockStateChanged;
         }
+
+        InputManager.Instance.Gameplay.Hint.performed += Highlight;
     }
 
     void Start()
